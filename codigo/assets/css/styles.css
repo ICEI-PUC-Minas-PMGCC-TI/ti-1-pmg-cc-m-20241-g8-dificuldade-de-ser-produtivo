@@ -35,7 +35,7 @@ body {
     padding: 0;
 
     /*Forçando a altura para o tamanho da tela*/
-    min-height: 100vh;
+    height: 100vh;
 }
 
 body {
@@ -98,6 +98,9 @@ nav {
     font-weight: 600;
 
     cursor: pointer;
+
+    text-decoration: none;
+    color: inherit;
 }
 
 /*Quando passar o mouse no item*/
@@ -156,5 +159,8 @@ nav {
 }
 
 main {
-    background-color: var(--home-color);
+    height: auto;
+
+    /*Faz com que apenas a div tenha o scroll*/
+    overflow: auto;
 }
