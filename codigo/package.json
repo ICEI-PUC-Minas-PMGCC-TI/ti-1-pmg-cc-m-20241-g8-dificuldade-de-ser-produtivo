@@ -1,0 +1,18 @@
+{
+  "name": "trackle",
+  "version": "1.0.0",
+  "description": "Projeto TI1",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server --watch ./db/db.json -s ./public"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "json-server": "^1.0.0-beta.0"
+  },
+  "devDependencies": {}
+}
