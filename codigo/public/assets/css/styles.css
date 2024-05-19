@@ -26,6 +26,9 @@ main {
     --tasks-color: #FB7735;
     --forum-color: #516F8C;
     --profile-color: #E3E2E2;
+
+    /* Fórum */
+    --neutral-color: #b7cad4;
 }
 
 html,
@@ -46,6 +49,8 @@ body {
     /*Definindo a fonte universal*/
     font-family: "Inter", sans-serif;
     font-weight: 400;
+
+    overflow: hidden;
 }
 
 nav {
@@ -164,4 +169,153 @@ main {
 
     /*Faz com que apenas a div tenha o scroll*/
     overflow: auto;
+}
+
+/*
+    
+    FÓRUM ----------------------------------------------------------------------
+    
+*/
+#forum {
+    background-color: var(--forum-color);
+
+    /*top: 20px; left & right: 20%; bottom: 0px*/
+    padding: 0 5%;
+}
+
+#forum a {
+    text-decoration: none;
+}
+
+#forum header {
+    position: sticky;
+    top: 0;
+    right: 0;
+
+    padding: 20px 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: var(--forum-color);
+
+    color: white;
+}
+
+#forum header .item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+
+    border: 3px solid white;
+    border-radius: 100px;
+
+    padding: 5px 12px;
+
+    cursor: pointer;
+
+    transition: all .2s ease;
+}
+
+#forum header .item:not(.search):hover {
+    color: black;
+
+    background-color: white;
+}
+
+#forum header .search {
+    justify-content: space-around;
+
+    min-width: 40%;
+}
+
+#forum header .search input {
+    background: none;
+
+    border: none;
+
+    width: 90%;
+}
+
+#forum header .search input,
+#forum header .search input::placeholder {
+    font-family: inherit;
+    color: white;
+    font-size: inherit;
+}
+
+#forum header .search input:focus {
+    outline: none;
+}
+
+#forum-container {
+    padding: 0 20%;
+
+    gap: 20px;
+}
+
+#forum-container article {
+    border-top: 1px solid var(--neutral-color);
+
+    color: var(--neutral-color);
+
+    padding: 10px 0;
+}
+
+#forum-container .discussion-container {
+    border-radius: 10px;
+
+    padding: 10px 10px;
+
+    cursor: pointer;
+
+    transition: all ease .3s;
+}
+
+#forum-container .discussion-container:hover {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+#forum-container .discussion-container .user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+#forum-container .discussion-container .content h2 {
+    color: white;
+}
+
+#forum-container .discussion-container .options {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+#forum-container .discussion-container .option {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: baseline;
+
+    background-color: rgba(255, 255, 255, 0.1);
+
+    border-radius: 100px;
+
+    padding: 5px 12px;
+
+    transition: all .2s ease;
+}
+
+#forum-container .discussion-container .option:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#discussion {
+    background-color: var(--forum-color);
+
 }
