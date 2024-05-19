@@ -177,13 +177,15 @@ main {
     
 */
 #forum {
+    position: relative;
+
     background-color: var(--forum-color);
 
     /*top: 20px; left & right: 20%; bottom: 0px*/
     padding: 0 5%;
 }
 
-#forum a {
+#forum #forum-container .discussion {
     text-decoration: none;
 }
 
@@ -251,13 +253,13 @@ main {
     outline: none;
 }
 
-#forum-container {
+#forum #forum-container {
     padding: 0 20%;
 
     gap: 20px;
 }
 
-#forum-container article {
+#forum .discussion-boundaries {
     border-top: 1px solid var(--neutral-color);
 
     color: var(--neutral-color);
@@ -265,7 +267,7 @@ main {
     padding: 10px 0;
 }
 
-#forum-container .discussion-container {
+#forum .discussion-container {
     border-radius: 10px;
 
     padding: 10px 10px;
@@ -275,28 +277,31 @@ main {
     transition: all ease .3s;
 }
 
-#forum-container .discussion-container:hover {
+#forum .discussion-container:hover {
     background-color: rgba(0, 0, 0, .1);
 }
 
-#forum-container .discussion-container .user {
+#forum .discussion-container .user {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 10px;
 }
 
-#forum-container .discussion-container .content h2 {
+#forum .discussion-container .content h2 {
     color: white;
 }
 
-#forum-container .discussion-container .options {
+#forum .discussion-container .options,
+#discussion .options {
     display: flex;
     flex-direction: row;
     gap: 15px;
 }
 
-#forum-container .discussion-container .option {
+#forum .discussion-container .option,
+#discussion .option,
+#discussion .comment .likes {
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -311,11 +316,165 @@ main {
     transition: all .2s ease;
 }
 
-#forum-container .discussion-container .option:hover {
+#forum .discussion-container .option:hover,
+#discussion .option:hover,
+#discussion #back:hover,
+#discussion .comment .likes:hover {
     background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+#forum #message {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 1.2em;
+}
+
+#forum .loader-container,
+#discussion .loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10% 0;
+}
+
+/* HTML: <div class="loader"></div> */
+#forum .loader-container .loader,
+#discussion .loader-container .loader {
+    width: 60px;
+    aspect-ratio: 4;
+    --_g: no-repeat radial-gradient(circle closest-side, white 90%, #0000);
+    background:
+        var(--_g) 0% 50%,
+        var(--_g) 50% 50%,
+        var(--_g) 100% 50%;
+    background-size: calc(100%/3) 100%;
+    animation: loading 1s infinite linear;
+}
+
+#forum .hidden {
+    display: none;
 }
 
 #discussion {
     background-color: var(--forum-color);
 
+    padding: 0 16%;
+
+    color: white;
+    text-align: justify;
+}
+
+#discussion #discussion-container {
+    margin-top: 30px;
+}
+
+#discussion header {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 40px;
+}
+
+#discussion #back {
+    padding: 5px 12px;
+
+    background-color: rgba(255, 255, 255, 0.1);
+
+    border-radius: 100px;
+
+    transition: all .2s ease;
+
+    cursor: pointer;
+}
+
+#discussion #user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+#discussion .option:hover {
+    cursor: pointer;
+}
+
+#discussion #content p,
+#discussion .comment p {
+    color: var(--neutral-color);
+
+    line-height: 1.5em;
+}
+
+#discussion #my-comment-container {
+    padding: 5px 10px;
+    margin-top: 20px;
+
+    border: 3px solid white;
+    border-radius: 100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#discussion #my-comment {
+    font-family: inherit;
+    color: white;
+    font-size: inherit;
+
+    background-color: transparent;
+
+    border: none;
+
+    width: 100%;
+
+    resize: none;
+}
+
+#discussion #my-comment::placeholder {
+    color: var(--neutral-color);
+}
+
+#discussion #my-comment:focus {
+    outline: none;
+}
+
+#discussion .comment .comment-options {
+    display: flex;
+}
+
+#discussion .comment .likes {
+    cursor: pointer;
+}
+
+#discussion .comment .likes.marked {
+    background-color: rgba(255, 255, 255, .3) !important;
+}
+
+@keyframes loading {
+    33% {
+        background-size: calc(100%/3) 0%, calc(100%/3) 100%, calc(100%/3) 100%
+    }
+
+    50% {
+        background-size: calc(100%/3) 100%, calc(100%/3) 0%, calc(100%/3) 100%
+    }
+
+    66% {
+        background-size: calc(100%/3) 100%, calc(100%/3) 100%, calc(100%/3) 0%
+    }
 }

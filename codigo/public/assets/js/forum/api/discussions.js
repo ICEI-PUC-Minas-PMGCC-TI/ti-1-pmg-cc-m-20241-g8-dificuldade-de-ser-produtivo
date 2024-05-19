@@ -1,7 +1,5 @@
 const apiUrl = '/discussions';
 
-const discussionsPerPage = 5;
-
 function createDiscussion(discussion, callbackFunction)
 {
     fetch(apiUrl, {
@@ -25,10 +23,12 @@ function createDiscussion(discussion, callbackFunction)
 
 function getDiscussions(pageNumber, currentUserId, callbackFunction)
 {
+    const discussionsPerPage = 5;
+
     const start = (pageNumber - 1) * discussionsPerPage;
     const end = pageNumber * discussionsPerPage - 1;
 
-    fetch(`${apiUrl}?_start=${start}&_end=${end}&user-id_ne=${currentUserId}`)
+    fetch(`${apiUrl}?_start=${start}&_end=${end}&authorId_ne=${currentUserId}`)
         .then(response => response.json())
         .then(data =>
         {

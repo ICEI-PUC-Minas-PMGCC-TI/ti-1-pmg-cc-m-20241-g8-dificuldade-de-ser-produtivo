@@ -2,34 +2,49 @@ $(() =>
 {
     let currentDiscussionPage = 1;
 
+    let throttleTimer;
+
     //Chamada da API para pegar X discussões após o carregamento da página
     getDiscussions(currentDiscussionPage, 0, retrieveDiscussions);
 
+    $('#forum').on('scroll', infiniteScroll);
+
     function retrieveDiscussions(discussions)
     {
-        if (currentDiscussionPage === 1 && discussions.length === 0)
+        if (discussions.length === 0)
         {
-            showMessage('Ainda não há discussões.|Seja o primeiro a iniciar uma discussão!');
+            if (currentDiscussionPage === 1)
+                showMessage('Ainda não há discussões.|Seja o primeiro a iniciar uma discussão!');
+            else
+                $('#forum').off('scroll');
+
+            return;
         }
 
         currentDiscussionPage++;
 
-        const forumContainerEl = $('#forum-container');
-
         discussions.forEach(discussionData =>
         {
-            forumContainerEl.append(createDiscussionElement(discussionData));
+            createDiscussionElement(discussionData).insertBefore($('.loader-container'));
         });
     }
 
     function createDiscussionElement(discussionData)
     {
-        const fragment = document.createDocumentFragment();
+        const discussion = $('<a>', { class: 'discussion', href: 'discussao.html' });
 
-        const discussionContainer = createDiscussionContainer(discussionData);
-        fragment.append(discussionContainer);
+        discussion.append(createDiscussionBoundaries(discussionData));
 
-        return fragment;
+        return discussion;
+    }
+
+    function createDiscussionBoundaries(discussionData)
+    {
+        const discussionBoundaries = $('<div>', { class: 'discussion-boundaries' });
+
+        discussionBoundaries.append(createDiscussionContainer(discussionData));
+
+        return discussionBoundaries;
     }
 
     function createDiscussionContainer(discussionData)
@@ -42,7 +57,7 @@ $(() =>
         const contentContainer = createContentContainer(discussionData.title, discussionData.text);
         discussionContainer.append(contentContainer);
 
-        const optionsContainer = createOptionsContainer(discussionData.commentsCount);
+        const optionsContainer = createOptionsContainer(discussionData.commentCount);
         discussionContainer.append(optionsContainer);
 
         return discussionContainer;
@@ -64,13 +79,13 @@ $(() =>
         return contentContainer;
     }
 
-    function createOptionsContainer(commentsCount)
+    function createOptionsContainer(commentCount)
     {
         const optionsContainer = $('<div>', { class: 'options' });
 
         const options = [
             { iconClass: 'fa-solid fa-bookmark', text: 'Salvar' },
-            { iconClass: 'fa-solid fa-comment', text: commentsCount },
+            { iconClass: 'fa-solid fa-comment', text: commentCount },
             { iconClass: 'fa-solid fa-share-from-square', text: 'Compartilhar' }
         ];
 
@@ -91,21 +106,54 @@ $(() =>
         return optionsContainer;
     }
 
-
-    function showMessage(message)
+    function throttle(callback, time)
     {
-        const messageEl = $('#message');
+        if (throttleTimer)
+            return;
+
+        const loaderContainerEl = $('.loader-container');
+
+        loaderContainerEl.removeClass('hidden');
+
+        throttleTimer = true;
+
+        setTimeout(() =>
+        {
+            callback();
+
+            throttleTimer = false;
+
+            loaderContainerEl.addClass('hidden');
+        }, time);
+    }
+
+    function infiniteScroll()
+    {
+        throttle(() =>
+        {
+            const $window = $(window);
+
+            const endOfPage = $window.innerHeight() + $window.scrollTop() >= $('body').offset().top;
+
+            if (endOfPage)
+                getDiscussions(currentDiscussionPage, 0, retrieveDiscussions);
+        }, 1000);
+    }
+
+    function showMessage(message) 
+    {
+        const messageContainer = $('<div>', { id: 'message' });
 
         const messageLines = message.split('|');
 
-        messageLines.forEach((line, index) =>
+        messageLines.forEach(line =>
         {
-            const paragraph = $('<p></p>');
+            const paragraph = $('<p>', { texxt: line });
 
-            paragraph.text = line;
-
-            messageEl.append(paragraph);
+            messageContainer.append(paragraph);
         });
+
+        $('#forum-container').append(messageContainer);
     }
 });
 
