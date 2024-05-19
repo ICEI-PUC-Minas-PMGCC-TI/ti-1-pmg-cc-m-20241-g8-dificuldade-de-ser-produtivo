@@ -1,0 +1,220 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+:root {
+    --authentication-color: #523FCB;
+    --home-color: #54799D;
+    --calendar-color: #5F4977;
+    --tasks-color: #FB7735;
+    --forum-color: #516F8C;
+    --profile-color: #E3E2E2;
+
+    --neutral-color: #b7cad4;
+}
+
+html,
+body {
+
+    margin: 0;
+    padding: 0;
+
+
+    height: 100vh;
+}
+
+body {
+
+    display: grid;
+    grid-template-columns: 20% 1fr;
+
+
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+
+    overflow: hidden;
+}
+
+nav {
+    padding: 30px 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nav-group {
+
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-group:nth-child(1) {
+    gap: 30px;
+}
+
+.nav-group:nth-child(2) {
+    gap: 80px
+}
+
+.nav-item,
+#nav-profile {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-item {
+
+    height: 80px;
+
+    padding: 0 25%;
+    gap: 30%;
+
+    background: linear-gradient(to right, transparent 50%, #fff 50%);
+    background-size: 200% 100%;
+    background-position: bottom right;
+    background-color: white;
+
+
+    transition: all .2s ease-out;
+
+    font-size: 1.5em;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.nav-item:hover {
+
+    background-position: bottom left;
+
+    color: white;
+}
+
+main {
+    height: auto;
+
+
+    overflow: auto;
+}
+/*
+    
+    NOTIFICAÇÕES ----------------------------------------------------------------------
+    
+*/
+#nav-notifications {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 0px;
+}
+
+#nav-notifications div {
+    aspect-ratio: 1/1;
+    width: 3em;
+    height: 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    margin-bottom: 0%;
+    cursor: pointer;
+}
+
+#nav-notifications i {
+    font-size: 4em;
+    color: #aaaaaa;
+}
+
+.main-container {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Use 100vh para ocupar toda a altura da janela */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Alinha o conteúdo no final da página */
+    z-index: 10;
+    position: fixed;
+}
+.painel-expandido-notificacoes {
+    width: 100%;
+    max-width: 420px;
+    background-color: rgba(131, 131, 131, 0.5);
+    box-shadow: 3px 0px 10px rgb(0 0 0 / 25%);
+    padding: 10px;
+    margin-bottom: 100px;
+    box-sizing: border-box;
+}
+.notificacoes-separadas {
+    display: flex;
+    flex-direction: column;
+}
+  
+.notification {
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+  
+.texto-da-notificacao{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 15px;
+}
+  
+.botoes{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    align-items: center;
+}
+  
+.marcar-ignorar{
+    background-color:gray;
+}
+  
+.redirecionamento-tarefas{
+    background-color: #FB7735;
+}
+  
+.marcar-tarefa-feita{
+    background-color: #32960a;
+}
+  
+.redirecionamento-forum{
+    background-color: #516F8C;
+    text-decoration: none;
+}
+  
+.marcar-ignorar, .redirecionamento-tarefas, .marcar-tarefa-feita, .redirecionamento-forum{
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 15px;
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow:1px 0px 5px rgb(0 0 0 / 30%);
+}
+  
+.botoes a {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    align-items: center;
+}
+  
+.botoes a:hover {
+    background-color: #0056b3;
+}
+.hidden {
+    display: none;
+}
