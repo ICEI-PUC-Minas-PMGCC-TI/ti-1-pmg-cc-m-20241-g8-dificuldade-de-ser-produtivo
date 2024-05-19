@@ -46,6 +46,8 @@ body {
     /*Definindo a fonte universal*/
     font-family: "Inter", sans-serif;
     font-weight: 400;
+
+    overflow: hidden;
 }
 
 nav {
@@ -164,4 +166,69 @@ main {
 
     /*Faz com que apenas a div tenha o scroll*/
     overflow: auto;
+}
+
+@media screen and (max-width: 890px) {
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    nav {
+        order: 2;
+        flex: 1 1 10%;
+
+        display: grid;
+        grid-template-columns: 70% 1fr;
+        grid-template-rows: 100%;
+
+        padding: 0 20px;
+    }
+
+    .nav-group {
+        flex-direction: row;
+
+        gap: 22% !important;
+    }
+
+    .nav-group:nth-child(1) {
+        justify-content: center;
+    }
+
+    .nav-group:nth-child(2) {
+        justify-content: end;
+    }
+
+    .nav-item {
+        height: auto;
+
+        padding: 0;
+    }
+
+    .nav-item span {
+        display: none;
+    }
+
+    #nav-profile {
+        height: auto;
+    }
+
+    #nav-profile div {
+        width: 2.5em;
+    }
+
+    #nav-profile i {
+        font-size: 1.5em;
+    }
+
+    main {
+        order: 1;
+        flex: 1 1 90%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .nav-group {
+        gap: 15% !important;
+    }
 }
