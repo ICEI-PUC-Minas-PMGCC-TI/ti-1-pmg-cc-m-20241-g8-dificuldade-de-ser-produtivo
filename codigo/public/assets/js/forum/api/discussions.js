@@ -40,6 +40,20 @@ function getDiscussions(pageNumber, currentUserId, callbackFunction)
         });
 }
 
+function getSpecificDiscussion(discussionId, callbackFunction)
+{
+    fetch(`${apiUrl}?id=${discussionId}`)
+        .then(response => response.json())
+        .then(data =>
+        {
+            callbackFunction(data);
+        })
+        .catch(error =>
+        {
+            console.error(`Error getting discussions: `, error);
+        });
+}
+
 
 function updateDiscussion(discussionId, newDiscussionData, callbackFunction)
 {
@@ -64,5 +78,20 @@ function updateDiscussion(discussionId, newDiscussionData, callbackFunction)
 
 function deleteDiscussion(discussionId, callbackFunction)
 {
-    fetch()
+    fetch(`${apiUrl}/${discussionId}`, {
+        method: 'DELETE',
+    })
+        .then(response => response.json())
+        .then(data =>
+        {
+            if (callbackFunction)
+                callbackFunction();
+        })
+        .catch(error =>
+        {
+            console.error('Erro ao remover contato via API JSONServer:', error);
+        });
 }
+
+export { createDiscussion, deleteDiscussion, getDiscussions, getSpecificDiscussion, updateDiscussion };
+

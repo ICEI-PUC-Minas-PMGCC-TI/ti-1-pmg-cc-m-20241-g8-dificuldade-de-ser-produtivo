@@ -1,160 +1,170 @@
+import { infiniteScroll } from '../../util.js';
+import { addBookmark, getBookmark, removeBookmark } from '../api/bookmarks.js';
+import { getDiscussions } from '../api/discussions.js';
+
 $(() =>
 {
-    let currentDiscussionPage = 1;
+	let currentDiscussionPage = 1;
 
-    let throttleTimer;
+	const userId = '0';
 
-    //Chamada da API para pegar X discussões após o carregamento da página
-    getDiscussions(currentDiscussionPage, 0, retrieveDiscussions);
+	//Chamada da API para pegar X discussões após o carregamento da página
+	getDiscussions(currentDiscussionPage, 0, retrieveDiscussions);
 
-    $('#forum').on('scroll', infiniteScroll);
+	$('#forum').on('scroll', () => { infiniteScroll(getDiscussions, currentDiscussionPage, 0, retrieveDiscussions) });
 
-    function retrieveDiscussions(discussions)
-    {
-        if (discussions.length === 0)
-        {
-            if (currentDiscussionPage === 1)
-                showMessage('Ainda não há discussões.|Seja o primeiro a iniciar uma discussão!');
-            else
-                $('#forum').off('scroll');
+	function retrieveDiscussions(discussions)
+	{
+		if (discussions.length === 0)
+		{
+			if (currentDiscussionPage === 1)
+				showMessage('Ainda não há discussões.|Seja o primeiro a iniciar uma discussão!');
+			else
+				$('#forum').off('scroll');
 
-            return;
-        }
+			return;
+		}
 
-        currentDiscussionPage++;
+		currentDiscussionPage++;
 
-        discussions.forEach(discussionData =>
-        {
-            createDiscussionElement(discussionData).insertBefore($('.loader-container'));
-        });
-    }
+		discussions.forEach(discussionData =>
+		{
+			getBookmark(discussionData.id, userId, bookmarkData =>
+			{
+				createDiscussionElement(discussionData, bookmarkData).insertBefore($('.loader-container'));
+			})
+		});
+	}
 
-    function createDiscussionElement(discussionData)
-    {
-        const discussion = $('<a>', { class: 'discussion', href: 'discussao.html' });
+	function createDiscussionElement(discussionData, bookmarkData)
+	{
+		const discussion = $('<a>', { class: 'discussion', href: 'discussao.html' });
 
-        discussion.append(createDiscussionBoundaries(discussionData));
+		discussion.append(createDiscussionBoundaries(discussionData, bookmarkData));
 
-        return discussion;
-    }
+		return discussion;
+	}
 
-    function createDiscussionBoundaries(discussionData)
-    {
-        const discussionBoundaries = $('<div>', { class: 'discussion-boundaries' });
+	function createDiscussionBoundaries(discussionData, bookmarkData)
+	{
+		const discussionBoundaries = $('<div>', { class: 'discussion-boundaries' });
 
-        discussionBoundaries.append(createDiscussionContainer(discussionData));
+		discussionBoundaries.append(createDiscussionContainer(discussionData, bookmarkData));
 
-        return discussionBoundaries;
-    }
+		return discussionBoundaries;
+	}
 
-    function createDiscussionContainer(discussionData)
-    {
-        const discussionContainer = $('<div>', { class: 'discussion-container' });
+	function createDiscussionContainer(discussionData, bookmarkData)
+	{
+		const discussionContainer = $('<div>', { class: 'discussion-container' });
 
-        const userContainer = createUserContainer(discussionData.userName);
-        discussionContainer.append(userContainer);
+		const userContainer = createUserContainer(discussionData.userName);
+		discussionContainer.append(userContainer);
 
-        const contentContainer = createContentContainer(discussionData.title, discussionData.text);
-        discussionContainer.append(contentContainer);
+		const contentContainer = createContentContainer(discussionData.title, discussionData.text);
+		discussionContainer.append(contentContainer);
 
-        const optionsContainer = createOptionsContainer(discussionData.commentCount);
-        discussionContainer.append(optionsContainer);
+		const optionsContainer = createOptionsContainer(discussionData.commentCount, discussionData.id, bookmarkData);
+		discussionContainer.append(optionsContainer);
 
-        return discussionContainer;
-    }
+		discussionContainer.append($('<input>', { class: 'discussion-id', type: 'hidden', value: discussionData.id }))
 
-    function createUserContainer(userName)
-    {
-        const userContainer = $('<div>', { class: 'user' });
-        userContainer.append($('<i>', { class: 'fa-solid fa-user' }));
-        userContainer.append($('<span>', { text: userName }));
-        return userContainer;
-    }
+		return discussionContainer;
+	}
 
-    function createContentContainer(title, text)
-    {
-        const contentContainer = $('<div>', { class: 'content' });
-        contentContainer.append($('<h2>', { text: title }));
-        contentContainer.append($('<p>', { text: text }));
-        return contentContainer;
-    }
+	function createUserContainer(userName)
+	{
+		const userContainer = $('<div>', { class: 'user' });
+		userContainer.append($('<i>', { class: 'fa-solid fa-user' }));
+		userContainer.append($('<span>', { text: userName }));
+		return userContainer;
+	}
 
-    function createOptionsContainer(commentCount)
-    {
-        const optionsContainer = $('<div>', { class: 'options' });
+	function createContentContainer(title, text)
+	{
+		const contentContainer = $('<div>', { class: 'content' });
+		contentContainer.append($('<h2>', { text: title }));
+		contentContainer.append($('<p>', { text: text }));
+		return contentContainer;
+	}
 
-        const options = [
-            { iconClass: 'fa-solid fa-bookmark', text: 'Salvar' },
-            { iconClass: 'fa-solid fa-comment', text: commentCount },
-            { iconClass: 'fa-solid fa-share-from-square', text: 'Compartilhar' }
-        ];
+	function createOptionsContainer(commentCount, discussionId, bookmarkData)
+	{
+		const optionsContainer = $('<div>', { class: 'options' });
 
-        options.forEach(option =>
-        {
-            const optionContainer = $('<div>', { class: 'option' });
-            optionContainer.append($('<i>', { class: option.iconClass }));
-            optionContainer.append($('<span>', { text: option.text }));
-            optionsContainer.append(optionContainer);
+		const options = [
+			{ iconClass: 'fa-solid fa-bookmark', text: 'Salvar' },
+			{ iconClass: 'fa-solid fa-comment', text: commentCount },
+			{ iconClass: 'fa-solid fa-share-from-square', text: 'Compartilhar' }
+		];
 
-            optionContainer.on('click', e =>
-            {
-                e.preventDefault();
-                e.stopPropagation();
-            });
-        });
+		options.forEach((option, index) =>
+		{
+			const bookmarked = bookmarkData.length !== 0;
 
-        return optionsContainer;
-    }
+			const optionContainer = $('<div>', { class: 'option' });
+			optionContainer.append($('<i>', { class: option.iconClass }));
+			optionContainer.append($('<span>', { text: index === 0 && bookmarked ? 'Salvo' : option.text }));
+			optionsContainer.append(optionContainer);
 
-    function throttle(callback, time)
-    {
-        if (throttleTimer)
-            return;
+			if (index !== 1)
+			{
+				if (bookmarkData.length !== 0)
+					optionContainer.addClass('checked');
 
-        const loaderContainerEl = $('.loader-container');
+				optionContainer.on('click', e =>
+				{
+					e.preventDefault();
+					e.stopPropagation();
 
-        loaderContainerEl.removeClass('hidden');
+					if (index === 0)
+						getBookmark(discussionId, userId, bookmarkData => { handleBookmark(bookmarkData, discussionId, optionContainer); });
+				});
 
-        throttleTimer = true;
+				return;
+			}
+		});
 
-        setTimeout(() =>
-        {
-            callback();
+		return optionsContainer;
+	}
 
-            throttleTimer = false;
+	function handleBookmark(bookmarkData, discussionId, optionEl)
+	{
+		const spanEl = optionEl.children('span').eq(0);
 
-            loaderContainerEl.addClass('hidden');
-        }, time);
-    }
+		if (bookmarkData.length === 0)
+		{
+			addBookmark(discussionId, userId, () =>
+			{
+				optionEl.addClass('checked');
+				spanEl.text('Salvo');
+			});
+		}
+		else
+		{
+			removeBookmark(bookmarkData[0].id, () =>
+			{
+				optionEl.removeClass('checked');
+				spanEl.text('Salvar');
+			})
+		}
+	}
 
-    function infiniteScroll()
-    {
-        throttle(() =>
-        {
-            const $window = $(window);
+	function showMessage(message) 
+	{
+		const messageContainer = $('<div>', { id: 'message' });
 
-            const endOfPage = $window.innerHeight() + $window.scrollTop() >= $('body').offset().top;
+		const messageLines = message.split('|');
 
-            if (endOfPage)
-                getDiscussions(currentDiscussionPage, 0, retrieveDiscussions);
-        }, 1000);
-    }
+		messageLines.forEach(line =>
+		{
+			const paragraph = $('<p>', { texxt: line });
 
-    function showMessage(message) 
-    {
-        const messageContainer = $('<div>', { id: 'message' });
+			messageContainer.append(paragraph);
+		});
 
-        const messageLines = message.split('|');
-
-        messageLines.forEach(line =>
-        {
-            const paragraph = $('<p>', { texxt: line });
-
-            messageContainer.append(paragraph);
-        });
-
-        $('#forum-container').append(messageContainer);
-    }
+		$('#forum-container').append(messageContainer);
+	}
 });
 
 

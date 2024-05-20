@@ -171,6 +171,71 @@ main {
     overflow: auto;
 }
 
+@media screen and (max-width: 890px) {
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    nav {
+        order: 2;
+        flex: 1 1 10%;
+
+        display: grid;
+        grid-template-columns: 70% 1fr;
+        grid-template-rows: 100%;
+
+        padding: 0 20px;
+    }
+
+    .nav-group {
+        flex-direction: row;
+
+        gap: 22% !important;
+    }
+
+    .nav-group:nth-child(1) {
+        justify-content: center;
+    }
+
+    .nav-group:nth-child(2) {
+        justify-content: end;
+    }
+
+    .nav-item {
+        height: auto;
+
+        padding: 0;
+    }
+
+    .nav-item span {
+        display: none;
+    }
+
+    #nav-profile {
+        height: auto;
+    }
+
+    #nav-profile div {
+        width: 2.5em;
+    }
+
+    #nav-profile i {
+        font-size: 1.5em;
+    }
+
+    main {
+        order: 1;
+        flex: 1 1 90%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .nav-group {
+        gap: 15% !important;
+    }
+}
+
 /*
     
     FÓRUM ----------------------------------------------------------------------
@@ -256,6 +321,8 @@ main {
 #forum #forum-container {
     padding: 0 20%;
 
+    margin-bottom: 20px;
+
     gap: 20px;
 }
 
@@ -288,12 +355,14 @@ main {
     gap: 10px;
 }
 
-#forum .discussion-container .content h2 {
+#forum .discussion-container .content h2,
+#forum .options {
     color: white;
 }
 
 #forum .discussion-container .options,
-#discussion .options {
+#discussion .options,
+#discussion .comment-options {
     display: flex;
     flex-direction: row;
     gap: 15px;
@@ -301,7 +370,7 @@ main {
 
 #forum .discussion-container .option,
 #discussion .option,
-#discussion .comment .likes {
+#discussion .comment-options button {
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -319,7 +388,7 @@ main {
 #forum .discussion-container .option:hover,
 #discussion .option:hover,
 #discussion #back:hover,
-#discussion .comment .likes:hover {
+#discussion .comment-options button:not(:disabled):hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -364,8 +433,20 @@ main {
     animation: loading 1s infinite linear;
 }
 
-#forum .hidden {
+#forum .hidden,
+#discussion .hidden {
     display: none;
+}
+
+#forum button,
+#discussion button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
 }
 
 #discussion {
@@ -388,6 +469,11 @@ main {
     gap: 40px;
 }
 
+#discussion a {
+    text-decoration: none;
+    color: inherit;
+}
+
 #discussion #back {
     padding: 5px 12px;
 
@@ -400,7 +486,8 @@ main {
     cursor: pointer;
 }
 
-#discussion #user {
+#discussion #user,
+#discussion .comment-user {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -423,7 +510,7 @@ main {
     margin-top: 20px;
 
     border: 3px solid white;
-    border-radius: 100px;
+    border-radius: 20px;
 
     display: flex;
     flex-direction: column;
@@ -453,15 +540,40 @@ main {
     outline: none;
 }
 
+#discussion #send-comment {
+    margin-top: 20px;
+
+    transition: all .2s ease;
+}
+
+#discussion #comments-container {
+
+    margin: 30px 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#discussion .comment {
+    border-top: 1px solid var(--neutral-color);
+    padding-top: 20px;
+}
+
 #discussion .comment .comment-options {
     display: flex;
 }
 
-#discussion .comment .likes {
+#discussion .comment-options button {
     cursor: pointer;
 }
 
-#discussion .comment .likes.marked {
+#discussion .comment-options button:disabled {
+    cursor: default !important;
+}
+
+#forum .option.checked,
+#discussion .comment-options .likes.checked {
     background-color: rgba(255, 255, 255, .3) !important;
 }
 
@@ -476,5 +588,17 @@ main {
 
     66% {
         background-size: calc(100%/3) 100%, calc(100%/3) 100%, calc(100%/3) 0%
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    #forum header .search {
+        min-width: 30%;
+    }
+}
+
+@media screen and (max-width: 1130px) {
+    #forum header .search {
+        width: 10%;
     }
 }
