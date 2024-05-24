@@ -54,5 +54,12 @@ function infiniteScroll(call, ...parameters)
     }, 1000);
 }
 
-export { generateUniqueId, infiniteScroll, throttle };
+function getDate()
+{
+    const date = new Date();
+
+    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+}
+
+export { generateUniqueId, getDate, infiniteScroll, throttle };
 

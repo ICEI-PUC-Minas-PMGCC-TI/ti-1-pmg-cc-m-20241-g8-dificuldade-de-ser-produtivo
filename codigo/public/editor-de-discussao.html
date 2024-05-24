@@ -46,32 +46,21 @@
         </div>
     </nav>
 
-
-    <main id="forum">
-        <header>
-            <div class="item category"><span>Salvos</span><i class="fa-solid fa-bookmark"></i></div>
-            <div class="item category"><span>Minhas discussões</span><i class="fa-solid fa-comments"></i></div>
-            <div class="item search"><input type="text" name="search" placeholder="Buscar">
-                <i class="fa-solid fa-magnifying-glass"></i>
+    <main id="create-discussion">
+        <h1>Nova discussão</h1>
+        <form>
+            <input type="text" name="title" id="title" placeholder="Título">
+            <textarea name="body" id="body" rows="5" placeholder="Corpo"></textarea>
+            <div id="buttons">
+                <button class="option" id="submit" disabled><i class="fa-solid fa-paper-plane"></i>
+                    <span>Postar</span></button>
+                <button class="option" id="cancel"><i class="fa-solid fa-xmark"></i> Cancelar</button>
             </div>
-            <a class="item" href="editor-de-discussao.html"><span>Nova discussão</span><i
-                    class="fa-solid fa-plus"></i></a>
-        </header>
-        <div id="forum-container">
-            <div class="loader-container hidden">
-                <div class="loader"></div>
-            </div>
-        </div>
+        </form>
     </main>
 
-    <div id="modal-forum" class="hidden">
-        <div id="modal-container">
-            <p>Link movido para a área de transferência!</p>
-        </div>
-    </div>
-
     <script src="assets/js/jquery-3.7.1.min.js"></script>
-    <script type="module" src="assets/js/forum/pages/forum.js"></script>
+    <script src="assets/js/forum/pages/discussion-editor.js" type="module"></script>
 </body>
 
 </html>

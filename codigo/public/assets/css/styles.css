@@ -265,6 +265,7 @@ main {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 
     background-color: var(--forum-color);
 
@@ -272,6 +273,9 @@ main {
 }
 
 #forum header .item {
+    color: inherit;
+    text-decoration: none;
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -288,6 +292,10 @@ main {
 }
 
 #forum header .item:not(.search):hover {
+    background-color: rgba(255, 255, 255, .2);
+}
+
+#forum header .item.category.checked {
     color: black;
 
     background-color: white;
@@ -370,7 +378,8 @@ main {
 
 #forum .discussion-container .option,
 #discussion .option,
-#discussion .comment-options button {
+#discussion .comment-options button,
+#create-discussion button.option {
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -388,23 +397,26 @@ main {
 #forum .discussion-container .option:hover,
 #discussion .option:hover,
 #discussion #back:hover,
-#discussion .comment-options button:not(:disabled):hover {
+#discussion .comment-options button:not(:disabled):hover,
+#create-discussion button.option:not(:disabled):hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
 
 #forum #message {
-    position: absolute;
+    /*position: absolute;
 
     top: 50%;
     left: 50%;
 
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);*/
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    text-align: center;
 
     color: white;
     font-size: 1.2em;
@@ -433,13 +445,15 @@ main {
     animation: loading 1s infinite linear;
 }
 
+#modal-forum.hidden,
 #forum .hidden,
 #discussion .hidden {
     display: none;
 }
 
 #forum button,
-#discussion button {
+#discussion button,
+#create-discussion button {
     background: none;
     color: inherit;
     border: none;
@@ -449,7 +463,8 @@ main {
     outline: inherit;
 }
 
-#discussion {
+#discussion,
+#create-discussion {
     background-color: var(--forum-color);
 
     padding: 0 16%;
@@ -498,6 +513,13 @@ main {
     cursor: pointer;
 }
 
+#forum .content h2,
+#forum .content p,
+#discussion #content h2,
+#discussion #content p {
+    word-wrap: break-word;
+}
+
 #discussion #content p,
 #discussion .comment p {
     color: var(--neutral-color);
@@ -518,7 +540,9 @@ main {
     justify-content: center;
 }
 
-#discussion #my-comment {
+#discussion #my-comment,
+#create-discussion input,
+#create-discussion textarea {
     font-family: inherit;
     color: white;
     font-size: inherit;
@@ -532,11 +556,15 @@ main {
     resize: none;
 }
 
-#discussion #my-comment::placeholder {
+#discussion #my-comment::placeholder,
+#create-discussion input::placeholder,
+#create-discussion textarea::placeholder {
     color: var(--neutral-color);
 }
 
-#discussion #my-comment:focus {
+#discussion #my-comment:focus,
+#create-discussion input,
+#create-discussion textarea {
     outline: none;
 }
 
@@ -568,13 +596,104 @@ main {
     cursor: pointer;
 }
 
-#discussion .comment-options button:disabled {
+#discussion .comment-options button:disabled,
+#create-discussion button.option:disabled {
     cursor: default !important;
 }
 
 #forum .option.checked,
 #discussion .comment-options .likes.checked {
     background-color: rgba(255, 255, 255, .3) !important;
+}
+
+#create-discussion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#create-discussion form {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+#create-discussion input,
+#create-discussion textarea {
+    padding: 15px 15px;
+
+    border: 3px solid white;
+    border-radius: 20px;
+
+    width: calc(100% - 34.8px);
+}
+
+#create-discussion #buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+#create-discussion button.option:disabled {
+    opacity: 0.7;
+}
+
+#modal-forum {
+    position: absolute;
+    z-index: 99;
+
+    bottom: 15%;
+    left: 50%;
+
+    translate: -50% -50%;
+
+    height: 20px;
+
+    transform-origin: top 50%;
+}
+
+#modal-forum.show {
+    animation: modal-show 0.2s normal linear;
+}
+
+#modal-forum.hide {
+    animation: modal-hide 0.2s normal forwards;
+}
+
+#modal-forum #modal-container {
+
+    position: relative;
+
+    background-color: white;
+
+    height: 100%;
+
+    padding: 5px 12px;
+
+    border-radius: 100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#modal-forum::before {
+    content: "";
+
+    position: absolute;
+    top: -20px;
+    left: 0;
+
+
+    background-color: white;
+}
+
+#modal-forum p {
+    font-weight: 500;
+
+    font-size: 80%;
 }
 
 @keyframes loading {
@@ -591,6 +710,39 @@ main {
     }
 }
 
+@keyframes modal-show {
+    0% {
+        transform: scale(0%)
+    }
+
+    80% {
+        transform: scale(110%);
+    }
+
+    90% {
+        transform: scale(90%);
+    }
+
+    100% {
+        transform: scaleY(100%);
+    }
+}
+
+@keyframes modal-hide {
+    0% {
+        transform: scale(100%);
+    }
+
+    10% {
+        transform: scale(110%);
+    }
+
+    100% {
+        transform: scale(0%);
+        display: none;
+    }
+}
+
 @media screen and (max-width: 1260px) {
     #forum header .search {
         min-width: 30%;
@@ -601,4 +753,50 @@ main {
     #forum header .search {
         width: 10%;
     }
+}
+
+@media screen and (max-width: 1070px) {
+    #forum {
+        padding: 0;
+    }
+
+    #forum header {
+        gap: 20px;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 660px) {
+
+    #forum .options .option:nth-child(1) span,
+    #forum .options .option:nth-child(3) span {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #forum #forum-container {
+        padding: 0 40px;
+    }
+
+    #discussion {
+        padding: 0 30px;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #CBCBCB;
+    border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #909090;
 }

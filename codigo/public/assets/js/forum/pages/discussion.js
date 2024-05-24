@@ -13,7 +13,12 @@ $(() =>
 
     const userId = '0';
 
-    const discussionId = 1;
+    let params = new URLSearchParams(document.location.search);
+
+    const discussionId = params.get('id');
+
+    if (discussionId === null)
+        window.location.href = 'forum.html';
 
     let commentsList = {};
 
@@ -68,6 +73,9 @@ $(() =>
         dateElement.text(discussion.date);
         titleElement.text(discussion.title);
         textElement.text(discussion.text);
+
+        if (discussion.authorId === userId)
+            $('.option').get(0).remove(); 
     }
 
     function createCommentElement(commentData, likeRelationship)
@@ -197,7 +205,7 @@ $(() =>
 
         messageLines.forEach(line =>
         {
-            const paragraph = $('<p>', { texxt: line });
+            const paragraph = $('<p>', { text: line });
 
             messageContainer.append(paragraph);
         });

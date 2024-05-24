@@ -32,12 +32,28 @@ function getDiscussions(pageNumber, currentUserId, callbackFunction)
         .then(response => response.json())
         .then(data =>
         {
-            callbackFunction(data);
+            if (callbackFunction)
+                callbackFunction(data);
         })
         .catch(error =>
         {
-            console.error(`Error getting discussions: `, error);
+            console.error('Error getting discussions: ', error);
         });
+}
+
+function getUserDiscussions(userId, callbackFunction)
+{
+    fetch(`${apiUrl}?authorId=${userId}`)
+        .then(response => response.json())
+        .then(data =>
+        {
+            if (callbackFunction)
+                callbackFunction(data);
+        })
+        .catch(error =>
+        {
+            console.error('Error getting user discussions: ', error);
+        })
 }
 
 function getSpecificDiscussion(discussionId, callbackFunction)
@@ -57,7 +73,7 @@ function getSpecificDiscussion(discussionId, callbackFunction)
 
 function updateDiscussion(discussionId, newDiscussionData, callbackFunction)
 {
-    fetch(`%{apiUrl}/${discussionId}`, {
+    fetch(`${apiUrl}/${discussionId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -93,5 +109,5 @@ function deleteDiscussion(discussionId, callbackFunction)
         });
 }
 
-export { createDiscussion, deleteDiscussion, getDiscussions, getSpecificDiscussion, updateDiscussion };
+export { createDiscussion, deleteDiscussion, getDiscussions, getSpecificDiscussion, getUserDiscussions, updateDiscussion };
 

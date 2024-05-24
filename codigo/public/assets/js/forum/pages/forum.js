@@ -1,73 +1,181 @@
 import { infiniteScroll } from '../../util.js';
-import { addBookmark, getBookmark, removeBookmark } from '../api/bookmarks.js';
-import { getDiscussions } from '../api/discussions.js';
+import { addBookmark, getAllUserBookmarks, getBookmark, removeBookmark } from '../api/bookmarks.js';
+import { deleteDiscussion, getDiscussions, getSpecificDiscussion, getUserDiscussions } from '../api/discussions.js';
 
 $(() =>
 {
+	const PageStates = {
+		FORUM: 0,
+		BOOKMARKED_DISCUSSIONS: 1,
+		MY_DISCUSSIONS: 2,
+		SEARCH: 3
+	};
+
+	let params = new URLSearchParams(window.location.search);
+
+	let curState = parseInt(params.get('state'));
+
+	if (!curState)
+		curState = PageStates.FORUM;
+
 	let currentDiscussionPage = 1;
 
 	const userId = '0';
 
-	//Chamada da API para pegar X discussões após o carregamento da página
-	getDiscussions(currentDiscussionPage, 0, retrieveDiscussions);
+	let discussionsLoaded = {};
 
-	$('#forum').on('scroll', () => { infiniteScroll(getDiscussions, currentDiscussionPage, 0, retrieveDiscussions) });
+	let timerId;
 
-	function retrieveDiscussions(discussions)
+	onLoadPage();
+
+	$('.category').each((index, element) =>
+	{
+		const $element = $(element);
+
+		$element.on('click', () =>
+		{
+			$('.category').each((i, el) => { if (i !== index) $(el).removeClass('checked') });
+
+			clearDiscussions();
+
+			if ($element.hasClass('checked'))
+			{
+				curState = PageStates.FORUM;
+
+				$element.removeClass('checked');
+
+				if (discussionsLoaded.length > 0)
+					retrieveDiscussions(discussionsLoaded);
+				else
+					executeStateAction();
+
+				return;
+			}
+
+			$element.addClass('checked');
+
+			if (index === 0)
+				curState = PageStates.BOOKMARKED_DISCUSSIONS;
+			else if (index === 1)
+				curState = PageStates.MY_DISCUSSIONS;
+
+			executeStateAction();
+		});
+	});
+
+	function onLoadPage()
+	{
+		executeStateAction();
+
+		const categoryElements = $('.item.category');
+
+		if (curState !== PageStates.FORUM)
+			$(categoryElements.get(curState - 1)).addClass('checked');
+	}
+
+	function executeStateAction()
+	{
+		$('#message').remove();
+
+		switch (curState)
+		{
+
+			case PageStates.FORUM:
+				$('#forum').on('scroll', () => { infiniteScroll(getDiscussions, currentDiscussionPage, 0, data => retrieveDiscussions(data, true)) });
+				getDiscussions(currentDiscussionPage, 0, data => retrieveDiscussions(data, true));
+				break;
+			case PageStates.MY_DISCUSSIONS:
+				$('#forum').off('scroll');
+				getUserDiscussions(userId, retrieveDiscussions);
+				break;
+			case PageStates.BOOKMARKED_DISCUSSIONS:
+				$('#forum').off('scroll');
+				getAllUserBookmarks(userId, data =>
+				{
+					if (data.length === 0)
+					{
+						showMessage('Você ainda não salvou nenhuma discussão...|Não se esqueça de salvar as discussões que forem úteis para você!');
+
+						return;
+					}
+
+					data.forEach(bookmark =>
+					{
+						getSpecificDiscussion(bookmark.discussionId, retrieveDiscussions);
+					});
+				});
+				break;
+		}
+	}
+
+	function retrieveDiscussions(discussions, shouldCache = false)
 	{
 		if (discussions.length === 0)
 		{
-			if (currentDiscussionPage === 1)
-				showMessage('Ainda não há discussões.|Seja o primeiro a iniciar uma discussão!');
+			if (currentDiscussionPage === 1 && shouldCache)
+				showMessage('Ainda não há discussões...|Seja o primeiro a iniciar uma discussão!');
+			else if (curState === PageStates.MY_DISCUSSIONS)
+				showMessage('Você ainda não iniciou uma discussão...|Crie uma agora!');
 			else
+			{
 				$('#forum').off('scroll');
+				currentDiscussionPage = -1;
+			}
 
 			return;
 		}
 
-		currentDiscussionPage++;
+		if (shouldCache)
+			currentDiscussionPage++;
 
 		discussions.forEach(discussionData =>
 		{
-			getBookmark(discussionData.id, userId, bookmarkData =>
+			if (curState !== PageStates.MY_DISCUSSIONS)
 			{
-				createDiscussionElement(discussionData, bookmarkData).insertBefore($('.loader-container'));
-			})
+				getBookmark(discussionData.id, userId, bookmarkData =>
+				{
+					createDiscussionElement(discussionData, bookmarkData).insertBefore($('.loader-container'));
+				})
+			}
+			else
+				createDiscussionElement(discussionData, null).insertBefore($('.loader-container'));
+
+			if (!(discussionData.id in discussionsLoaded) && shouldCache)
+				discussionsLoaded[discussionData.id] = discussionData;
 		});
 	}
 
 	function createDiscussionElement(discussionData, bookmarkData)
 	{
-		const discussion = $('<a>', { class: 'discussion', href: 'discussao.html' });
+		const discussion = $('<a>', { class: 'discussion', href: `discussao.html?id=${discussionData.id}` });
 
-		discussion.append(createDiscussionBoundaries(discussionData, bookmarkData));
+		discussion.append(createDiscussionBoundaries(discussionData, bookmarkData, discussion));
 
 		return discussion;
 	}
 
-	function createDiscussionBoundaries(discussionData, bookmarkData)
+	function createDiscussionBoundaries(discussionData, bookmarkData, discussion)
 	{
 		const discussionBoundaries = $('<div>', { class: 'discussion-boundaries' });
 
-		discussionBoundaries.append(createDiscussionContainer(discussionData, bookmarkData));
+		discussionBoundaries.append(createDiscussionContainer(discussionData, bookmarkData, discussion));
 
 		return discussionBoundaries;
 	}
 
-	function createDiscussionContainer(discussionData, bookmarkData)
+	function createDiscussionContainer(discussionData, bookmarkData, discussion)
 	{
 		const discussionContainer = $('<div>', { class: 'discussion-container' });
 
-		const userContainer = createUserContainer(discussionData.userName);
+		const userName = curState === PageStates.MY_DISCUSSIONS ? 'Você' : discussionData.userName;
+		const userContainer = createUserContainer(userName);
 		discussionContainer.append(userContainer);
 
 		const contentContainer = createContentContainer(discussionData.title, discussionData.text);
 		discussionContainer.append(contentContainer);
 
-		const optionsContainer = createOptionsContainer(discussionData.commentCount, discussionData.id, bookmarkData);
+		const optionsContainer = createOptionsContainer(discussionData.commentCount, discussionData.id, bookmarkData, discussion);
 		discussionContainer.append(optionsContainer);
-
-		discussionContainer.append($('<input>', { class: 'discussion-id', type: 'hidden', value: discussionData.id }))
 
 		return discussionContainer;
 	}
@@ -88,41 +196,90 @@ $(() =>
 		return contentContainer;
 	}
 
-	function createOptionsContainer(commentCount, discussionId, bookmarkData)
+	function createOptionsContainer(commentCount, discussionId, bookmarkData, discussion)
 	{
 		const optionsContainer = $('<div>', { class: 'options' });
 
+		const editMode = curState === PageStates.MY_DISCUSSIONS;
+
 		const options = [
-			{ iconClass: 'fa-solid fa-bookmark', text: 'Salvar' },
-			{ iconClass: 'fa-solid fa-comment', text: commentCount },
-			{ iconClass: 'fa-solid fa-share-from-square', text: 'Compartilhar' }
+			{
+				iconClass: `fa-solid ${editMode ? 'fa-pen-to-square' : 'fa-bookmark'}`,
+				text: editMode ? 'Editar' : bookmarkData.length > 0 ? 'Salvo' : 'Salvar',
+				executeFunction: () =>
+				{
+					if (!editMode)
+					{
+						getBookmark(discussionId, userId, bookmarkData => { handleBookmark(bookmarkData, discussionId, optionContainer); });
+						return;
+					}
+
+					window.location.href = `editor-de-discussao.html?id=${discussionId}`;
+				}
+			},
+			{
+				iconClass: 'fa-solid fa-comment',
+				text: commentCount,
+				executeFunction: () => window.location.href = `discussao.html?id=${discussionId}#my-comment`
+			},
+			{
+				iconClass: 'fa-solid fa-share-from-square',
+				text: 'Compartilhar',
+				executeFunction: () => 
+				{
+					if (timerId)
+						clearTimeout(timerId);
+
+					navigator.clipboard.writeText(`${window.location.origin}/discussao.html?id=${discussionId}`);
+
+					const modalEl = $('#modal-forum');
+
+					modalEl.removeClass('hide');
+					modalEl.removeClass('hidden');
+					modalEl.addClass('show');
+
+					timerId = setTimeout(() =>
+					{
+						modalEl.removeClass('show');
+						modalEl.addClass('hide');
+					}, 2000);
+				}
+			}
 		];
+
+		if (curState === PageStates.MY_DISCUSSIONS)
+			options.push({
+				iconClass: 'fa-solid fa-trash',
+				text: 'Excluir',
+				executeFunction: () =>
+				{
+					deleteDiscussion(discussionId, () =>
+					{
+						discussion.remove();
+
+						if ($('.discussion').length === 0)
+							showMessage('Você ainda não iniciou uma discussão...|Crie uma agora!');
+					})
+				}
+			});
 
 		options.forEach((option, index) =>
 		{
-			const bookmarked = bookmarkData.length !== 0;
-
 			const optionContainer = $('<div>', { class: 'option' });
 			optionContainer.append($('<i>', { class: option.iconClass }));
-			optionContainer.append($('<span>', { text: index === 0 && bookmarked ? 'Salvo' : option.text }));
+			optionContainer.append($('<span>', { text: option.text }));
 			optionsContainer.append(optionContainer);
 
-			if (index !== 1)
+			if (index === 0 && !editMode && bookmarkData.length !== 0)
+				optionContainer.addClass('checked');
+
+			optionContainer.on('click', e =>
 			{
-				if (bookmarkData.length !== 0)
-					optionContainer.addClass('checked');
+				e.preventDefault();
+				e.stopPropagation();
 
-				optionContainer.on('click', e =>
-				{
-					e.preventDefault();
-					e.stopPropagation();
-
-					if (index === 0)
-						getBookmark(discussionId, userId, bookmarkData => { handleBookmark(bookmarkData, discussionId, optionContainer); });
-				});
-
-				return;
-			}
+				option.executeFunction();
+			});
 		});
 
 		return optionsContainer;
@@ -139,31 +296,41 @@ $(() =>
 				optionEl.addClass('checked');
 				spanEl.text('Salvo');
 			});
+
+			return
 		}
-		else
+
+		removeBookmark(bookmarkData[0].id, () =>
 		{
-			removeBookmark(bookmarkData[0].id, () =>
-			{
-				optionEl.removeClass('checked');
-				spanEl.text('Salvar');
-			})
-		}
+			optionEl.removeClass('checked');
+			spanEl.text('Salvar');
+		});
 	}
 
 	function showMessage(message) 
 	{
+		$('#message').remove();
+
 		const messageContainer = $('<div>', { id: 'message' });
 
 		const messageLines = message.split('|');
 
 		messageLines.forEach(line =>
 		{
-			const paragraph = $('<p>', { texxt: line });
+			const paragraph = $('<p>', { text: line });
 
 			messageContainer.append(paragraph);
 		});
 
 		$('#forum-container').append(messageContainer);
+	}
+
+	function clearDiscussions()
+	{
+		$('.discussion').each((index, element) =>
+		{
+			$(element).remove();
+		})
 	}
 });
 
