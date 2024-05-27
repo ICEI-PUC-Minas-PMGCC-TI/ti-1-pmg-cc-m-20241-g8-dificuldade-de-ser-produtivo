@@ -232,3 +232,181 @@ main {
         gap: 15% !important;
     }
 }
+/*
+    
+    NOTIFICAÇÕES ----------------------------------------------------------------------
+    
+*/
+
+#nav-notifications{
+    font-size: 200%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: black
+}
+
+
+/* Define z-index padrão para todo o conteúdo */
+body, html, main, nav, .background {
+    z-index: 1;
+    position: relative; /* Ensure elements respect z-index */
+}
+
+/* Define o z-index para a main-container */
+.main-container {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Use 100vh para ocupar toda a altura da janela */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Alinha o conteúdo no final da página */
+    z-index: 10; /* Higher z-index to ensure it stays on top */
+    position: fixed; /* Ensure it stays fixed in the viewport */
+}
+
+.painel-expandido-notificacoes {
+    width: 420px;
+    background-color: rgba(131, 131, 131, 0.5);
+    box-shadow: 3px 0px 10px rgb(0 0 0 / 25%);
+    padding: 10px;
+    margin-bottom: 150px;
+    box-sizing: border-box;
+}
+
+
+
+.notificacoes-separadas {
+    display: flex;
+    flex-direction: column;
+}
+  
+.notification {
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+  
+.texto-da-notificacao {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 15px;
+}
+  
+.botoes {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    align-items: center;
+}
+  
+.marcar-ignorar {
+    background-color: gray;
+}
+  
+.redirecionamento-tarefas {
+    background-color: #FB7735;
+}
+  
+.redirecionamento-forum {
+    background-color: #516F8C;
+    text-decoration: none;
+}
+  
+.marcar-ignorar, .redirecionamento-tarefas, .redirecionamento-forum {
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 15px;
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: 1px 0px 5px rgb(0 0 0 / 30%);
+}
+  
+.botoes a {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    align-items: center;
+}
+  
+.botoes a:hover {
+    background-color: #0056b3;
+}
+
+.hidden {
+    display: none;
+}
+
+.background {
+    background-color: #60768b;
+}
+.sem-notificacoes{
+    color: #c7c7c7;
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+}
+
+/*
+    
+    PAINEL DE DEBBUG ----------------------------------------------------------------------
+    
+*/
+
+.ocultar{
+    display: none;
+}
+
+.botoes-de-debug {
+    list-style: none;
+    justify-content: center;
+    background-color: #969696;
+    border-radius: 3%;
+    padding-left: 0%;
+}
+
+#painel-debug {
+    z-index: 30;
+    position: fixed;
+    width: 300px;
+    background-color: #969696;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #ffffff;
+    justify-content: end;
+    border-radius: 3%;
+    border-top-right-radius: 0%;
+    border-top-left-radius: 0%;
+    margin-top: 29px;
+}
+
+.debug-class{
+    justify-content: center;
+    display: flex;
+    background-color: #969696;
+    margin: 0%;
+    width: 100%;
+    color: #ffffff;
+    z-index: 30;
+    position: fixed;
+    padding: 5px;
+    cursor: pointer;
+}
+.text-debug{
+    margin: 5px;
+    justify-content: center;
+    display: flex;
+}
+
+.debug-separado{
+    margin-top: 4px;
+    padding: 3px;
+    justify-content: center;
+    display: flex;
+    background-color: #686868;
+    cursor: pointer;
+}
