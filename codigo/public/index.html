@@ -13,14 +13,33 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
-  <div style="width: 350px; height: 350px;">
+<body style="width: 100%;">
+  <div style="width: 500px; height: 350px;">
     <canvas id="grafico1" style="width: 350px; height: 350px;"></canvas>
+  </div>
+  <div style="width: 350px; height: 350px;">
+    <canvas id="grafico2" style="width: 350px; height: 350px;"></canvas>
   </div>
 
   <script>
     const ctx = document.getElementById('grafico1');
     new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        /*labels: ['Pendentes', 'Feitas'],*/
+        datasets: [{
+          /*label: 'Tarefas',*/
+          data: [3, 5],
+          backgroundColor: [
+            'rgb(150, 150, 150)',
+            'rgb(34, 190, 110)',
+          ],
+        }]
+      },
+    });
+
+    const ctx2 = document.getElementById('grafico2');
+    new Chart(ctx2, {
       type: 'doughnut',
       data: {
         /*labels: ['Pendentes', 'Feitas'],*/
