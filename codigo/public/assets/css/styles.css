@@ -1,4 +1,7 @@
-.graficos, #grafico1, #grafico2{
+.graficos, #grafico1, #grafico2, .graficos-esp, .titulo-do-grafico{
     justify-content: center;
     align-items:center
+}
+.graficos, .titulo-do-grafico{
+    display: flex;
 }

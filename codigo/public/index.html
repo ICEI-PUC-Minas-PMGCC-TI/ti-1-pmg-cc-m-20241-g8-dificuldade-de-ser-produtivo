@@ -14,12 +14,20 @@
 </head>
 
 <body>
-  <div>
-    <div style="width: 300px; height: 600px;" class="graficos">
-      <canvas id="grafico1" style="width: 300px; height: 300px;"></canvas>
-      <canvas id="grafico2" style="width: 300px; height: 300px;"></canvas>
+  <div class="graficos">
+    <div style="width: 300px; height: 800px;" class="graficos-esp">
+      <div>
+        <h1 class="titulo-do-grafico">Tarefas Diárias</h1>
+        <canvas id="grafico1" style="width: 300px; height: 300px;"></canvas>
+      </div>
+      <div>
+        <h1 class="titulo-do-grafico">Tarefas Semanais</h1>
+        <canvas id="grafico2" style="width: 300px; height: 300px;"></canvas>
+      </div>
     </div>
   </div>
+
+  
   <script>
     const ctx = document.getElementById('grafico1');
     new Chart(ctx, {
@@ -28,7 +36,7 @@
         /*labels: ['Pendentes', 'Feitas'],*/
         datasets: [{
           /*label: 'Tarefas',*/
-          data: [3, 5],
+          data: [2, 6],
           backgroundColor: [
             'rgb(150, 150, 150)',
             'rgb(34, 190, 110)',
