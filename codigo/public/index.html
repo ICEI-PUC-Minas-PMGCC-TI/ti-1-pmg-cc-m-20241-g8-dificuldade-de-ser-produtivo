@@ -13,14 +13,13 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body style="width: 100%;">
-  <div style="width: 500px; height: 350px;">
-    <canvas id="grafico1" style="width: 350px; height: 350px;"></canvas>
+<body>
+  <div>
+    <div style="width: 300px; height: 600px;" class="graficos">
+      <canvas id="grafico1" style="width: 300px; height: 300px;"></canvas>
+      <canvas id="grafico2" style="width: 300px; height: 300px;"></canvas>
+    </div>
   </div>
-  <div style="width: 350px; height: 350px;">
-    <canvas id="grafico2" style="width: 350px; height: 350px;"></canvas>
-  </div>
-
   <script>
     const ctx = document.getElementById('grafico1');
     new Chart(ctx, {
