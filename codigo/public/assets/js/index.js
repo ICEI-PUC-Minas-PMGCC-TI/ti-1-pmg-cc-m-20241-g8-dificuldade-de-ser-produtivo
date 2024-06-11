@@ -22,14 +22,15 @@ fetch('assets/db/db.json')
         TarefasTotaisFeitas = countCompletedTasks(tasks);
         console.log('TotaldeTarefas:', TotaldeTarefas);
         console.log('TarefasTotaisFeitas:', TarefasTotaisFeitas);
+
         // Criar os gráficos
         const ctx = document.getElementById('grafico1').getContext('2d');
         new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: ['Feitas', 'Pendentes'],
+                //labels: ['Feitas', 'Pendentes'],
                 datasets: [{
-                    label: 'Tarefas',
+                    //label: 'Tarefas',
                     data: [TarefasTotaisFeitas, TotaldeTarefas - TarefasTotaisFeitas], // dados do gráfico 1
                     backgroundColor: [
                         'rgb(34, 190, 110)',
@@ -42,9 +43,9 @@ fetch('assets/db/db.json')
         new Chart(ctx2, {
             type: 'doughnut',
             data: {
-                /*labels: ['Pendentes', 'Feitas'],*/
+                //labels: ['Pendentes', 'Feitas'],
                 datasets: [{
-                    /*label: 'Tarefas',*/
+                    //label: 'Tarefas',
                     data: [TarefasTotaisFeitas, TotaldeTarefas - TarefasTotaisFeitas],//dados do gráfico 2
                     backgroundColor: [
                         'rgb(34, 190, 110)',
