@@ -4,11 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Trackle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/styles.css">
+
 </head>
 
 <body>
-    <h1>Hello, World!</h1>
+    <main>
+        <div class="add-task-header">
+            <h2 id="addTaskButton">Adicionar tarefa</h2>
+          
+        </div>
+        <div id="addTaskModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Adicionar Tarefa</h2>
+                <form id="addTaskForm">
+                    <label for="title">Título:</label>
+                    <input type="text" id="title" name="title" required><br>
+                    <label for="description">Descrição:</label>
+                    <input type="text" id="description" name="description"><br>
+                    <label for="term">Prazo:</label>
+                    <input type="date" id="term" name="term" required><br>
+                    <label for="date">Data:</label>
+                    <input type="date" id="date" name="date" required><br>
+                    <button type="submit">Adicionar</button>
+                </form>
+            </div>
+        </div>
+        <div id="tasks" class="tasks-container">
+        </div>
+    </main>
+    <div id="editTaskModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Editar Tarefa</h2>
+            <form id="editTaskForm">
+                <label for="editTaskTitle">Título</label>
+                <input type="text" id="editTaskTitle" name="title" required>
+                <label for="editTaskDescription">Descrição</label>
+                <input type="text" id="editTaskDescription" name="description" required>
+                <label for="editTaskTerm">Prazo</label>
+                <input type="date" id="editTaskTerm" name="term" required>
+                <label for="editTaskDate">Data</label>
+                <input type="date" id="editTaskDate" name="date" required>
+                <button type="submit">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js">
+
+    </script>
 </body>
 
 </html>

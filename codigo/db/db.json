@@ -34,7 +34,8 @@
           "title": "derivada",
           "complete": true
         }
-      ]
+      ],
+      "priority": "media"
     },
     {
       "id": "3",
@@ -52,7 +53,8 @@
           "title": "derivada",
           "complete": true
         }
-      ]
+      ],
+      "priority": "baixa"
     }
   ]
 }
