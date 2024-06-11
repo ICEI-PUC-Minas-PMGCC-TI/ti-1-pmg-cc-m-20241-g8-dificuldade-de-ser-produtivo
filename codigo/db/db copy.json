@@ -2,12 +2,20 @@
   "users": [],
   "discussions": [
     {
+      "id": "1",
+      "authorId": "0",
+      "title": "Avada Keraba",
+      "text": "Rastatabaka Na'vara Vaisen Tandona Vassora",
+      "date": "03/06/2024",
+      "commentCount": 0
+    },
+    {
       "id": "2",
       "authorId": "1",
       "title": "Integer nec odio",
       "text": "Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
       "date": "02/05/2024",
-      "commentCount": 6
+      "commentCount": 2
     },
     {
       "id": "3",
@@ -162,8 +170,7 @@
       "targetId": "2",
       "text": "Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
       "likes": 0,
-      "date": "06/06/2024",
-      "edited": false
+      "date": "06/06/2024"
     },
     {
       "id": "1",
@@ -172,8 +179,7 @@
       "targetId": "2",
       "text": "Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
       "likes": 0,
-      "date": "06/06/2024",
-      "edited": false
+      "date": "06/06/2024"
     }
   ],
   "likes": [],

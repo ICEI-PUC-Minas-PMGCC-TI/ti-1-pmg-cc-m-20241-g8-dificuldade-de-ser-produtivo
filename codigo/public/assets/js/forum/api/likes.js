@@ -39,12 +39,14 @@ function removeLikeRelationship(likeRelationshipId, callbackFunction)
 
 function getLikeRelationship(commentId, userId, callbackFunction)
 {
-    fetch(`${apiUrl}?commentId=${commentId}&userId=${userId}`)
+    fetch(`${apiUrl}?userId=${userId}`)
         .then(response => response.json())
         .then(data =>
         {
+            const filteredData = data.filter(comment => comment.commentId === commentId);
+
             if (callbackFunction)
-                callbackFunction(data);
+                callbackFunction(filteredData);
         })
         .catch(error =>
         {

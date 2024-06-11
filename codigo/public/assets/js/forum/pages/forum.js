@@ -22,9 +22,9 @@ $(() =>
 
 	const userId = '0';
 
-	let discussionsLoaded = {};
-
 	let timerId;
+
+	let processing = false;
 
 	onLoadPage();
 
@@ -44,10 +44,7 @@ $(() =>
 
 				$element.removeClass('checked');
 
-				if (discussionsLoaded.length > 0)
-					retrieveDiscussions(discussionsLoaded);
-				else
-					executeStateAction();
+				executeStateAction();
 
 				return;
 			}
@@ -81,8 +78,9 @@ $(() =>
 		{
 
 			case PageStates.FORUM:
-				$('#forum').on('scroll', () => { infiniteScroll(getDiscussions, currentDiscussionPage, 0, data => retrieveDiscussions(data, true)) });
-				getDiscussions(currentDiscussionPage, 0, data => retrieveDiscussions(data, true));
+				currentDiscussionPage = 1;
+				$('#forum').on('scroll', () => { infiniteScroll(getDiscussions, currentDiscussionPage, 0, retrieveDiscussions) });
+				getDiscussions(currentDiscussionPage, 0, retrieveDiscussions);
 				break;
 			case PageStates.MY_DISCUSSIONS:
 				$('#forum').off('scroll');
@@ -108,8 +106,13 @@ $(() =>
 		}
 	}
 
-	function retrieveDiscussions(discussions, shouldCache = false)
+	function retrieveDiscussions(discussions)
 	{
+		if (processing)
+			return;
+
+		processing = true;
+
 		if (discussions.length === 0)
 		{
 			if (currentDiscussionPage === 1 && shouldCache)
@@ -122,10 +125,12 @@ $(() =>
 				currentDiscussionPage = -1;
 			}
 
+			processing = false;
+
 			return;
 		}
 
-		if (shouldCache)
+		if (curState === PageStates.FORUM)
 			currentDiscussionPage++;
 
 		discussions.forEach(discussionData =>
@@ -139,10 +144,9 @@ $(() =>
 			}
 			else
 				createDiscussionElement(discussionData, null).insertBefore($('.loader-container'));
-
-			if (!(discussionData.id in discussionsLoaded) && shouldCache)
-				discussionsLoaded[discussionData.id] = discussionData;
 		});
+
+		processing = false;
 	}
 
 	function createDiscussionElement(discussionData, bookmarkData)
@@ -206,11 +210,11 @@ $(() =>
 			{
 				iconClass: `fa-solid ${editMode ? 'fa-pen-to-square' : 'fa-bookmark'}`,
 				text: editMode ? 'Editar' : bookmarkData.length > 0 ? 'Salvo' : 'Salvar',
-				executeFunction: () =>
+				executeFunction: self =>
 				{
 					if (!editMode)
 					{
-						getBookmark(discussionId, userId, bookmarkData => { handleBookmark(bookmarkData, discussionId, optionContainer); });
+						getBookmark(discussionId, userId, bookmarkData => { handleBookmark(bookmarkData, discussionId, self); });
 						return;
 					}
 
@@ -278,7 +282,7 @@ $(() =>
 				e.preventDefault();
 				e.stopPropagation();
 
-				option.executeFunction();
+				option.executeFunction(optionContainer);
 			});
 		});
 

@@ -62,7 +62,8 @@ function getSpecificDiscussion(discussionId, callbackFunction)
         .then(response => response.json())
         .then(data =>
         {
-            callbackFunction(data);
+            if (callbackFunction)
+                callbackFunction(data);
         })
         .catch(error =>
         {
@@ -105,9 +106,43 @@ function deleteDiscussion(discussionId, callbackFunction)
         })
         .catch(error =>
         {
-            console.error('Erro ao remover contato via API JSONServer:', error);
+            console.error(`Error deleting discussion of id ${discussionId}:`, error);
         });
 }
 
-export { createDiscussion, deleteDiscussion, getDiscussions, getSpecificDiscussion, getUserDiscussions, updateDiscussion };
+function updateComments(discussionId, delta, callbackFunction)
+{
+    getSpecificDiscussion(discussionId, data =>
+    {
+        if (data.length === 0)
+        {
+            console.error(`Error updating comment count of discussion of id ${discussionId}:\nDiscussion not found`);
+            return;
+        }
+
+        const discussion = data[0];
+
+        discussion.commentCount += delta;
+
+        fetch(`${apiUrl}/${discussionId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(discussion)
+        })
+            .then(response => response.json())
+            .then(data =>
+            {
+                if (callbackFunction)
+                    callbackFunction();
+            })
+            .catch(error =>
+            {
+                console.error(`Error updating comment count of discussion of id ${discussionId}:`, error);
+            })
+    });
+}
+
+export { createDiscussion, deleteDiscussion, getDiscussions, getSpecificDiscussion, getUserDiscussions, updateComments, updateDiscussion };
 

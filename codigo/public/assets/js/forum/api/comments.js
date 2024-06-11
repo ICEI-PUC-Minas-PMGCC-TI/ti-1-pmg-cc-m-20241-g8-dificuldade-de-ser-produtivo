@@ -1,5 +1,10 @@
 const apiUrl = '/comments';
 
+const Targets = {
+    DISCUSSION: 0,
+    COMMENT: 1
+};
+
 function createComment(comment, callbackFunction)
 {
     fetch(apiUrl, {
@@ -13,7 +18,7 @@ function createComment(comment, callbackFunction)
         .then(data =>
         {
             if (callbackFunction)
-                callbackFunction();
+                callbackFunction(data);
         })
         .catch(error =>
         {
@@ -28,11 +33,13 @@ function getComments(pageNumber, discussionId, currentUserId, callbackFunction)
     const start = (pageNumber - 1) * commentsPerPage;
     const end = pageNumber * commentsPerPage - 1;
 
-    fetch(`${apiUrl}?_start=${start}&_end=${end}&authorId_ne=${currentUserId}&discussionId=${discussionId}`)
+    fetch(`${apiUrl}?_start=${start}&_end=${end}&target=0`)
         .then(response => response.json())
         .then(data =>
         {
-            callbackFunction(data);
+            const filteredData = data.filter(comment => (comment.targetId === discussionId && comment.authorId !== currentUserId));
+
+            callbackFunction(filteredData);
         })
         .catch(error =>
         {
@@ -42,21 +49,34 @@ function getComments(pageNumber, discussionId, currentUserId, callbackFunction)
 
 function getUserComments(discussionId, userId, callbackFunction)
 {
-    fetch(`${apiUrl}?&discussionId=${discussionId}&authorId=${userId}`)
+    fetch(`${apiUrl}?authorId=${userId}`)
+        .then(response => response.json())
+        .then(data =>
+        {
+            const filteredData = data.filter(comment => (comment.targetId === discussionId));
+
+            callbackFunction(filteredData);
+        })
+        .catch(error =>
+        {
+            console.error(`Error getting user comments: `, error);
+        });
+}
+
+function getSpecificComment(commentId, callbackFunction)
+{
+    fetch(`${apiUrl}?id=${commentId}`)
         .then(response => response.json())
         .then(data =>
         {
             callbackFunction(data);
         })
-        .catch(error =>
-        {
-            console.error(`Error getting discussions: `, error);
-        });
+        .catch(error => console.error(`Error getting comment id ${commentId}: `, error));
 }
 
 function deleteComment(commentId, callbackFunction)
 {
-    fetch(`${apiUrl}?id=${commentId}`, {
+    fetch(`${apiUrl}/${commentId}`, {
         method: 'DELETE',
     })
         .then(response =>
@@ -93,5 +113,30 @@ function likeComment(comment, operation, callbackFunction)
         });
 }
 
-export { createComment, deleteComment, getComments, getUserComments, likeComment };
+function editComment(commentId, text, callbackFunction)
+{
+    getSpecificComment(commentId, data =>
+    {
+        const comment = data[0];
+
+        comment.text = text;
+        comment.edited = true;
+
+        fetch(`${apiUrl}/${commentId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(comment)
+        })
+            .then(response =>
+            {
+                if (response.ok && callbackFunction)
+                    callbackFunction();
+            })
+            .catch(error => console.error(`Error editing comment: `, error));
+    });
+}
+
+export { Targets, createComment, deleteComment, editComment, getComments, getUserComments, likeComment };
 

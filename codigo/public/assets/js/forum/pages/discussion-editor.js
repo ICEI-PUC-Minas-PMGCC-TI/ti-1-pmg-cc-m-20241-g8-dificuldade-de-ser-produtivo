@@ -18,8 +18,6 @@ $(() =>
 
     let mode;
 
-    console.log(!discussionId)
-
     if (!discussionId)
         mode = Modes.CREATE;
     else
@@ -28,6 +26,8 @@ $(() =>
     let lockState = false;
 
     onLoadPage();
+
+    $(window).on('resize', resizeTextArea);
 
     $('form').on('submit', e =>
     {
@@ -38,12 +38,14 @@ $(() =>
     {
         didFillInFields();
 
-        if (mode === Modes.EDIT)
+        if (mode === Modes.EDIT)    
             checkSimilarityToOriginal();
     });
 
-    $('#body').on('input', () =>
+    $('#body').on('input', e =>
     {
+        resizeTextArea();
+
         didFillInFields();
 
         if (mode === Modes.EDIT)
@@ -137,4 +139,13 @@ $(() =>
         $('#submit').prop('disabled', check);
     }
 
+
+    function resizeTextArea()
+    {
+        const bodyEl = $('#body');
+
+        bodyEl.height(96);
+
+        bodyEl.height(bodyEl.height() + (bodyEl.get(0).scrollHeight - 126));
+    }
 });
