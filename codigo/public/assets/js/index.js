@@ -1,12 +1,19 @@
 let TotaldeTarefas;
 let TarefasTotaisFeitas;
-// Obter o maior ID das tarefas
-function getMaxTaskId(tasks) {
-    return tasks.reduce((maxId, task) => {
-        const id = parseInt(task.id, 10);
-        return id > maxId ? id : maxId;
-    }, 0);
-}
+
+
+fetch('assets/db/db.json') // faz uma requisição para o arquivo JSON
+        .then(response => response.json()) // converte a resposta para JSON
+        .then(data => { // manipula os dados
+            TotaldeTarefas = data.tasks.length; // obtém o comprimento do array de tarefas
+            console.log('Total de Tarefas:', totalTarefas); // opcional: exibe o total de tarefas no console
+            // agora você pode usar a variável totalTarefas conforme necessário
+        })
+
+
+
+
+
 // Número de tarefas principais completas
 function countCompletedTasks(tasks) {
     return tasks.reduce((count, task) => {
@@ -18,7 +25,6 @@ fetch('assets/db/db.json')
     .then(response => response.json())
     .then(data => {
         const tasks = data.tasks;
-        TotaldeTarefas = getMaxTaskId(tasks);
         TarefasTotaisFeitas = countCompletedTasks(tasks);
         console.log('TotaldeTarefas:', TotaldeTarefas);
         console.log('TarefasTotaisFeitas:', TarefasTotaisFeitas);
