@@ -40,13 +40,13 @@
         "id": "3",
         "title": "Estudar prova de calculo 3",
         "description": "Limites e derivadas",
-        "complete": false,
+        "complete": true,
         "term": "2004-02-09",
         "date": "2004-02-07",
         "subTasks": [
           {
             "title": "limites",
-            "complete": false
+            "complete": true
           },
           {
             "title": "derivada",
