@@ -4,7 +4,7 @@ let TotaisDiarias;
 let FeitasDiarias;
 let CurrentDate;
 
-//recebe a data atual e formata para o formato adequado
+// recebe a data atual e formata para o formato adequado
 const data = new Date()
 const dia = String(data.getDate()).padStart(2,'0')
 const mes = String(data.getMonth()+1).padStart(2,'0')
@@ -21,8 +21,8 @@ fetch('assets/db/db.json')
         const TotaisDiarias = data.tasks.filter(task => task.date === CurrentDate).length;
         const FeitasDiarias = data.tasks.filter(task => task.date === CurrentDate && task.complete).length;
 
-        console.log('TotaisDiarias:', TotaisDiarias); // opcional: exibe o total de tarefas diárias no console
-        console.log('FeitasDiarias:', FeitasDiarias); // opcional: exibe o total de tarefas feitas diárias no console
+        console.log('TotaisDiarias:', TotaisDiarias);
+        console.log('FeitasDiarias:', FeitasDiarias);
     })
 
 fetch('assets/db/db.json') // Número de tarefas ao todo
@@ -49,9 +49,9 @@ fetch('assets/db/db.json')
         new Chart(ctx, {
             type: 'doughnut',
             data: {
-                //labels: ['Feitas', 'Pendentes'],
+                // labels: ['Feitas', 'Pendentes'],
                 datasets: [{
-                    //label: 'Tarefas',
+                    // label: 'Tarefas',
                     data: [FeitasDiarias, TotaisDiarias - FeitasDiarias], // dados do gráfico 1
                     backgroundColor: [
                         'rgb(34, 190, 110)',
@@ -66,10 +66,10 @@ fetch('assets/db/db.json')
         new Chart(ctx2, {
             type: 'doughnut',
             data: {
-                //labels: ['Pendentes', 'Feitas'],
+                // labels: ['Pendentes', 'Feitas'],
                 datasets: [{
-                    //label: 'Tarefas',
-                    data: [TarefasTotaisFeitas, TotaldeTarefas - TarefasTotaisFeitas],//dados do gráfico 2
+                    // label: 'Tarefas',
+                    data: [TarefasTotaisFeitas, TotaldeTarefas - TarefasTotaisFeitas],// dados do gráfico 2
                     backgroundColor: [
                         'rgb(34, 190, 110)',
                         'rgb(150, 150, 150)',
