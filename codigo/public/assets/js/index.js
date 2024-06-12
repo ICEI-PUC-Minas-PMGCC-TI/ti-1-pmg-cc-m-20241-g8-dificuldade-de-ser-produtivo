@@ -20,8 +20,6 @@ fetch('assets/db/db.json')
         const FD = data.tasks.filter(task => task.date === CurrentDate && task.complete).length;
         TotaisDiarias = TD
         FeitasDiarias = FD
-        console.log('TotaisDiarias:', TotaisDiarias);
-        console.log('FeitasDiarias:', FeitasDiarias);
     })
 
 fetch('assets/db/db.json') // Número de tarefas ao todo
@@ -40,8 +38,6 @@ fetch('assets/db/db.json')
     .then(data => {
         const tasks = data.tasks;
         TarefasTotaisFeitas = countCompletedTasks(tasks);
-        console.log('TotaldeTarefas:', TotaldeTarefas);
-        console.log('TarefasTotaisFeitas:', TarefasTotaisFeitas);
 
         // Gráfico 1
         const ctx = document.getElementById('grafico1').getContext('2d');
