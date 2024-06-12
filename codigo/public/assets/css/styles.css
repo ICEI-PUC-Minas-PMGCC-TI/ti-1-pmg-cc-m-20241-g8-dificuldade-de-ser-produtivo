@@ -253,4 +253,9 @@ main {
     align-items: center;
     margin-bottom: 5px;
     margin-top: 5px;
+    color: #fff;
+}
+
+.background {
+    background-color: #54799D;
 }

@@ -1,26 +1,41 @@
 let TotaldeTarefas;
 let TarefasTotaisFeitas;
+let TotaisDiarias;
+let FeitasDiarias;
+let CurrentDate;
+
+//recebe a data atual e formata para o formato adequado
+const data = new Date()
+const dia = String(data.getDate()).padStart(2,'0')
+const mes = String(data.getMonth()+1).padStart(2,'0')
+const ano = data.getFullYear()
+CurrentDate = `${ano}-${mes}-${dia}`
 
 
-fetch('assets/db/db.json') // faz uma requisição para o arquivo JSON
-        .then(response => response.json()) // converte a resposta para JSON
-        .then(data => { // manipula os dados
-            TotaldeTarefas = data.tasks.length; // obtém o comprimento do array de tarefas
-            console.log('Total de Tarefas:', totalTarefas); // opcional: exibe o total de tarefas no console
-            // agora você pode usar a variável totalTarefas conforme necessário
-        })
 
+// número de tarefas para hoje
+// número de tarefas feitas para hoje
+fetch('assets/db/db.json')
+    .then(response => response.json())
+    .then(data => {
+        const TotaisDiarias = data.tasks.filter(task => task.date === CurrentDate).length;
+        const FeitasDiarias = data.tasks.filter(task => task.date === CurrentDate && task.complete).length;
 
+        console.log('TotaisDiarias:', TotaisDiarias); // opcional: exibe o total de tarefas diárias no console
+        console.log('FeitasDiarias:', FeitasDiarias); // opcional: exibe o total de tarefas feitas diárias no console
+    })
 
-
-
-// Número de tarefas principais completas
-function countCompletedTasks(tasks) {
+fetch('assets/db/db.json') // Número de tarefas ao todo
+    .then(response => response.json())
+    .then(data => {
+        TotaldeTarefas = data.tasks.length;
+    })
+function countCompletedTasks(tasks) { // Número de tarefas principais completas
     return tasks.reduce((count, task) => {
         return task.complete ? count + 1 : count;
     }, 0);
 }
-// Carregar db.json
+
 fetch('assets/db/db.json')
     .then(response => response.json())
     .then(data => {
@@ -29,7 +44,7 @@ fetch('assets/db/db.json')
         console.log('TotaldeTarefas:', TotaldeTarefas);
         console.log('TarefasTotaisFeitas:', TarefasTotaisFeitas);
 
-        // Criar os gráficos
+        // Gráfico 1
         const ctx = document.getElementById('grafico1').getContext('2d');
         new Chart(ctx, {
             type: 'doughnut',
@@ -37,7 +52,7 @@ fetch('assets/db/db.json')
                 //labels: ['Feitas', 'Pendentes'],
                 datasets: [{
                     //label: 'Tarefas',
-                    data: [TarefasTotaisFeitas, TotaldeTarefas - TarefasTotaisFeitas], // dados do gráfico 1
+                    data: [FeitasDiarias, TotaisDiarias - FeitasDiarias], // dados do gráfico 1
                     backgroundColor: [
                         'rgb(34, 190, 110)',
                         'rgb(150, 150, 150)',
@@ -45,6 +60,8 @@ fetch('assets/db/db.json')
                 }]
             },
         });
+
+        // Gráfico 2
         const ctx2 = document.getElementById('grafico2');
         new Chart(ctx2, {
             type: 'doughnut',
