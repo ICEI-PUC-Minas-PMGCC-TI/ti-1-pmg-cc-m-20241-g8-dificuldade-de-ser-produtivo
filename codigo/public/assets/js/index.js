@@ -11,16 +11,15 @@ const mes = String(data.getMonth()+1).padStart(2,'0')
 const ano = data.getFullYear()
 CurrentDate = `${ano}-${mes}-${dia}`
 
-
-
 // número de tarefas para hoje
 // número de tarefas feitas para hoje
 fetch('assets/db/db.json')
     .then(response => response.json())
     .then(data => {
-        const TotaisDiarias = data.tasks.filter(task => task.date === CurrentDate).length;
-        const FeitasDiarias = data.tasks.filter(task => task.date === CurrentDate && task.complete).length;
-
+        const TD = data.tasks.filter(task => task.date === CurrentDate).length;
+        const FD = data.tasks.filter(task => task.date === CurrentDate && task.complete).length;
+        TotaisDiarias = TD
+        FeitasDiarias = FD
         console.log('TotaisDiarias:', TotaisDiarias);
         console.log('FeitasDiarias:', FeitasDiarias);
     })
