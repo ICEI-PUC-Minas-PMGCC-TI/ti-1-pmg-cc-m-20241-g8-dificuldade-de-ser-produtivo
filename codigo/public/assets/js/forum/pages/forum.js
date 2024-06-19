@@ -1,6 +1,6 @@
 import { infiniteScroll } from '../../util.js';
 import { addBookmark, getAllUserBookmarks, getBookmark, removeBookmark } from '../api/bookmarks.js';
-import { deleteDiscussion, getDiscussions, getSpecificDiscussion, getUserDiscussions } from '../api/discussions.js';
+import { deleteDiscussion, getDiscussions, getSpecificDiscussion, getUserDiscussions, searchDiscussions } from '../api/discussions.js';
 
 $(() =>
 {
@@ -60,6 +60,25 @@ $(() =>
 		});
 	});
 
+	$('.search i').on('click', () =>
+	{
+		clearDiscussions();
+		console.log('a');
+		curState = PageStates.SEARCH;
+		executeStateAction();
+	});
+
+	$('.search input').on('keydown', e =>
+	{
+		if (e.key === 'Enter')
+		{
+			clearDiscussions();
+			curState = PageStates.SEARCH;
+			executeStateAction();
+		}
+	});
+
+
 	function onLoadPage()
 	{
 		executeStateAction();
@@ -103,6 +122,20 @@ $(() =>
 					});
 				});
 				break;
+			case PageStates.SEARCH:
+				$('#forum').off('scroll');
+				searchDiscussions($('.search input').val(), userId, data =>
+				{
+					if (data === null)
+					{
+						curState = PageStates.FORUM;
+						executeStateAction();
+						return;
+					}
+
+					retrieveDiscussions(data);
+				});
+				break;
 		}
 	}
 
@@ -115,7 +148,7 @@ $(() =>
 
 		if (discussions.length === 0)
 		{
-			if (currentDiscussionPage === 1 && shouldCache)
+			if (currentDiscussionPage === 1 || curState === PageStates.SEARCH)
 				showMessage('Ainda não há discussões...|Seja o primeiro a iniciar uma discussão!');
 			else if (curState === PageStates.MY_DISCUSSIONS)
 				showMessage('Você ainda não iniciou uma discussão...|Crie uma agora!');
@@ -309,6 +342,11 @@ $(() =>
 			optionEl.removeClass('checked');
 			spanEl.text('Salvar');
 		});
+	}
+
+	function doSearch()
+	{
+
 	}
 
 	function showMessage(message) 

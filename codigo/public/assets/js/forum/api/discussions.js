@@ -71,6 +71,31 @@ function getSpecificDiscussion(discussionId, callbackFunction)
         });
 }
 
+function searchDiscussions(search, currentUserId, callbackFunction)
+{
+    if (search.length === 0 || search.match(/^ *$/) !== null)
+    {
+        callbackFunction(null);
+        return;
+    }
+
+    fetch(`${apiUrl}?authorId_ne=${currentUserId}`)
+        .then(response => response.json())
+        .then(data =>
+        {
+            const filteredData = data.filter(discussion =>
+            {
+                return discussion.title.toLowerCase().includes(search.toLowerCase()) || discussion.text.toLowerCase().includes(search.toLowerCase());
+            });
+
+            if (callbackFunction)
+                callbackFunction(filteredData);
+        })
+        .catch(error =>
+        {
+            console.error(`Error searching for discussions with ${search}: `, error);
+        });
+}
 
 function updateDiscussion(discussionId, newDiscussionData, callbackFunction)
 {
@@ -144,5 +169,5 @@ function updateComments(discussionId, delta, callbackFunction)
     });
 }
 
-export { createDiscussion, deleteDiscussion, getDiscussions, getSpecificDiscussion, getUserDiscussions, updateComments, updateDiscussion };
+export { createDiscussion, deleteDiscussion, getDiscussions, getSpecificDiscussion, getUserDiscussions, searchDiscussions, updateComments, updateDiscussion };
 
