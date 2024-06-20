@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trackle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-group">
+            <a href="" class="nav-item" id="nav-home">
+                <i class=" fa-solid fa-house"></i>
+                <span>Início</span>
+            </a>
+            <a class="nav-item" id="nav-calendar">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Agenda</span>
+            </a>
+            <a class="nav-item" id="nav-tasks">
+                <i class="fa-solid fa-list-check"></i>
+                <span>Tarefas</span>
+            </a>
+            <a href="forum.html" class="nav-item" id="nav-forum">
+                <i class="fa-solid fa-comments"></i>
+                <span>Fórum</span>
+            </a>
+        </div>
+
+        <div class="nav-group">
+            <a href="" id="nav-profile">
+                <div>
+                    <i class="fa-solid fa-user"></i>
+                </div>
+            </a>
+
+            <div class="nav-item" id="nav-logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Sair</span>
+            </div>
+        </div>
+    </nav>
+
+
+    <main id="forum">
+        <header>
+            <div class="item category"><span>Salvos</span><i class="fa-solid fa-bookmark"></i></div>
+            <div class="item category"><span>Minhas discussões</span><i class="fa-solid fa-comments"></i></div>
+            <div class="item search"><input type="text" name="search" placeholder="Buscar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <a class="item" href="editor-de-discussao.html"><span>Nova discussão</span><i
+                    class="fa-solid fa-plus"></i></a>
+        </header>
+        <div id="forum-container">
+            <div class="loader-container hidden">
+                <div class="loader"></div>
+            </div>
+        </div>
+    </main>
+
+    <div id="modal-forum" class="hidden">
+        <div id="modal-container">
+            <p>Link movido para a área de transferência!</p>
+        </div>
+    </div>
+
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script type="module" src="assets/js/forum/pages/forum.js"></script>
+</body>
+
+</html>
