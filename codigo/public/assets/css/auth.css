@@ -52,6 +52,10 @@ a {
   margin-top: 24px;
 }
 
+.content {
+  transition: all .2s ease;
+}
+
 .content.active {
   width: 100%;
   height: 100%;
@@ -93,7 +97,7 @@ button {
   width: 120px;
 }
 
-.loginButton {
+.button {
   color: #ffffff;
   background-color: #523FCB;
   padding-bottom: 12px;
@@ -105,13 +109,12 @@ button {
   transition: 0.2s;
 }
 
-.loginButton:hover {
+.button:hover {
   opacity: 0.5;
 }
 
 input {
   background-color: #E1E1E1;
-  color: #ABABAB;
   border: none;
   outline: none;
   min-height: 40px;
@@ -121,6 +124,10 @@ input {
   padding-inline: 10px;
   width: 100%;
   border-radius: 10px;
+}
+
+input::placeholder {
+  color: #ABABAB;
 }
 
 .password {
@@ -136,6 +143,7 @@ input {
   color: white;
   font-size: 24px;
   font-weight: 500;
+  text-align: center;
 }
 
 .content:not(.active) img {
@@ -216,8 +224,15 @@ input {
     height: 100%;
     max-height: 550px;
     justify-content: center;
-    border-bottom-left-radius: 100px;
     gap: 60px;
+  }
+
+  .registerContent:not(.active) {
+    border-bottom-left-radius: 100px;
+  }
+
+  .loginContent:not(.active) {
+    border-bottom-right-radius: 100px;
   }
 
   .content:not(.active) h4 {

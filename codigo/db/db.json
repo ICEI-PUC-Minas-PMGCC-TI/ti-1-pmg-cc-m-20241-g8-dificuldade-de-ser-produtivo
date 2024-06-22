@@ -1,5 +1,24 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "name": "mateus",
+      "email": "mateushmdiniz@gmail.com",
+      "password": "$2b$10$PPDop/jgd3u/3jYV0DD04OWfV6xNeWxXGMwac.gF2TKsgQJGuEpoK",
+      "experience": "0",
+      "aboutMe": "",
+      "creationDate": "21/06/2024"
+    },
+    {
+      "id": "4f213ec2-e66c-4aab-96b3-4a769a833bf1",
+      "name": "mateus2",
+      "email": "chenri48155@gmail.com",
+      "password": "$2b$10$hAe9vTWN9iTHECvKcN8iTe6EkF84mR7wakcWUCIPRpHmT8o6Lebgy",
+      "experience": "0",
+      "aboutMe": "",
+      "creationDate": "21/06/2024"
+    }
+  ],
   "discussions": [
     {
       "id": "2",

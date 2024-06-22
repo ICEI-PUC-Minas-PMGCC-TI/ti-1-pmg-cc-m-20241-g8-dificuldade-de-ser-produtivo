@@ -1,36 +1,33 @@
+import { getDate } from "../../util.js";
+import { login, register } from "../api/users.js";
+
 $(() =>
 {
     function buildLogin()
     {
         const loginContentEl = $('.loginContent');
 
-        const titleEl = $('<h1>', { text: 'Entrar' });
-        loginContentEl.append(titleEl);
-
-        const emailInputEl = $('<input>', { type: 'email', class: 'input-email', placeholder: 'Email:' });
-        loginContentEl.append(emailInputEl);
-
         const passwordDivEl = $('<div>', { class: 'password' });
 
         const noneDivEl = $('<div>', { class: 'none' });
-
-        const passwordInputEl = $('<input>', { type: 'password', class: 'input-senha', placeholder: 'Senha:' });
-        noneDivEl.append(passwordInputEl);
-
-        const forgotPasswordLinkEl = $('<a>', { href: '#', text: 'Esqueci minha senha' });
-        noneDivEl.append(forgotPasswordLinkEl);
+        noneDivEl.append($('<input>', { type: 'password', class: 'input login-senha', placeholder: 'Senha:' }));
+        noneDivEl.append($('<a>', { href: '#', text: 'Esqueci minha senha' }));
 
         passwordDivEl.append(noneDivEl);
 
-        loginContentEl.append(passwordDivEl);
-
-        const loginButtonEl = $('<button>', { class: 'loginButton', text: 'Entrar' });
-        loginContentEl.append(loginButtonEl);
+        loginContentEl.prepend(passwordDivEl);
+        loginContentEl.prepend($('<input>', { type: 'email', class: 'input login-email', placeholder: 'Email:' }));
+        loginContentEl.prepend($('<h1>', { text: 'Entrar' }));
     }
 
     function buildRegister()
     {
+        const registerContentEl = $('.registerContent');
 
+        registerContentEl.prepend($('<input>', { type: 'password', class: 'input register-senha', placeholder: 'Senha:' }));
+        registerContentEl.prepend($('<input>', { type: 'email', class: 'input register-email', placeholder: 'Email:' }));
+        registerContentEl.prepend($('<input>', { type: 'text', class: 'input register-nome', placeholder: 'Nome:' }));
+        registerContentEl.prepend($('<h1>', { text: 'Cadastrar' }));
     }
 
     function buildDeactivatedContent(contentContainer)
@@ -51,49 +48,55 @@ $(() =>
         logoEl.append($('<h4>', { text: `Bem vindo${type === 1 ? ' de volta' : ''} ao` }));
         logoEl.append($('<img>', { src: 'assets/imgs/logo.png', alt: 'logo' }));
 
-        contentContainer.append(logoEl);
-        contentContainer.append($('<p>', { text: `${type === 1 ? loginMessage : registerMessage}` }));
-        contentContainer.append($('<button>', {
-            class: `${type === 1 ? 'loginButton' : 'registerButton'}`,
-            text: `${type === 1 ? 'Cadastrar' : 'Entrar'}`
-        }));
+        contentContainer.prepend($('<p>', { text: `${type === 1 ? loginMessage : registerMessage}` }));
+        contentContainer.prepend(logoEl);
+    }
+
+    function transition(from, to, executeFunction)
+    {
+        if (to.hasClass('active'))
+        {
+            executeFunction();
+            return;
+        }
+
+        from.children().not('.button').remove();
+        to.children().not('.button').remove();
+
+        from.removeClass('active');
+        buildDeactivatedContent(from);
+
+        to.addClass('active');
+
+        if (to.hasClass('loginContent'))
+            buildLogin();
+        else
+            buildRegister();
     }
 
     $('.loginButton').on('click', () =>
     {
-        const loginContentEl = $('.loginContent');
-        const registerContentEl = $('.registerContent');
-
-        if ($('.loginContent').hasClass('active'))
+        transition($('.registerContent'), $('.loginContent'), () =>
         {
-            return;
-        }
-
-        registerContentEl.removeClass('active');
-        registerContentEl.empty();
-        buildDeactivatedContent(registerContentEl);
-
-        loginContentEl.addClass('active');
-        loginContentEl.empty();
-        buildLogin();
-    })
+            login($('.login-email').val(), $('.login-senha').val(), result =>
+            {
+                console.log(result);
+            });
+        });
+    });
 
     $('.registerButton').on('click', () =>
     {
-        const loginContentEl = $('.loginContent');
-        const registerContentEl = $('.registerContent');
-
-        if ($('.registerContent').hasClass('active'))
+        transition($('.loginContent'), $('.registerContent'), () =>
         {
-            return;
-        }
-
-        loginContentEl.removeClass('active');
-        loginContentEl.empty();
-        buildDeactivatedContent(loginContentEl);
-
-        registerContentEl.addClass('active');
-        registerContentEl.empty();
-        buildRegister();
+            register({
+                name: $('.register-nome').val(),
+                email: $('.register-email').val(),
+                password: $('.register-senha').val(),
+                experience: '0',
+                aboutMe: '',
+                creationDate: getDate()
+            }, () => { transition($('.registerContent'), $('.loginContent')); });
+        });
     });
 });
