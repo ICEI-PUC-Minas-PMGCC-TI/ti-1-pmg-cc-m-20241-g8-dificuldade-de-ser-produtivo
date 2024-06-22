@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Conquistas</title>
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+    <script src="conquistas.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <header class="navbar">
+        <nav class="barra-de-tarefas">
+            <a class="conquistas" href="/codigo/pages/posts/conquistas.html" aria-label="Ir para conquistas">Conquistas</a>
+            <a class="tarefas" href="/codigo/pages/posts/tarefas.html" aria-label="Ir para tarefas">Tarefas</a>
+        </nav>
+    </header>
+    <!-- CABEÇALHO -->
+    <div class="interface">
+        <div id="conquistas"></div>
+        <div class="logo">
+            <a href="/codigo/pages/posts/conquistas.html" aria-label="Ir para conquistas">
+                <img src="/codigo/assets/images/conquistas/logo.png" alt="Logo">
+            </a>
+        </div>
+        <div class="menu">
+            <a class="ir-para-homepage" href="/codigo/inicio.html" aria-label="Ir para homepage">
+                <img src="/codigo/assets/images/conquistas/homepage.png" alt="Homepage">
+            </a>
+            <a class="ir-para-historico" href="#" aria-label="Ir para histórico">
+                <img src="/codigo/assets/images/conquistas/historico.png" alt="Histórico">
+            </a>
+            <a class="ir-para-conquistas" href="/codigo/pages/posts/conquistas.html" aria-label="Ir para conquistas">
+                <img src="/codigo/assets/images/conquistas/conquistas.png" alt="Conquistas">
+            </a>
+        </div>
+    </div>
+    <main>
+        <section class="conquistas">
+            <div class="conquista">
+                <p>Conquista 1: Criou 10 tarefas</p>
+            </div>
+            <div class="conquista">
+                <p>Conquista 2: Realizou 10 tarefas</p>
+            </div>
+            <div class="conquista">
+                <p>Conquista 3: Criou 20 tarefas</p>
+            </div>
+            <div class="conquista">
+                <p>Conquista 4: Realizou 20 tarefas</p>
+            </div>
+            <div class="conquista">
+                <p>Conquista 5: Criou e realizou 30 tarefas</p>
+            </div>
+        </section>
+        <input id="pesquisa-conquistas" type="text" placeholder="Pesquisar conquistas" aria-label="Pesquisar conquistas">
+        <form id="adicionar-conquista">
+            <input id="nome-conquista" type="text" required aria-label="Nome da conquista">
+            <button type="submit" aria-label="Adicionar conquista">Adicionar conquista</button>
+        </form>
+        <div id="popup" style="display: none; position: fixed; width: 200px; height: 100px; background: white; border: 1px solid black; padding: 10px;">
+            <p id="texto-popup"></p>
+            <button id="fechar-popup" aria-label="Fechar pop-up">Fechar</button>
+            <button id="esconder-conquistas" aria-label="Esconder conquistas clicadas">Esconder conquistas clicadas</button>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,50 @@
+/* Estilização para o parágrafo dentro do elemento com o id 'conquistas' */
+#conquistas p {
+    /* Define a cor do texto */
+    color: #212529;
+
+    /* Define a fonte do texto. Se a fonte 'Inter' não estiver disponível, 
+    a fonte sans-serif padrão do sistema será usada */
+    font-family: 'Inter', sans-serif;
+
+    /* Define o tamanho da fonte do texto */
+    font-size: 16px;
+
+    /* Define a margem inferior do parágrafo, 
+    que cria um espaço abaixo do parágrafo */
+    margin-bottom: 10px;
+}
+.destaque {
+    background-color: #f0f0f0;
+}
+
+@keyframes popup {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+#popup {
+    animation-name: popup;
+    animation-duration: 1s;
+}
+
+/* Adicionando a barra de tarefas */
+.navbar {
+    background-color: var(--tasks-color); /* Usando a cor definida para tarefas */
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar a {
+    color: #fff; /* Cor do texto do link */
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+/* Estilizando a opção de conquistas */
+.navbar .conquistas {
+    font-weight: 600; /* Deixando o texto em negrito */
+    cursor: pointer; /* Alterando o cursor para indicar que é clicável */
+}
