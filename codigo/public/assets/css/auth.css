@@ -47,9 +47,6 @@ a {
   flex-direction: column;
   background-color: white;
   max-width: 880px;
-  border-radius: 20px;
-  margin: 24px;
-  margin-top: 24px;
 }
 
 .content {
@@ -79,18 +76,14 @@ a {
   gap: 15px;
 }
 
-.registerContent:not(.active) {
-  border-top-left-radius: 100px;
-  border-top-right-radius: 19px;
+.loginContent:not(.active) {
   border-bottom-left-radius: 19px;
   border-bottom-right-radius: 19px;
 }
 
-.loginContent:not(.active) {
+.registerContent:not(.active) {
   border-top-left-radius: 19px;
-  border-top-right-radius: 100px;
-  border-bottom-left-radius: 19px;
-  border-bottom-right-radius: 19px;
+  border-top-right-radius: 19px;
 }
 
 button {
@@ -191,8 +184,76 @@ input::placeholder {
   align-items: center;
 }
 
+.container-register-senha {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
 
-@media (min-width: 768px) {
+#forca-senha {
+  width: 30px;
+  aspect-ratio: 1/1;
+  border: 0;
+  position: absolute;
+  right: 150px;
+  top: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+  border-radius: 100%;
+}
+
+#forca-senha.senha-fraca {
+  color: red;
+  border-color: red;
+}
+
+#forca-senha.senha-mediana {
+  color: orange;
+  border-color: orange;
+}
+
+#forca-senha.senha-forte {
+  color: green;
+  border-color: green;
+}
+
+#forca-senha-mensagem {
+  top: -60px;
+  position: absolute;
+  font-size: 11px;
+  text-align: center;
+  width: 240px;
+  background-color: #fbfbfb;
+  border-radius: 10px;
+  color: black;
+  padding: 10px 0;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transform: scale(100%);
+  transition: all ease .2s;
+}
+
+#forca-senha-mensagem.hidden {
+  display: block !important;
+  transform: scale(0%);
+}
+
+.msg {
+  opacity: 100;
+  transition: all ease .2s;
+}
+
+.msg.hidden {
+  display: block !important;
+  opacity: 0;
+}
+
+@media (min-width: 880px) {
   button {
     width: 150px;
   }
@@ -205,6 +266,7 @@ input::placeholder {
     max-height: 550px;
     align-items: center;
     justify-content: center;
+    border-radius: 20px;
   }
 
   .content.active {
@@ -228,10 +290,16 @@ input::placeholder {
   }
 
   .registerContent:not(.active) {
+    border-top-left-radius: 100px;
+    border-top-right-radius: 19px;
     border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 19px;
   }
 
   .loginContent:not(.active) {
+    border-top-left-radius: 19px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 19px;
     border-bottom-right-radius: 100px;
   }
 

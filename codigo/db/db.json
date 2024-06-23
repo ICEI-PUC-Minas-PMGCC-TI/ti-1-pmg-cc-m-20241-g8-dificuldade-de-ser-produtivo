@@ -17,6 +17,33 @@
       "experience": "0",
       "aboutMe": "",
       "creationDate": "21/06/2024"
+    },
+    {
+      "id": "b7db9d26-cbf3-47b2-b922-1d6c10bd581e",
+      "name": "a@b.c",
+      "email": "a@b.c",
+      "password": "$2b$10$k4QNh8U4EOiFv8X1N.tk4.5nxwoStYVZ7t5vccDtWP0RpoBNdE49e",
+      "experience": "0",
+      "aboutMe": "",
+      "creationDate": "22/06/2024"
+    },
+    {
+      "id": "eeeb329c-301a-4021-b506-13aa59aecfd5",
+      "name": "asd",
+      "email": "teste@ab.com",
+      "password": "$2b$10$QeVcR3R14osNytwCqCQRS.oKT/2DgBIVDz6jOMIsnl07tDlkyvuJO",
+      "experience": "0",
+      "aboutMe": "",
+      "creationDate": "23/06/2024"
+    },
+    {
+      "id": "59a75a93-6a30-47ef-8f09-a6deb1677130",
+      "name": "asd",
+      "email": "a@a.a",
+      "password": "$2b$10$hC0shIq8CNfe5zX7Fbcf1Oy9xhNiVUhJ5hT6zJM4VsUj/GUcoI3uq",
+      "experience": "0",
+      "aboutMe": "",
+      "creationDate": "23/06/2024"
     }
   ],
   "discussions": [

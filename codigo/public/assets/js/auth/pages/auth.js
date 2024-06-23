@@ -3,6 +3,12 @@ import { login, register } from "../api/users.js";
 
 $(() =>
 {
+    $('form').on('submit', e =>
+    {
+        console.log('a');
+        e.preventDefault();
+    });
+
     function buildLogin()
     {
         const loginContentEl = $('.loginContent');
@@ -10,13 +16,14 @@ $(() =>
         const passwordDivEl = $('<div>', { class: 'password' });
 
         const noneDivEl = $('<div>', { class: 'none' });
-        noneDivEl.append($('<input>', { type: 'password', class: 'input login-senha', placeholder: 'Senha:' }));
+        noneDivEl.append($('<input>', { type: 'password', class: 'input login-senha', placeholder: 'Senha:', required: true }));
         noneDivEl.append($('<a>', { href: '#', text: 'Esqueci minha senha' }));
 
         passwordDivEl.append(noneDivEl);
 
+        loginContentEl.prepend($('<p>', { id: 'msg' }));
         loginContentEl.prepend(passwordDivEl);
-        loginContentEl.prepend($('<input>', { type: 'email', class: 'input login-email', placeholder: 'Email:' }));
+        loginContentEl.prepend($('<input>', { type: 'email', class: 'input login-email', placeholder: 'Email:', required: true }));
         loginContentEl.prepend($('<h1>', { text: 'Entrar' }));
     }
 
@@ -24,9 +31,79 @@ $(() =>
     {
         const registerContentEl = $('.registerContent');
 
-        registerContentEl.prepend($('<input>', { type: 'password', class: 'input register-senha', placeholder: 'Senha:' }));
-        registerContentEl.prepend($('<input>', { type: 'email', class: 'input register-email', placeholder: 'Email:' }));
-        registerContentEl.prepend($('<input>', { type: 'text', class: 'input register-nome', placeholder: 'Nome:' }));
+        const passwordContainer = $('<div>', { class: 'container-register-senha' });
+        const passwordInput = $('<input>', { type: 'password', class: 'input register-senha', placeholder: 'Senha:', required: true });
+        passwordInput.on('input', e =>
+        {
+            const password = $(e.target).val();
+
+            $('#forca-senha').remove();
+
+            if (password.length === 0)
+                return;
+
+            const { strength, suggestions } = analyzePasswordStrength(password);
+
+            let strengthIcon;
+            let strengthClass;
+            let message;
+
+            if (strength < 4)
+            {
+                if (strength < 2)
+                {
+                    strengthIcon = 'fa-chevron-down';
+                    strengthClass = 'senha-fraca';
+                    message = 'Senha fraca! Use ';
+                }
+                else
+                {
+                    strengthIcon = 'fa-minus'; 8
+                    strengthClass = 'senha-mediana';
+                    message = 'Senha mediana! Use ';
+                }
+
+                suggestions.forEach((suggestion, index) =>
+                {
+                    message += suggestion;
+
+                    if (suggestions.length - 1 === index)
+                        message += '.';
+                    else if (suggestions.length - 2 === index)
+                        message += ' e ';
+                    else
+                        message += ', ';
+                });
+            }
+            else
+            {
+                strengthIcon = 'fa-chevron-up';
+                strengthClass = 'senha-forte';
+                message = 'Senha forte!';
+            }
+
+            const strengthContainer = $('<div>', { id: 'forca-senha', class: strengthClass });
+
+            strengthContainer.append($('<i>', { class: `fa-solid ${strengthIcon}` }));
+            strengthContainer.append($('<div>', { id: 'forca-senha-mensagem', class: 'hidden', text: message }));
+
+            strengthContainer.on('mouseenter', () =>
+            {
+                $('#forca-senha-mensagem').removeClass('hidden');
+            });
+            strengthContainer.on('mouseleave', () =>
+            {
+                $('#forca-senha-mensagem').addClass('hidden');
+            });
+
+            passwordContainer.append(strengthContainer);
+        });
+        passwordContainer.append(passwordInput);
+
+        registerContentEl.prepend($('<p>', { id: 'msg' }));
+        registerContentEl.prepend(passwordContainer);
+        registerContentEl.prepend($('<input>', { type: 'email', class: 'input register-email', placeholder: 'Email:', required: true }));
+        registerContentEl.prepend($('<input>', { type: 'text', class: 'input register-nome', placeholder: 'Nome:', required: true }));
         registerContentEl.prepend($('<h1>', { text: 'Cadastrar' }));
     }
 
@@ -80,7 +157,15 @@ $(() =>
         {
             login($('.login-email').val(), $('.login-senha').val(), result =>
             {
-                console.log(result);
+                const msgEl = $('#msg');
+
+                msgEl.text('');
+
+                if (result === null)
+                {
+                    msgEl.removeClass('hidden');
+                    msgEl.text('Email ou senha incorretos.');
+                }
             });
         });
     });
@@ -96,7 +181,51 @@ $(() =>
                 experience: '0',
                 aboutMe: '',
                 creationDate: getDate()
-            }, () => { transition($('.registerContent'), $('.loginContent')); });
+            }, () =>
+            {
+                transition($('.registerContent'), $('.loginContent'));
+                $('#msg').text('Cadastro feito com sucesso!');
+
+                setTimeout(() =>
+                {
+                    $('.msg').addClass('hidden');
+                }, 3000);
+            });
         });
     });
+
+    function analyzePasswordStrength(password)
+    {
+        let strength = 0;
+        let suggestions = [];
+
+        // Criteria for password strength
+        const hasUpperCase = /[A-Z]/.test(password);
+        const hasLowerCase = /[a-z]/.test(password);
+        const hasNumber = /[0-9]/.test(password);
+        const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        const minLength = password.length >= 8;
+
+        // Increment strength based on criteria met
+        if (hasUpperCase) strength++;
+        else suggestions.push('letras maiúsculas');
+
+        if (hasLowerCase) strength++;
+        else suggestions.push('letras minúsculas');
+
+        if (hasNumber) strength++;
+        else suggestions.push('números');
+
+        if (hasSpecialChar) strength++;
+        else suggestions.push('caracteres especiais');
+
+        if (minLength) strength++;
+        else
+        {
+            suggestions.push('8 caracteres ou mais');
+            strength--;
+        }
+
+        return { strength, suggestions };
+    }
 });
