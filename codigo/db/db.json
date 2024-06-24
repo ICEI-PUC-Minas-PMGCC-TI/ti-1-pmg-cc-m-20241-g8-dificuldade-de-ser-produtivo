@@ -16,7 +16,8 @@
           "title": "derivada",
           "complete": true
         }
-      ]
+      ],
+      "priority": "media"
     },
     {
       "id": "2",
@@ -47,11 +48,11 @@
       "subTasks": [
         {
           "title": "limites",
-          "complete": false
+          "complete": true
         },
         {
           "title": "derivada",
-          "complete": true
+          "complete": false
         }
       ],
       "priority": "baixa"
