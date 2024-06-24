@@ -1,3 +1,58 @@
 {
-    "users": []
-}  
+    "tasks": [
+        {
+            "id": "1",
+            "title": "Estudar prova de calculo 1",
+            "description": "Limites ",
+            "complete": false,
+            "term": "2024-06-07",
+            "date": "2024-06-05",
+            "subTasks": [
+                {
+                    "title": "limites",
+                    "complete": false
+                },
+                {
+                    "title": "derivada",
+                    "complete": true
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "title": "Estudar prova de calculo 2",
+            "description": "Limites e derivadas",
+            "complete": false,
+            "term": "2024-06-09",
+            "date": "2024-06-11",
+            "subTasks": [
+                {
+                    "title": "limites",
+                    "complete": false
+                },
+                {
+                    "title": "derivada",
+                    "complete": true
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "title": "Estudar prova de calculo 3",
+            "description": "Limites e derivadas",
+            "complete": true,
+            "term": "2024-06-09",
+            "date": "2024-06-11",
+            "subTasks": [
+                {
+                    "title": "limites",
+                    "complete": true
+                },
+                {
+                    "title": "derivada",
+                    "complete": true
+                }
+            ]
+        }
+    ]
+}
