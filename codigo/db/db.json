@@ -7,6 +7,8 @@
             "complete": false,
             "term": "2024-06-07",
             "date": "2024-06-05",
+            "vencido": true,
+            "notificado":true,
             "subTasks": [
                 {
                     "title": "limites",
@@ -25,6 +27,8 @@
             "complete": false,
             "term": "2024-06-09",
             "date": "2024-06-11",
+            "vencido": true,
+            "notificado":false,
             "subTasks": [
                 {
                     "title": "limites",
@@ -43,6 +47,8 @@
             "complete": true,
             "term": "2024-06-09",
             "date": "2024-06-11",
+            "vencido": true,
+            "notificado":true,
             "subTasks": [
                 {
                     "title": "limites",

@@ -59,26 +59,33 @@
 
 
     <main>
-        <div>
-            <p class="debug-class" id="debug-id">Opções de debug (serão retiradas na junção das Funcionalidades na
-                Sprint 4)</p>
-        </div>
-        <div id="painel-debug" class="ocultar">
-            <h3 class="text-debug">Criar Notificações</h3>
-            <ul id="botoes-de-debug" class="botoes-de-debug">
-                <li class="debug-separado" data-type="task-expired">Tarefa com prazo expirado</li>
-                <li class="debug-separado" data-type="near-deadline">Tarefa perto do prazo</li>
-                <li class="debug-separado" data-type="forum-reply">Resposta a comentário no Fórum</li>
-            </ul>
-        </div>
-
         <!--Código das notificações-->
-
         <div class="main-container hidden">
             <div class="painel-expandido-notificacoes">
                 <div class="sem-notificacoes">
                 </div>
                 <div class="notificacoes-separadas" id="notificacoes-separadas">
+                    
+                    <div class="notification">
+                        <a class="texto-da-notificacao">Sua tarefa expirou no dia 19/05/24</a>
+                        <div class="botoes">
+                            <a class="marcar-ignorar">Ignorar</a>
+                            <a class="redirecionamento-tarefas">Editar</a>
+                        </div>
+                    </div>
+                    <div class="notification">
+                        <a class="texto-da-notificacao">Sua tarefa pendente está próxima do prazo</a>
+                        <div class="botoes">
+                            <a class="redirecionamento-tarefas">Editar</a>
+                        </div>
+                    </div>
+                    <div class="notification">
+                        <a class="texto-da-notificacao">Usuário 2 respondeu sua publicação no fórum</a>
+                        <div class="botoes">
+                            <a class="redirecionamento-forum">Acessar</a>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
