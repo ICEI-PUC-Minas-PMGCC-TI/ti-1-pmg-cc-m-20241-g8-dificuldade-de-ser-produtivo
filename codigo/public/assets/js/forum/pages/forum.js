@@ -99,7 +99,15 @@ $(() =>
 
 			case PageStates.FORUM:
 				currentDiscussionPage = 1;
-				$('#forum').on('scroll', () => { infiniteScroll(getDiscussions, currentDiscussionPage, userId, retrieveDiscussions) });
+				$('#forum').on('scroll', () =>
+				{
+					if (processing)
+						return;
+
+					processing = true;
+
+					infiniteScroll(getDiscussions, currentDiscussionPage, userId, retrieveDiscussions);
+				});
 				getDiscussions(currentDiscussionPage, userId, retrieveDiscussions);
 				break;
 			case PageStates.MY_DISCUSSIONS:
@@ -142,11 +150,6 @@ $(() =>
 
 	function retrieveDiscussions(discussions)
 	{
-		if (processing)
-			return;
-
-		processing = true;
-
 		if (discussions.length === 0)
 		{
 			if (currentDiscussionPage === 1 || curState === PageStates.SEARCH)

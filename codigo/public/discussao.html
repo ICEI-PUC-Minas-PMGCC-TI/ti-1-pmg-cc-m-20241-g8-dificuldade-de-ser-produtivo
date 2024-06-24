@@ -61,8 +61,9 @@
                 <p></p>
             </div>
             <div class="options">
-                <button class="option"><i class="fa-solid fa-bookmark"></i><span>Salvar</span></button>
-                <button class="option"><i class="fa-solid fa-share-from-square"></i><span>Compartilhar</span></button>
+                <button id="bookmark" class="option"><i class="fa-solid fa-bookmark"></i><span>Salvar</span></button>
+                <button id="share" class="option"><i
+                        class="fa-solid fa-share-from-square"></i><span>Compartilhar</span></button>
             </div>
             <footer>
                 <div id="my-comment-container">
@@ -79,6 +80,12 @@
             </div>
         </div>
     </main>
+
+    <div id="modal-forum" class="hidden">
+        <div id="modal-container">
+            <p>Link movido para a área de transferência!</p>
+        </div>
+    </div>
 
     <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script type="module" src="assets/js/forum/pages/discussion.js"></script>

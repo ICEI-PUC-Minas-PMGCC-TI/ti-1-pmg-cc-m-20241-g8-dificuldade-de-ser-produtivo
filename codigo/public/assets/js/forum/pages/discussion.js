@@ -1,5 +1,6 @@
 import { getUserName } from "../../auth/api/users.js";
 import { getDate, infiniteScroll, throttle } from "../../util.js";
+import { addBookmark, getBookmark, removeBookmark } from "../api/bookmarks.js";
 import { Targets, createComment, deleteComment, editComment, getComments, getUserComments, likeComment } from "../api/comments.js";
 import { getSpecificDiscussion, updateComments } from "../api/discussions.js";
 import { addLikeRelationship, getLikeRelationship, removeLikeRelationship } from "../api/likes.js";
@@ -18,6 +19,10 @@ $(() =>
     let shouldContinueRetrievingData = true;
 
     const userId = sessionStorage.getItem('user');
+
+    let timerId;
+
+    let processing = false;
 
     start();
 
@@ -45,6 +50,7 @@ $(() =>
             discussion.authorName = name;
 
             populateDiscussionWithData(discussion);
+            activateOptions(discussion);
         });
     }
 
@@ -56,6 +62,8 @@ $(() =>
                 showMessage("Ainda não há comentários.|Seja o primeiro a comentar!");
             if (shouldDisableScroll)
                 $('#discussion').off('scroll');
+
+            processing = false;
 
             return;
         }
@@ -75,6 +83,8 @@ $(() =>
                 });
             });
         });
+
+        processing = false;
     }
 
     function populateDiscussionWithData(discussion)
@@ -94,6 +104,66 @@ $(() =>
             $('.option').get(0).remove();
             $('#discussion-container footer').remove();
         }
+    }
+
+    function activateOptions(discussion)
+    {
+        const bookmarkEl = $('#bookmark');
+        const shareEl = $('#share');
+
+        getBookmark(discussion.id, userId, bookmarkData =>
+        {
+            if (bookmarkData.length > 0)
+            {
+                bookmarkEl.addClass('checked');
+                bookmarkEl.children('span').eq(0).text('Salvo');
+            }
+        })
+
+        bookmarkEl.on('click', () =>
+        {
+            getBookmark(discussion.id, userId, bookmarkData =>
+            {
+                const spanEl = bookmarkEl.children('span').eq(0);
+
+                if (bookmarkData.length === 0)
+                {
+                    addBookmark(discussion.id, userId, () =>
+                    {
+                        bookmarkEl.addClass('checked');
+                        spanEl.text('Salvo');
+                    });
+
+                    return;
+                }
+
+                removeBookmark(bookmarkData[0].id, () =>
+                {
+                    bookmarkEl.removeClass('checked');
+                    spanEl.text('Salvar');
+                });
+            });
+        });
+
+        shareEl.on('click', () =>
+        {
+            if (timerId)
+                clearTimeout(timerId);
+
+            navigator.clipboard.writeText(`${window.location.origin}/discussao.html?id=${discussionId}`);
+
+            const modalEl = $('#modal-forum');
+
+            modalEl.removeClass('hide');
+            modalEl.removeClass('hidden');
+            modalEl.addClass('show');
+
+            timerId = setTimeout(() =>
+            {
+                modalEl.removeClass('show');
+                modalEl.addClass('hide');
+            }, 2000);
+        });
     }
 
     function createCommentElement(commentData, likeRelationship)
@@ -381,7 +451,15 @@ $(() =>
                     retrieveComments(comments, userComments.length === 0);
 
                     if (comments.length > 0)
-                        $('#discussion').on('scroll', () => { infiniteScroll(getComments, currentCommentPage, discussionId, userId, retrieveComments); });
+                        $('#discussion').on('scroll', () =>
+                        {
+                            if (processing)
+                                return;
+
+                            processing = true;
+
+                            infiniteScroll(getComments, currentCommentPage, discussionId, userId, retrieveComments);
+                        });
 
                     const myCommentEl = $('#my-comment')
 
