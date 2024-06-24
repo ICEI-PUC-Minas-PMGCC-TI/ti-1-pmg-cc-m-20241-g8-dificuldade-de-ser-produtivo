@@ -1,3 +1,4 @@
+import { getUserName } from '../../auth/api/users.js';
 import { infiniteScroll } from '../../util.js';
 import { addBookmark, getAllUserBookmarks, getBookmark, removeBookmark } from '../api/bookmarks.js';
 import { deleteDiscussion, getDiscussions, getSpecificDiscussion, getUserDiscussions, searchDiscussions } from '../api/discussions.js';
@@ -20,7 +21,7 @@ $(() =>
 
 	let currentDiscussionPage = 1;
 
-	const userId = '0';
+	const userId = sessionStorage.getItem('user');
 
 	let timerId;
 
@@ -98,8 +99,16 @@ $(() =>
 
 			case PageStates.FORUM:
 				currentDiscussionPage = 1;
-				$('#forum').on('scroll', () => { infiniteScroll(getDiscussions, currentDiscussionPage, 0, retrieveDiscussions) });
-				getDiscussions(currentDiscussionPage, 0, retrieveDiscussions);
+				$('#forum').on('scroll', () =>
+				{
+					if (processing)
+						return;
+
+					processing = true;
+
+					infiniteScroll(getDiscussions, currentDiscussionPage, userId, retrieveDiscussions);
+				});
+				getDiscussions(currentDiscussionPage, userId, retrieveDiscussions);
 				break;
 			case PageStates.MY_DISCUSSIONS:
 				$('#forum').off('scroll');
@@ -141,11 +150,6 @@ $(() =>
 
 	function retrieveDiscussions(discussions)
 	{
-		if (processing)
-			return;
-
-		processing = true;
-
 		if (discussions.length === 0)
 		{
 			if (currentDiscussionPage === 1 || curState === PageStates.SEARCH)
@@ -168,15 +172,20 @@ $(() =>
 
 		discussions.forEach(discussionData =>
 		{
-			if (curState !== PageStates.MY_DISCUSSIONS)
+			getUserName(discussionData.authorId, name =>
 			{
-				getBookmark(discussionData.id, userId, bookmarkData =>
+				discussionData.authorName = name;
+
+				if (curState !== PageStates.MY_DISCUSSIONS)
 				{
-					createDiscussionElement(discussionData, bookmarkData).insertBefore($('.loader-container'));
-				})
-			}
-			else
-				createDiscussionElement(discussionData, null).insertBefore($('.loader-container'));
+					getBookmark(discussionData.id, userId, bookmarkData =>
+					{
+						createDiscussionElement(discussionData, bookmarkData).insertBefore($('.loader-container'));
+					});
+				}
+				else
+					createDiscussionElement(discussionData, null).insertBefore($('.loader-container'));
+			});
 		});
 
 		processing = false;
@@ -204,7 +213,7 @@ $(() =>
 	{
 		const discussionContainer = $('<div>', { class: 'discussion-container' });
 
-		const userName = curState === PageStates.MY_DISCUSSIONS ? 'Você' : discussionData.userName;
+		const userName = curState === PageStates.MY_DISCUSSIONS ? 'Você' : discussionData.authorName;
 		const userContainer = createUserContainer(userName);
 		discussionContainer.append(userContainer);
 

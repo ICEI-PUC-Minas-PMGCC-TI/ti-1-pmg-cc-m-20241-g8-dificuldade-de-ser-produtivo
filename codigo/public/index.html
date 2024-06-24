@@ -5,22 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/auth.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Trackle</title>
 </head>
 
 <body>
-    <div class="loginContainer">
+    <form class="loginContainer">
         <div class="container">
             <div class="content loginContent active">
                 <h1>Entrar</h1>
-                <input type="email" class="input-email" placeholder="Email:">
+                <input type="email" class="input login-email" placeholder="Email:" required>
                 <div class="password">
                     <div class="none">
-                        <input type="password" class="input-senha" placeholder="Senha:">
-                        <a href="#">Esqueci minha senha</a>
+                        <input type="password" class="input login-senha" placeholder="Senha:" required>
+                        <a href="request-redefinir-senha.html">Esqueci minha senha</a>
                     </div>
                 </div>
-                <button class="loginButton">Entrar</button>
+                <p id="msg"></p>
+                <button class="button loginButton">Entrar</button>
             </div>
             <div class="content registerContent">
                 <div class="logo">
@@ -28,12 +32,13 @@
                     <img src="assets/imgs/logo.png" alt="logo">
                 </div>
                 <p>Faça seu registro e comece a ser produtivo com a sua agenda totalmente organizada</p>
-                <button class="registerButton">Cadastrar</button>
+                <button class="button registerButton">Cadastrar</button>
             </div>
         </div>
-    </div>
+    </form>
 
     <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script type="module" src="assets/js/auth/api/users.js"></script>
     <script type="module" src="assets/js/auth/pages/auth.js"></script>
 </body>
 

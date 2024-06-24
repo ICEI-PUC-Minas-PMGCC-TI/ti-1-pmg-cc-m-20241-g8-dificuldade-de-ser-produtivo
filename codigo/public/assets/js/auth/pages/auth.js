@@ -1,36 +1,109 @@
+import { analyzePasswordStrength, getDate } from "../../util.js";
+import { login, register } from "../api/users.js";
+
 $(() =>
 {
+    $('form').on('submit', e =>
+    {
+        e.preventDefault();
+    });
+
     function buildLogin()
     {
         const loginContentEl = $('.loginContent');
 
-        const titleEl = $('<h1>', { text: 'Entrar' });
-        loginContentEl.append(titleEl);
-
-        const emailInputEl = $('<input>', { type: 'email', class: 'input-email', placeholder: 'Email:' });
-        loginContentEl.append(emailInputEl);
-
         const passwordDivEl = $('<div>', { class: 'password' });
 
         const noneDivEl = $('<div>', { class: 'none' });
-
-        const passwordInputEl = $('<input>', { type: 'password', class: 'input-senha', placeholder: 'Senha:' });
-        noneDivEl.append(passwordInputEl);
-
-        const forgotPasswordLinkEl = $('<a>', { href: '#', text: 'Esqueci minha senha' });
-        noneDivEl.append(forgotPasswordLinkEl);
+        noneDivEl.append($('<input>', { type: 'password', class: 'input login-senha', placeholder: 'Senha:', required: true }));
+        noneDivEl.append($('<a>', { href: 'request-redefinir-senha.html', text: 'Esqueci minha senha' }));
 
         passwordDivEl.append(noneDivEl);
 
-        loginContentEl.append(passwordDivEl);
-
-        const loginButtonEl = $('<button>', { class: 'loginButton', text: 'Entrar' });
-        loginContentEl.append(loginButtonEl);
+        loginContentEl.prepend($('<p>', { id: 'msg' }));
+        loginContentEl.prepend(passwordDivEl);
+        loginContentEl.prepend($('<input>', { type: 'email', class: 'input login-email', placeholder: 'Email:', required: true }));
+        loginContentEl.prepend($('<h1>', { text: 'Entrar' }));
     }
 
     function buildRegister()
     {
+        const registerContentEl = $('.registerContent');
 
+        const passwordContainer = $('<div>', { class: 'container-register-senha' });
+        const passwordInput = $('<input>', { type: 'password', class: 'input register-senha', placeholder: 'Senha:', required: true });
+        passwordInput.on('input', e =>
+        {
+            const password = $(e.target).val();
+
+            $('#forca-senha').remove();
+
+            if (password.length === 0)
+                return;
+
+            const { strength, suggestions } = analyzePasswordStrength(password);
+
+            let strengthIcon;
+            let strengthClass;
+            let message;
+
+            if (strength < 4)
+            {
+                if (strength < 2)
+                {
+                    strengthIcon = 'fa-chevron-down';
+                    strengthClass = 'senha-fraca';
+                    message = 'Senha fraca! Use ';
+                }
+                else
+                {
+                    strengthIcon = 'fa-minus'; 8
+                    strengthClass = 'senha-mediana';
+                    message = 'Senha mediana! Use ';
+                }
+
+                suggestions.forEach((suggestion, index) =>
+                {
+                    message += suggestion;
+
+                    if (suggestions.length - 1 === index)
+                        message += '.';
+                    else if (suggestions.length - 2 === index)
+                        message += ' e ';
+                    else
+                        message += ', ';
+                });
+            }
+            else
+            {
+                strengthIcon = 'fa-chevron-up';
+                strengthClass = 'senha-forte';
+                message = 'Senha forte!';
+            }
+
+            const strengthContainer = $('<div>', { id: 'forca-senha', class: strengthClass });
+
+            strengthContainer.append($('<i>', { class: `fa-solid ${strengthIcon}` }));
+            strengthContainer.append($('<div>', { id: 'forca-senha-mensagem', class: 'hidden', text: message }));
+
+            strengthContainer.on('mouseenter', () =>
+            {
+                $('#forca-senha-mensagem').removeClass('hidden');
+            });
+            strengthContainer.on('mouseleave', () =>
+            {
+                $('#forca-senha-mensagem').addClass('hidden');
+            });
+
+            passwordContainer.append(strengthContainer);
+        });
+        passwordContainer.append(passwordInput);
+
+        registerContentEl.prepend($('<p>', { id: 'msg' }));
+        registerContentEl.prepend(passwordContainer);
+        registerContentEl.prepend($('<input>', { type: 'email', class: 'input register-email', placeholder: 'Email:', required: true }));
+        registerContentEl.prepend($('<input>', { type: 'text', class: 'input register-nome', placeholder: 'Nome:', required: true }));
+        registerContentEl.prepend($('<h1>', { text: 'Cadastrar' }));
     }
 
     function buildDeactivatedContent(contentContainer)
@@ -51,49 +124,85 @@ $(() =>
         logoEl.append($('<h4>', { text: `Bem vindo${type === 1 ? ' de volta' : ''} ao` }));
         logoEl.append($('<img>', { src: 'assets/imgs/logo.png', alt: 'logo' }));
 
-        contentContainer.append(logoEl);
-        contentContainer.append($('<p>', { text: `${type === 1 ? loginMessage : registerMessage}` }));
-        contentContainer.append($('<button>', {
-            class: `${type === 1 ? 'loginButton' : 'registerButton'}`,
-            text: `${type === 1 ? 'Cadastrar' : 'Entrar'}`
-        }));
+        contentContainer.prepend($('<p>', { text: `${type === 1 ? loginMessage : registerMessage}` }));
+        contentContainer.prepend(logoEl);
+    }
+
+    function transition(from, to, executeFunction)
+    {
+        if (to.hasClass('active'))
+        {
+            executeFunction();
+            return;
+        }
+
+        from.children().not('.button').remove();
+        to.children().not('.button').remove();
+
+        from.removeClass('active');
+        buildDeactivatedContent(from);
+
+        to.addClass('active');
+
+        if (to.hasClass('loginContent'))
+            buildLogin();
+        else
+            buildRegister();
     }
 
     $('.loginButton').on('click', () =>
     {
-        const loginContentEl = $('.loginContent');
-        const registerContentEl = $('.registerContent');
-
-        if ($('.loginContent').hasClass('active'))
+        transition($('.registerContent'), $('.loginContent'), () =>
         {
-            return;
-        }
+            login($('.login-email').val(), $('.login-senha').val(), id =>
+            {
+                const msgEl = $('#msg');
 
-        registerContentEl.removeClass('active');
-        registerContentEl.empty();
-        buildDeactivatedContent(registerContentEl);
+                msgEl.text('');
 
-        loginContentEl.addClass('active');
-        loginContentEl.empty();
-        buildLogin();
-    })
+                if (id === null)
+                {
+                    msgEl.removeClass('hidden');
+                    msgEl.text('Email ou senha incorretos.');
+                    return;
+                }
+
+                sessionStorage.setItem('user', id);
+
+                window.location.href = 'forum.html';
+            });
+        });
+    });
 
     $('.registerButton').on('click', () =>
     {
-        const loginContentEl = $('.loginContent');
-        const registerContentEl = $('.registerContent');
-
-        if ($('.registerContent').hasClass('active'))
+        transition($('.loginContent'), $('.registerContent'), () =>
         {
-            return;
-        }
+            register({
+                name: $('.register-nome').val(),
+                email: $('.register-email').val(),
+                password: $('.register-senha').val(),
+                experience: '0',
+                aboutMe: '',
+                creationDate: getDate()
+            }, result =>
+            {
+                if (!result)
+                {
+                    $('#msg').text('Já existe uma conta com o email informado.');
+                    return;
+                }
 
-        loginContentEl.removeClass('active');
-        loginContentEl.empty();
-        buildDeactivatedContent(loginContentEl);
+                transition($('.registerContent'), $('.loginContent'));
+                $('#msg').text('Cadastro feito com sucesso!');
 
-        registerContentEl.addClass('active');
-        registerContentEl.empty();
-        buildRegister();
+                setTimeout(() =>
+                {
+                    $('.msg').addClass('hidden');
+                }, 3000);
+            });
+        });
     });
+
+
 });
