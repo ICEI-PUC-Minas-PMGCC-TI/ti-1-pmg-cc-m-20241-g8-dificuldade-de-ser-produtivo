@@ -53,6 +53,42 @@
             "complete": true
           }
         ]
+      },
+      {
+        "id": "4",
+        "title": "Estudar prova de AEDs",
+        "description": "Ponteiros e Funções",
+        "complete": false,
+        "term": "2024-06-09",
+        "date": "2024-06-11",
+        "subTasks": [
+          {
+            "title": "Ponteiros",
+            "complete": true
+          },
+          {
+            "title": "Funcões",
+            "complete": false
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "title": "Estudar prova de calculo 3",
+        "description": "Limites e derivadas",
+        "complete": true,
+        "term": "2024-06-09",
+        "date": "2024-06-11",
+        "subTasks": [
+          {
+            "title": "limites",
+            "complete": true
+          },
+          {
+            "title": "derivada",
+            "complete": true
+          }
+        ]
       }
     ]
   }
