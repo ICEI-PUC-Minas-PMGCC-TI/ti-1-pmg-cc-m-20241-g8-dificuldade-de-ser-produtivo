@@ -10,42 +10,16 @@
       "creationDate": "21/06/2024"
     },
     {
-      "id": "4f213ec2-e66c-4aab-96b3-4a769a833bf1",
-      "name": "mateus2",
+      "id": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "name": "a",
       "email": "chenri48155@gmail.com",
-      "password": "$2b$10$hAe9vTWN9iTHECvKcN8iTe6EkF84mR7wakcWUCIPRpHmT8o6Lebgy",
-      "experience": "0",
-      "aboutMe": "",
-      "creationDate": "21/06/2024"
-    },
-    {
-      "id": "b7db9d26-cbf3-47b2-b922-1d6c10bd581e",
-      "name": "a@b.c",
-      "email": "a@b.c",
-      "password": "$2b$10$k4QNh8U4EOiFv8X1N.tk4.5nxwoStYVZ7t5vccDtWP0RpoBNdE49e",
-      "experience": "0",
-      "aboutMe": "",
-      "creationDate": "22/06/2024"
-    },
-    {
-      "id": "eeeb329c-301a-4021-b506-13aa59aecfd5",
-      "name": "asd",
-      "email": "teste@ab.com",
-      "password": "$2b$10$QeVcR3R14osNytwCqCQRS.oKT/2DgBIVDz6jOMIsnl07tDlkyvuJO",
-      "experience": "0",
-      "aboutMe": "",
-      "creationDate": "23/06/2024"
-    },
-    {
-      "id": "59a75a93-6a30-47ef-8f09-a6deb1677130",
-      "name": "asd",
-      "email": "a@a.a",
-      "password": "$2b$10$hC0shIq8CNfe5zX7Fbcf1Oy9xhNiVUhJ5hT6zJM4VsUj/GUcoI3uq",
+      "password": "$2b$10$Fo3DxQIPHSduQBb31P2KQ.PY.XNlHM1ahtJaY6fglk3qyvoZmZR9y",
       "experience": "0",
       "aboutMe": "",
       "creationDate": "23/06/2024"
     }
   ],
+  "resetTokens": [],
   "discussions": [
     {
       "id": "2",
@@ -53,7 +27,7 @@
       "title": "Integer nec odio",
       "text": "Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
       "date": "02/05/2024",
-      "commentCount": 6
+      "commentCount": 3
     },
     {
       "id": "3",
@@ -198,6 +172,22 @@
       "text": "asdasd",
       "date": "23/5/2024",
       "commentCount": 0
+    },
+    {
+      "id": "554b",
+      "authorId": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "title": "Minha discussão",
+      "text": "Essa é a minha discussão",
+      "date": "23/06/2024",
+      "commentCount": 1
+    },
+    {
+      "id": "a182",
+      "authorId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "title": "Discussão",
+      "text": "Essa é sem sombra de dúvidas uma discussão",
+      "date": "23/06/2024",
+      "commentCount": 1
     }
   ],
   "comments": [
@@ -220,6 +210,36 @@
       "likes": 0,
       "date": "06/06/2024",
       "edited": false
+    },
+    {
+      "id": "01aa",
+      "authorId": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "target": 0,
+      "targetId": "2",
+      "text": "comentando aqui!! <3",
+      "likes": 0,
+      "date": "23/06/2024",
+      "edited": true
+    },
+    {
+      "id": "7b24",
+      "authorId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "target": 0,
+      "targetId": "554b",
+      "text": "INCRÍVEL!!!",
+      "likes": 0,
+      "date": "23/06/2024",
+      "edited": false
+    },
+    {
+      "id": "46fe",
+      "authorId": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "target": 0,
+      "targetId": "a182",
+      "text": "LÚCIDO!!!",
+      "likes": 0,
+      "date": "23/06/2024",
+      "edited": false
     }
   ],
   "likes": [],
@@ -228,6 +248,21 @@
       "id": "733f",
       "discussionId": "2",
       "userId": "0"
+    },
+    {
+      "id": "c050",
+      "discussionId": "2",
+      "userId": "84e9195e-90f2-4242-806e-8d1cd2004805"
+    },
+    {
+      "id": "dc62",
+      "discussionId": "3",
+      "userId": "84e9195e-90f2-4242-806e-8d1cd2004805"
+    },
+    {
+      "id": "e7ea",
+      "discussionId": "2",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c"
     }
   ]
 }

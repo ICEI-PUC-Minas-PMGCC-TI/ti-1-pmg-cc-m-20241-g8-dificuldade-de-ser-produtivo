@@ -1,11 +1,10 @@
-import { getDate } from "../../util.js";
+import { analyzePasswordStrength, getDate } from "../../util.js";
 import { login, register } from "../api/users.js";
 
 $(() =>
 {
     $('form').on('submit', e =>
     {
-        console.log('a');
         e.preventDefault();
     });
 
@@ -17,7 +16,7 @@ $(() =>
 
         const noneDivEl = $('<div>', { class: 'none' });
         noneDivEl.append($('<input>', { type: 'password', class: 'input login-senha', placeholder: 'Senha:', required: true }));
-        noneDivEl.append($('<a>', { href: '#', text: 'Esqueci minha senha' }));
+        noneDivEl.append($('<a>', { href: 'request-redefinir-senha.html', text: 'Esqueci minha senha' }));
 
         passwordDivEl.append(noneDivEl);
 
@@ -155,17 +154,22 @@ $(() =>
     {
         transition($('.registerContent'), $('.loginContent'), () =>
         {
-            login($('.login-email').val(), $('.login-senha').val(), result =>
+            login($('.login-email').val(), $('.login-senha').val(), id =>
             {
                 const msgEl = $('#msg');
 
                 msgEl.text('');
 
-                if (result === null)
+                if (id === null)
                 {
                     msgEl.removeClass('hidden');
                     msgEl.text('Email ou senha incorretos.');
+                    return;
                 }
+
+                sessionStorage.setItem('user', id);
+
+                window.location.href = 'forum.html';
             });
         });
     });
@@ -181,8 +185,14 @@ $(() =>
                 experience: '0',
                 aboutMe: '',
                 creationDate: getDate()
-            }, () =>
+            }, result =>
             {
+                if (!result)
+                {
+                    $('#msg').text('Já existe uma conta com o email informado.');
+                    return;
+                }
+
                 transition($('.registerContent'), $('.loginContent'));
                 $('#msg').text('Cadastro feito com sucesso!');
 
@@ -194,38 +204,5 @@ $(() =>
         });
     });
 
-    function analyzePasswordStrength(password)
-    {
-        let strength = 0;
-        let suggestions = [];
 
-        // Criteria for password strength
-        const hasUpperCase = /[A-Z]/.test(password);
-        const hasLowerCase = /[a-z]/.test(password);
-        const hasNumber = /[0-9]/.test(password);
-        const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-        const minLength = password.length >= 8;
-
-        // Increment strength based on criteria met
-        if (hasUpperCase) strength++;
-        else suggestions.push('letras maiúsculas');
-
-        if (hasLowerCase) strength++;
-        else suggestions.push('letras minúsculas');
-
-        if (hasNumber) strength++;
-        else suggestions.push('números');
-
-        if (hasSpecialChar) strength++;
-        else suggestions.push('caracteres especiais');
-
-        if (minLength) strength++;
-        else
-        {
-            suggestions.push('8 caracteres ou mais');
-            strength--;
-        }
-
-        return { strength, suggestions };
-    }
 });

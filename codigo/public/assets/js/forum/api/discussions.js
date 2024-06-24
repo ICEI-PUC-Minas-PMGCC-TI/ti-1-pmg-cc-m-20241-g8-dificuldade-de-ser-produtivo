@@ -26,7 +26,7 @@ function getDiscussions(pageNumber, currentUserId, callbackFunction)
     const discussionsPerPage = 5;
 
     const start = (pageNumber - 1) * discussionsPerPage;
-    const end = pageNumber * discussionsPerPage - 1;
+    const end = pageNumber * discussionsPerPage;
 
     fetch(`${apiUrl}?_start=${start}&_end=${end}&authorId_ne=${currentUserId}`)
         .then(response => response.json())

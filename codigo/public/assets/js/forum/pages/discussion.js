@@ -1,3 +1,4 @@
+import { getUserName } from "../../auth/api/users.js";
 import { getDate, infiniteScroll, throttle } from "../../util.js";
 import { Targets, createComment, deleteComment, editComment, getComments, getUserComments, likeComment } from "../api/comments.js";
 import { getSpecificDiscussion, updateComments } from "../api/discussions.js";
@@ -16,9 +17,7 @@ $(() =>
 
     let shouldContinueRetrievingData = true;
 
-    const userId = '0';
-
-    let commentsList = {};
+    const userId = sessionStorage.getItem('user');
 
     start();
 
@@ -41,7 +40,12 @@ $(() =>
 
         const discussion = discussionEntry[0];
 
-        populateDiscussionWithData(discussion);
+        getUserName(discussion.authorId, name =>
+        {
+            discussion.authorName = name;
+
+            populateDiscussionWithData(discussion);
+        });
     }
 
     function retrieveComments(comments, shouldSendMessage = true, shouldDisableScroll = true, shouldChangePage = true)
@@ -61,12 +65,15 @@ $(() =>
 
         comments.forEach(commentData =>
         {
-            getLikeRelationship(commentData.id, userId, likeRelationship =>
+            getUserName(commentData.authorId, name =>
             {
-                commentsList[commentData.id] = commentData;
+                commentData.authorName = name;
 
-                createCommentElement(commentData, likeRelationship).insertBefore($('.loader-container'));
-            })
+                getLikeRelationship(commentData.id, userId, likeRelationship =>
+                {
+                    createCommentElement(commentData, likeRelationship).insertBefore($('.loader-container'));
+                });
+            });
         });
     }
 
@@ -77,7 +84,7 @@ $(() =>
         const titleElement = $('#content h2');
         const textElement = $('#content p');
 
-        userElement.text(discussion.authorId === userId ? 'Você' : ''); //TODO author name
+        userElement.text(discussion.authorId === userId ? 'Você' : discussion.authorName);
         dateElement.text(discussion.date);
         titleElement.text(discussion.title);
         textElement.text(discussion.text);
@@ -333,9 +340,9 @@ $(() =>
             {
                 const commentEl = createCommentElement(data, null);
 
-                commentsList[data.id] = data;
-
                 $('#comments-container').prepend(commentEl);
+
+                $('#message').empty();
             });
         });
     }

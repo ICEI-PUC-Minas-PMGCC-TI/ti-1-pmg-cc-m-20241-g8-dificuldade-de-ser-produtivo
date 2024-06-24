@@ -14,7 +14,7 @@ $(() =>
 
     let discussion;
 
-    const userId = '0';
+    const userId = sessionStorage.getItem('user');
 
     let mode;
 
@@ -38,7 +38,7 @@ $(() =>
     {
         didFillInFields();
 
-        if (mode === Modes.EDIT)    
+        if (mode === Modes.EDIT)
             checkSimilarityToOriginal();
     });
 

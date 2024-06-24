@@ -71,5 +71,40 @@ function getDate()
     return `${day}/${month}/${year}`;
 }
 
-export { generateUniqueId, getDate, infiniteScroll, throttle };
+function analyzePasswordStrength(password)
+{
+    let strength = 0;
+    let suggestions = [];
+
+    // Criteria for password strength
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    const minLength = password.length >= 8;
+
+    // Increment strength based on criteria met
+    if (hasUpperCase) strength++;
+    else suggestions.push('letras maiúsculas');
+
+    if (hasLowerCase) strength++;
+    else suggestions.push('letras minúsculas');
+
+    if (hasNumber) strength++;
+    else suggestions.push('números');
+
+    if (hasSpecialChar) strength++;
+    else suggestions.push('caracteres especiais');
+
+    if (minLength) strength++;
+    else
+    {
+        suggestions.push('8 caracteres ou mais');
+        strength--;
+    }
+
+    return { strength, suggestions };
+}
+
+export { analyzePasswordStrength, generateUniqueId, getDate, infiniteScroll, throttle };
 

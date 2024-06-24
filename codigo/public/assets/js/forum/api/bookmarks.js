@@ -2,17 +2,22 @@ const apiUrl = '/bookmarks';
 
 function getBookmark(discussionId, userId, callbackFunction)
 {
-    fetch(`${apiUrl}?discussionId=${discussionId}&userId=${userId}`)
+    fetch(`${apiUrl}?userId=${userId}`)
         .then(response => response.json())
         .then(data =>
         {
+            const bookmarks = data.filter(bookmark =>
+            {
+                return bookmark.discussionId === discussionId;
+            });
+
             if (callbackFunction)
-                callbackFunction(data);
+                callbackFunction(bookmarks);
         })
         .catch(error =>
         {
             console.error('Erro ao recuperar a discussão salva do usuário: ', error);
-        })
+        });
 }
 
 function getAllUserBookmarks(userId, callbackFunction)

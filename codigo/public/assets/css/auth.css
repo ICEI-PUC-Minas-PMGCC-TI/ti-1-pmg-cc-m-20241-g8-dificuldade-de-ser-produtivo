@@ -190,7 +190,7 @@ input::placeholder {
   flex-direction: column;
   gap: 10px;
   align-items: center;
-  width: 100%;
+  width: 300px;
   height: 100%;
 }
 
@@ -199,7 +199,7 @@ input::placeholder {
   aspect-ratio: 1/1;
   border: 0;
   position: absolute;
-  right: 150px;
+  right: -40px;
   top: 10%;
   display: flex;
   align-items: center;
@@ -311,5 +311,82 @@ input::placeholder {
     height: 35px;
     width: 100%;
     object-fit: contain;
+  }
+}
+
+#redefinir {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #646464;
+  padding: 0 20px;
+}
+
+#redefinir #container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  background-color: white;
+  padding: 20px 80px;
+  border-radius: 19px;
+  text-align: center;
+}
+
+#redefinir #container.request {
+  max-width: 500px;
+}
+
+#redefinir #container-input {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#redefinir #forca-senha {
+  right: -40px;
+}
+
+#button-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#redefinir .button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .container-register-senha {
+    width: 100%;
   }
 }
