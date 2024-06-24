@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/auth.css">
+    <title>Trackle</title>
+</head>
+
+<body id="redefinir">
+    <form id="container" class="request">
+        <h2>Redefinir senha</h2>
+        <p>Informe o endereço de email de sua conta para que possamos enviar um link de redefinição da senha.</p>
+        <div id="container-input">
+            <input type="email" class="input" placeholder="Email:" required>
+        </div>
+        <p id="msg"></p>
+        <div id="button-container">
+            <button class="button" id="send">Enviar</button>
+            <button class="button" id="cancelar">Cancelar</button>
+        </div>
+    </form>
+
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script type="module" src="assets/js/auth/pages/requestResetPassword.js"></script>
+</body>
+
+</html>

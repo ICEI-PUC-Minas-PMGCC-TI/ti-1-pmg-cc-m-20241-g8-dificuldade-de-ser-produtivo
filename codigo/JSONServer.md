@@ -30,7 +30,7 @@ Esse é o link para o servidor local.
 
 ## Atenção
 
-Caso você abra o link e não apareça a página desejada, há das formas de resolver:
+Caso você abra o link e não apareça a página desejada, há duas formas de resolver:
  
 1. Renomear a página html para `index.html`. Isso faz com que ela seja a página inicial do site. <b>Depois de finalizar o desenvolvimento, renomeie o arquivo para o nome original</b>
 
