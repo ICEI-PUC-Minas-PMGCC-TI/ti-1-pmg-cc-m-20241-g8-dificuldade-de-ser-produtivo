@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugestões de Projeto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div id="sugestoes" class="sugestoes">
+            <h2>Sugestões para o projeto</h2>
+            <input type="text" id="pesquisa-sugestoes" placeholder="Pesquisar sugestões...">
+            <button id="mostrar-adicionar-sugestao" aria-label="Criar sugestão">Criar sugestão</button>
+            <ul id="lista-sugestoes"></ul>
+        </div>
+        <div id="popup-adicionar" style="display: none; position: fixed; width: 300px; height: 150px; background: white; border: 1px solid black; padding: 10px;">
+            <h3>Adicionar Sugestão</h3>
+            <input type="text" id="nome-sugestao" placeholder="Nome da sugestão">
+            <button id="adicionar-sugestao" aria-label="Adicionar sugestão">Adicionar</button>
+            <button id="fechar-popup-adicionar" aria-label="Fechar pop-up">Fechar</button>
+        </div>
+        <div id="popup" style="display: none; position: fixed; width: 300px; height: 150px; background: white; border: 1px solid black; padding: 10px;">
+            <p id="texto-popup"></p>
+            <button id="fechar-popup" aria-label="Fechar pop-up">Fechar</button>
+        </div>
+    </main>
+    <script src="sugestoes.js"></script>
+</body>
+</html>
