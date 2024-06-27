@@ -232,3 +232,225 @@ main {
         gap: 15% !important;
     }
 }
+
+/*
+    
+    PERFIL ----------------------------------------------------------------------
+    
+*/
+
+#perfil {
+    display: grid;
+    grid-template-rows: 35% 1fr;
+}
+
+.banner-perfil {
+    background: linear-gradient(180deg, #aaa 65%, rgb(227, 227, 227) 35%);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.banner-perfil div {
+    margin-left: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+
+.corpo-perfil {
+    background-color: rgb(227, 227, 227);
+    padding: 30px 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.foto-perfil {
+    border-radius: 100%;
+    width: 150px;
+    aspect-ratio: 1/1;
+    border: 7px solid rgb(227, 227, 227);
+}
+
+.foto-perfil input {
+    display: none;
+}
+
+#input-foto-perfil {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+#label-foto-perfil {
+    width: 150px;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    border: 7px solid transparent;
+    opacity: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+    transition: all .2s ease    ;
+}
+
+#label-foto-perfil:hover {
+    opacity: 100;
+}
+
+.nome-perfil-texto {
+    background-color: #aaa;
+    border: 3px;
+    height: 50px;
+    border-bottom: 3px solid black;
+    margin-bottom: 100px;
+    font-size: 60px;
+    display: inline;
+    position: relative;
+}
+
+.nome-perfil {
+    padding-top: 15px;
+}
+
+.corpo-perfil section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.corpo-perfil section article {
+    height: 320px;
+    box-sizing: border-box;
+}
+
+.sobre-mim {
+    color: white;
+    background-color: rgb(92, 96, 112);
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px 40px;
+}
+
+.sobre-mim-texto {
+    background-color: rgb(92, 96, 112);
+    height: 230px;
+    width: 100%;
+}
+
+.medalhas-perfil {
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px 40px;
+    border: 3px solid black;
+    display: grid;
+    grid-template-rows: 20% 80%;
+}
+
+.medalha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.medalha i {
+    font-size: 50px;
+}
+
+.medalhas-area {
+    overflow-y: scroll;
+}
+
+.medalhas-area::-webkit-scrollbar {}
+
+.medalhas-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.Botao_Atualizar {
+    display: block;
+    position: absolute;
+    top: 2%;
+}
+
+.nivel-perfil {
+    font: bolder;
+    display: inline-block;
+}
+
+.nivel-perfil h3 {
+    font-size: 20px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.barra-xp-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.progresso-xp {
+    font-weight: 600;
+}
+
+.barra-xp {
+    border-radius: 100px;
+    width: 100%;
+    height: 20px;
+    background-color: #ccc;
+}
+
+.barra-xp2 {
+    height: 100%;
+    width: 0%;
+    border-radius: 10px;
+    background-color: rgb(0, 255, 0);
+    transition: all 300ms;
+}
+
+.botao-xp {
+    margin-top: 10px;
+    margin-left: 120px;
+    margin-bottom: 40px;
+    display: block;
+}
+
+.barra100 {
+    position: fixed;
+    left: 370px;
+
+}
+
+@media screen and (max-width: 1170px) {
+    .medalhas-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .medalhas-container {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .corpo-perfil section {
+        flex-direction: column;
+    }
+}

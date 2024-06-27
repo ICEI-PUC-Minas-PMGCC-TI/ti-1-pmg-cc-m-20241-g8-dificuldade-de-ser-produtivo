@@ -1,3 +1,22 @@
 {
-    "users": []
-}  
+    "users": [
+        {
+            "id": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+            "name": "mateus",
+            "email": "mateushmdiniz@gmail.com",
+            "password": "$2b$10$PPDop/jgd3u/3jYV0DD04OWfV6xNeWxXGMwac.gF2TKsgQJGuEpoK",
+            "experience": "0",
+            "aboutMe": "",
+            "creationDate": "21/06/2024"
+        },
+        {
+            "id": "84e9195e-90f2-4242-806e-8d1cd2004805",
+            "name": "a",
+            "email": "chenri48155@gmail.com",
+            "password": "$2b$10$Fo3DxQIPHSduQBb31P2KQ.PY.XNlHM1ahtJaY6fglk3qyvoZmZR9y",
+            "experience": "0",
+            "aboutMe": "",
+            "creationDate": "23/06/2024"
+        }
+    ]
+}
