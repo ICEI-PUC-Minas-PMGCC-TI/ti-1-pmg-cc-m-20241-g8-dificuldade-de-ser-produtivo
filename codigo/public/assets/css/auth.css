@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+a {
+  color: #3C3C3C;
+  font-size: 12px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.loginContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #646464;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+  background-color: white;
+  max-width: 880px;
+}
+
+.content {
+  transition: all .2s ease;
+}
+
+.content.active {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding: 24px 85px;
+}
+
+.content:not(.active) {
+  width: 100%;
+  height: 100%;
+  background-color: #523FCB;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 28px;
+  padding-inline: 50px;
+  gap: 15px;
+}
+
+.loginContent:not(.active) {
+  border-bottom-left-radius: 19px;
+  border-bottom-right-radius: 19px;
+}
+
+.registerContent:not(.active) {
+  border-top-left-radius: 19px;
+  border-top-right-radius: 19px;
+}
+
+button {
+  width: 120px;
+}
+
+.button {
+  color: #ffffff;
+  background-color: #523FCB;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  transition: 0.2s;
+}
+
+.button:hover {
+  opacity: 0.5;
+}
+
+input {
+  background-color: #E1E1E1;
+  border: none;
+  outline: none;
+  min-height: 40px;
+  max-height: 40px;
+  max-width: 300px;
+  height: 100%;
+  padding-inline: 10px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+input::placeholder {
+  color: #ABABAB;
+}
+
+.password {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.content:not(.active) h4 {
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.content:not(.active) img {
+  width: 100px;
+  margin-top: 10px;
+  object-fit: cover;
+  height: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.content:not(.active) p {
+  text-align: center;
+  color: white;
+  font-weight: lighter;
+}
+
+.content:not(.active) button {
+  background-color: #ffffff;
+  font-weight: 700;
+  color: #1E277A;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  transition: 0.2s;
+}
+
+.registerButton:hover {
+  opacity: 0.5;
+}
+
+.none {
+  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  align-items: center;
+}
+
+.container-register-senha {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: 300px;
+  height: 100%;
+}
+
+#forca-senha {
+  width: 30px;
+  aspect-ratio: 1/1;
+  border: 0;
+  position: absolute;
+  right: -40px;
+  top: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+  border-radius: 100%;
+}
+
+#forca-senha.senha-fraca {
+  color: red;
+  border-color: red;
+}
+
+#forca-senha.senha-mediana {
+  color: orange;
+  border-color: orange;
+}
+
+#forca-senha.senha-forte {
+  color: green;
+  border-color: green;
+}
+
+#forca-senha-mensagem {
+  top: -60px;
+  position: absolute;
+  font-size: 11px;
+  text-align: center;
+  width: 240px;
+  background-color: #fbfbfb;
+  border-radius: 10px;
+  color: black;
+  padding: 10px 0;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transform: scale(100%);
+  transition: all ease .2s;
+}
+
+#forca-senha-mensagem.hidden {
+  display: block !important;
+  transform: scale(0%);
+}
+
+.msg {
+  opacity: 100;
+  transition: all ease .2s;
+}
+
+.msg.hidden {
+  display: block !important;
+  opacity: 0;
+}
+
+@media (min-width: 880px) {
+  button {
+    width: 150px;
+  }
+
+  .container {
+    height: 100%;
+    flex-direction: row;
+    margin-inline: 24px;
+    display: flex;
+    max-height: 550px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+  }
+
+  .content.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding-top: 12%;
+    padding-bottom: 12%;
+  }
+
+  .password {
+    gap: 70px;
+  }
+
+  .content:not(.active) {
+    height: 100%;
+    max-height: 550px;
+    justify-content: center;
+    gap: 60px;
+  }
+
+  .registerContent:not(.active) {
+    border-top-left-radius: 100px;
+    border-top-right-radius: 19px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 19px;
+  }
+
+  .loginContent:not(.active) {
+    border-top-left-radius: 19px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 19px;
+    border-bottom-right-radius: 100px;
+  }
+
+  .content:not(.active) h4 {
+    font-size: 40px;
+  }
+
+  .content:not(.active) img {
+    height: 35px;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+#redefinir {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #646464;
+  padding: 0 20px;
+}
+
+#redefinir #container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  background-color: white;
+  padding: 20px 80px;
+  border-radius: 19px;
+  text-align: center;
+}
+
+#redefinir #container.request {
+  max-width: 500px;
+}
+
+#redefinir #container-input {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#redefinir #forca-senha {
+  right: -40px;
+}
+
+#button-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#redefinir .button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .container-register-senha {
+    width: 100%;
+  }
+}
