@@ -182,8 +182,11 @@ $(() =>
                 name: $('.register-nome').val(),
                 email: $('.register-email').val(),
                 password: $('.register-senha').val(),
-                experience: '0',
+                level: 0,
+                experience: 0,
+                picturePath: null,
                 aboutMe: '',
+                bannerColor: '#aaa',
                 creationDate: getDate()
             }, result =>
             {

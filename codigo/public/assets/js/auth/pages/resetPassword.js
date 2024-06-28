@@ -99,6 +99,8 @@ $(() =>
             {
                 await deleteToken(fullToken.id);
 
+                sessionStorage.clear();
+
                 window.location.href = '/';
             });
         });

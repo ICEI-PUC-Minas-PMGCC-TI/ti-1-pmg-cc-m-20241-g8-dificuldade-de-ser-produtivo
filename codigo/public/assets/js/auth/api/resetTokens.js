@@ -47,7 +47,7 @@ function retrieveToken(email, callbackFunction)
     {
         if (userData.length === 0 && callbackFunction)
         {
-            callbackFunction('Não foi encontrado uma conta com esse endereço de email.');
+            callbackFunction('Um email com as próximas instruções foi enviado caso exista uma conta com este endereço.');
             return;
         }
 
@@ -66,7 +66,7 @@ function retrieveToken(email, callbackFunction)
                     if (callbackFunction)
                     {
                         if (response.ok)
-                            callbackFunction('Link enviado no email.');
+                            callbackFunction('Um email com as próximas instruções foi enviado caso exista uma conta com este endereço.');
                         else
                             callbackFunction('Não foi possível prosseguir com a operação');
                     }
@@ -85,7 +85,7 @@ function retrieveToken(email, callbackFunction)
                     const response = await sendToEmail(user.email, token.token);
 
                     if (response.ok)
-                        callbackFunction('Link enviado no email.');
+                        callbackFunction('Um email com as próximas instruções foi enviado caso exista uma conta com este endereço.');
                     else
                         callbackFunction('Não foi possível prosseguir com a operação');
                 } else
@@ -195,5 +195,5 @@ function validateToken(token, callbackFunction)
         .catch(error => console.error('Error validating token: ', error));
 }
 
-export { deleteToken, getToken, retrieveToken, validateToken };
+export { deleteToken, generateToken, getToken, retrieveToken, validateToken };
 

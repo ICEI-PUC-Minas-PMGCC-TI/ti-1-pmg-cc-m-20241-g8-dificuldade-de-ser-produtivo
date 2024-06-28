@@ -2,11 +2,14 @@
   "users": [
     {
       "id": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "name": "mateus",
+      "name": "Mateus Henrique Medeiros Diniz",
       "email": "mateushmdiniz@gmail.com",
-      "password": "$2b$10$PPDop/jgd3u/3jYV0DD04OWfV6xNeWxXGMwac.gF2TKsgQJGuEpoK",
-      "experience": "0",
-      "aboutMe": "",
+      "password": "$2b$10$FPcBZEfI.SOX1imc7.Yf3.22wAHCs2hmhBTpJ6nu/inSgNvCF7rSW",
+      "level": 0,
+      "experience": 500,
+      "picturePath": null,
+      "aboutMe": "asdasd",
+      "bannerColor": "#2b00ff",
       "creationDate": "21/06/2024"
     },
     {
@@ -14,8 +17,11 @@
       "name": "a",
       "email": "chenri48155@gmail.com",
       "password": "$2b$10$Fo3DxQIPHSduQBb31P2KQ.PY.XNlHM1ahtJaY6fglk3qyvoZmZR9y",
-      "experience": "0",
+      "level": 0,
+      "experience": 0,
+      "picturePath": null,
       "aboutMe": "",
+      "bannerColor": "#aaa",
       "creationDate": "23/06/2024"
     }
   ],
@@ -27,7 +33,7 @@
       "title": "Integer nec odio",
       "text": "Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
       "date": "02/05/2024",
-      "commentCount": 3
+      "commentCount": 4
     },
     {
       "id": "3",
@@ -239,6 +245,16 @@
       "text": "LÚCIDO!!!",
       "likes": 0,
       "date": "23/06/2024",
+      "edited": false
+    },
+    {
+      "id": "e022",
+      "authorId": null,
+      "target": 0,
+      "targetId": "2",
+      "text": "asd",
+      "likes": 0,
+      "date": "28/06/2024",
       "edited": false
     }
   ],

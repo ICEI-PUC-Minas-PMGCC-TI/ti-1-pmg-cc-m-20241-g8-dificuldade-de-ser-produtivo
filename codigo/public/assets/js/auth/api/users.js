@@ -129,6 +129,20 @@ function getUserById(id, callbackFunction)
         .catch(error => console.error('Error getting user by id: ', error));
 }
 
+function getUserByIdSecure(id, callbackFunction)
+{
+    fetch(`${apiUrl}?id=${id}`)
+        .then(response => response.json())
+        .then(user =>
+        {
+            user.password = '';
+
+            if (callbackFunction)
+                callbackFunction(user);
+        })
+        .catch(error => console.error('Error getting user by id: ', error));
+}
+
 function changePassword(id, newPassword, callbackFunction)
 {
     getUserById(id, user =>
@@ -164,6 +178,31 @@ function changePassword(id, newPassword, callbackFunction)
     });
 }
 
+function updateUser(userId, updatedFields, callbackFunction)
+{
+    getUserById(userId, user =>
+    {
+        Object.keys(updatedFields).forEach(key =>
+        {
+            user[key] = updatedFields[key];
+        });
+
+        fetch(`${apiUrl}/${userId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(response =>
+            {
+                if (response.ok && callbackFunction)
+                    callbackFunction();
+            })
+            .catch(error => console.error('Error updating user', error));
+    });
+}
+
 function getUserName(userId, callbackFunction)
 {
     fetch(`${apiUrl}?id=${userId}`)
@@ -184,5 +223,5 @@ function getUserName(userId, callbackFunction)
         .catch(error => console.error('Error getting user id: ', error));
 }
 
-export { changePassword, getUser, getUserName, login, register };
+export { changePassword, getUser, getUserByIdSecure, getUserName, login, register, updateUser };
 

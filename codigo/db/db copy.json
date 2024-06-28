@@ -1,21 +1,39 @@
 {
-  "users": [],
-  "discussions": [
+  "users": [
     {
-      "id": "1",
-      "authorId": "0",
-      "title": "Avada Keraba",
-      "text": "Rastatabaka Na'vara Vaisen Tandona Vassora",
-      "date": "03/06/2024",
-      "commentCount": 0
+      "id": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "name": "mateus",
+      "email": "mateushmdiniz@gmail.com",
+      "password": "$2b$10$PPDop/jgd3u/3jYV0DD04OWfV6xNeWxXGMwac.gF2TKsgQJGuEpoK",
+      "level": 0,
+      "experience": 0,
+      "picturePath": null,
+      "aboutMe": "",
+      "bannerColor": "#f00",
+      "creationDate": "21/06/2024"
     },
+    {
+      "id": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "name": "a",
+      "email": "chenri48155@gmail.com",
+      "password": "$2b$10$Fo3DxQIPHSduQBb31P2KQ.PY.XNlHM1ahtJaY6fglk3qyvoZmZR9y",
+      "level": 0,
+      "experience": 0,
+      "picturePath": null,
+      "aboutMe": "",
+      "bannerColor": "#aaa",
+      "creationDate": "23/06/2024"
+    }
+  ],
+  "resetTokens": [],
+  "discussions": [
     {
       "id": "2",
       "authorId": "1",
       "title": "Integer nec odio",
       "text": "Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
       "date": "02/05/2024",
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "3",
@@ -160,6 +178,22 @@
       "text": "asdasd",
       "date": "23/5/2024",
       "commentCount": 0
+    },
+    {
+      "id": "554b",
+      "authorId": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "title": "Minha discussão",
+      "text": "Essa é a minha discussão",
+      "date": "23/06/2024",
+      "commentCount": 1
+    },
+    {
+      "id": "a182",
+      "authorId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "title": "Discussão",
+      "text": "Essa é sem sombra de dúvidas uma discussão",
+      "date": "23/06/2024",
+      "commentCount": 1
     }
   ],
   "comments": [
@@ -170,7 +204,8 @@
       "targetId": "2",
       "text": "Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
       "likes": 0,
-      "date": "06/06/2024"
+      "date": "06/06/2024",
+      "edited": false
     },
     {
       "id": "1",
@@ -179,7 +214,38 @@
       "targetId": "2",
       "text": "Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
       "likes": 0,
-      "date": "06/06/2024"
+      "date": "06/06/2024",
+      "edited": false
+    },
+    {
+      "id": "01aa",
+      "authorId": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "target": 0,
+      "targetId": "2",
+      "text": "comentando aqui!! <3",
+      "likes": 0,
+      "date": "23/06/2024",
+      "edited": true
+    },
+    {
+      "id": "7b24",
+      "authorId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "target": 0,
+      "targetId": "554b",
+      "text": "INCRÍVEL!!!",
+      "likes": 0,
+      "date": "23/06/2024",
+      "edited": false
+    },
+    {
+      "id": "46fe",
+      "authorId": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "target": 0,
+      "targetId": "a182",
+      "text": "LÚCIDO!!!",
+      "likes": 0,
+      "date": "23/06/2024",
+      "edited": false
     }
   ],
   "likes": [],
@@ -188,6 +254,21 @@
       "id": "733f",
       "discussionId": "2",
       "userId": "0"
+    },
+    {
+      "id": "dc62",
+      "discussionId": "3",
+      "userId": "84e9195e-90f2-4242-806e-8d1cd2004805"
+    },
+    {
+      "id": "e7ea",
+      "discussionId": "2",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c"
+    },
+    {
+      "id": "4d2c",
+      "discussionId": "2",
+      "userId": "84e9195e-90f2-4242-806e-8d1cd2004805"
     }
   ]
 }
