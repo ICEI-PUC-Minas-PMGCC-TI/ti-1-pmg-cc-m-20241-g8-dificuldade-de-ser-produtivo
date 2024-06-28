@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Produtividade</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <button id="prevMonth">Anterior</button>
+            <h2 id="monthYear"></h2>
+            <button id="nextMonth">Próximo</button>
+        </div>
+        <table class="calendar">
+            <thead>
+                <tr>
+                    <th>Dom</th>
+                    <th>Seg</th>
+                    <th>Ter</th>
+                    <th>Qua</th>
+                    <th>Qui</th>
+                    <th>Sex</th>
+                    <th>Sáb</th>
+                </tr>
+            </thead>
+            <tbody id="calendarBody">
+                <!-- Dias serão gerados dinamicamente aqui -->
+            </tbody>
+        </table>
+        <div id="taskList">
+            <h3>Tarefas do Dia</h3>
+            <ul id="tasks">
+                <!-- Tarefas serão listadas aqui -->
+            </ul>
+            <input type="text" id="taskInput" placeholder="Digite uma tarefa">
+            <button id="addTaskButton">Adicionar Tarefa</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
