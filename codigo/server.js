@@ -4,15 +4,21 @@ const cors = require('cors');
 const express = require('express');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
+const multer = require('multer');
+const fs = require('fs');
+const path = require('path');
 
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+app.use(bodyParser.json());
+app.use(cors());
+
 const transporter = nodemailer.createTransport({
     service: 'gmail',
-    host: 'smpt.gmail.com',
+    host: 'smtp.gmail.com',
     port: 587,
     secure: 'false',
     auth: {
@@ -24,8 +30,50 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-app.use(bodyParser.json());
-app.use(cors());
+const storage = multer.diskStorage({
+    destination: (req, file, cb) =>
+    {
+        const dir = path.join(__dirname, 'uploads/');
+        fs.mkdirSync(dir, { recursive: true });
+        cb(null, dir);
+    },
+    filename: (req, file, cb) =>
+    {
+        const userId = req.headers['filename'];
+
+        console.log(userId);
+
+        if (!userId)
+        {
+            cb(new Error('User ID not provided'), false);
+        }
+        const extension = path.extname(file.originalname);
+        cb(null, `${userId}${extension}`);
+    }
+});
+
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: 10 * 1024 * 1024 },
+    fileFilter: (req, file, cb) =>
+    {
+        checkFileType(file, cb);
+    }
+}).single('image');
+
+function checkFileType(file, cb)
+{
+    const filetypes = /jpeg|jpg|png|gif/;
+
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+
+    const mimetype = filetypes.test(file.mimetype);
+
+    if (mimetype && extname)
+        return cb(null, true);
+    else
+        cb('Error: Images only!');
+}
 
 app.get('/', (req, res) =>
 {
@@ -99,6 +147,31 @@ app.post('/sendEmail', async (req, res) =>
             res.send(err);
         });
 });
+
+app.post('/upload', (req, res) =>
+{
+    upload(req, res, (err) =>
+    {
+        if (err) 
+        {
+            res.status(400).send(err.message);
+            return;
+        }
+
+        if (req.file == undefined)
+        {
+            res.status(400).send('Error: no file selected!');
+            return;
+        }
+
+        res.status(200).send({
+            message: 'File uploaded successfully!',
+            filePath: `${req.file.filename}`
+        });
+    });
+});
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.listen(PORT, () =>
 {

@@ -1,5 +1,6 @@
 import { generateToken } from "../../auth/api/resetTokens.js";
 import { getUserByIdSecure, updateUser } from "../../auth/api/users.js";
+import { uploadImage } from "../api/profileImages.js";
 
 $(() =>
 {
@@ -43,7 +44,7 @@ $(() =>
 
         if (user.picturePath !== null)
         {
-            $('img-perfil').prop('src', user.picturePath);
+            $('#img-perfil').prop('src', `http://localhost:3001/uploads/${user.picturePath}`);
         }
 
         $('#nivel-perfil').text(user.level);
@@ -69,7 +70,22 @@ $(() =>
 
         input.on('change', e =>
         {
-            console.log(e.target.files[0]);
+            const image = e.target.files[0];
+            const result = e.target.result;
+
+            const formData = new FormData();
+            formData.append('image', image);
+
+            uploadImage(userId, formData, picturePath =>
+            {
+                if (picturePath === null)
+                    return;
+
+                updateUser(userId, { picturePath: picturePath }, () =>
+                {
+                    $('#img-perfil').prop('src', `http://localhost:3001/uploads/${user.picturePath}`);
+                });
+            });
         });
 
         picNameEl.prepend(label);
