@@ -1402,3 +1402,77 @@ body:has(#perfil) {
     width: 0;
     transition: width 0.3s;
 }
+
+.graficos, #grafico1, #grafico2, .graficos-esp {
+    justify-content: left;
+    align-items:left
+}
+
+.graficos{
+    display: flex;
+    margin-inline: 10%;
+    gap: 100px;
+    width: 100%;
+}
+
+.titulo-do-grafico {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    color: #fff;
+}
+
+.background {
+    background-color: #54799D;
+}
+
+
+
+
+.pends h1 {
+    color: white;
+ 
+}
+
+#pendentes {
+    height: 300px;
+    overflow: auto;
+}
+
+
+
+.pend {
+    background-color: #48e2da;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.container {
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container h1 {
+    margin-top: 0;
+  }
+  
+  .container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .container li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  
