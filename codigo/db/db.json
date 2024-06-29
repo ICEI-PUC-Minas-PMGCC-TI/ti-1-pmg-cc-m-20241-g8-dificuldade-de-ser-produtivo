@@ -1,64 +1,31 @@
 {
     "tasks": [
         {
-            "id": "1",
-            "title": "Estudar prova de calculo 1",
-            "description": "Limites ",
-            "complete": false,
-            "term": "2024-06-07",
-            "date": "2024-06-05",
-            "vencido": true,
-            "notificado":true,
-            "subTasks": [
-                {
-                    "title": "limites",
-                    "complete": false
-                },
-                {
-                    "title": "derivada",
-                    "complete": true
-                }
-            ]
+            "id": "93f5",
+            "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+            "title": "Sobreviver por 1 dias",
+            "description": "Vc consegue!",
+            "term": "2024-06-29",
+            "priority": "alta",
+            "complete": false
         },
         {
-            "id": "2",
-            "title": "Estudar prova de calculo 2",
-            "description": "Limites e derivadas",
-            "complete": false,
-            "term": "2024-06-09",
-            "date": "2024-06-11",
-            "vencido": true,
-            "notificado":false,
-            "subTasks": [
-                {
-                    "title": "limites",
-                    "complete": false
-                },
-                {
-                    "title": "derivada",
-                    "complete": true
-                }
-            ]
+            "id": "93f6",
+            "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+            "title": "Sobreviver por 2 dias",
+            "description": "Vc nao consegue!",
+            "term": "2024-07-03",
+            "priority": "alta",
+            "complete": false
         },
         {
-            "id": "3",
-            "title": "Estudar prova de calculo 3",
-            "description": "Limites e derivadas",
-            "complete": true,
-            "term": "2024-06-09",
-            "date": "2024-06-11",
-            "vencido": true,
-            "notificado":true,
-            "subTasks": [
-                {
-                    "title": "limites",
-                    "complete": true
-                },
-                {
-                    "title": "derivada",
-                    "complete": true
-                }
-            ]
+            "id": "93f7",
+            "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+            "title": "Sobreviver por 3 dias",
+            "description": "Vc nunca consegue!",
+            "term": "2024-07-04",
+            "priority": "alta",
+            "complete": false
         }
     ]
 }

@@ -4,22 +4,10 @@ const mes = String(data.getMonth() + 1).padStart(2, '0')
 const ano = data.getFullYear()
 CurrentDate = `${ano}-${mes}-${dia}`
 
-const datatarefaanalizada = "2024-06-22";
+document.addEventListener("DOMContentLoaded", function () {
 
-let tarefastatus = 0;
-if (CurrentDate < datatarefaanalizada) { // tarefa futura
-    tarefastatus = 3;
-}
-if (CurrentDate === datatarefaanalizada) { // tarefa atual
-    tarefastatus = 2;
-}
-if (CurrentDate > datatarefaanalizada) { // tarefa expirada
-    tarefastatus = 1;
-}
-
-console.log(tarefastatus);
-
-document.addEventListener('DOMContentLoaded', function () {
+/*
+    -------------------Ícone da barra-------------------*/
     const notificationsIcon = document.getElementById('nav-notifications');
     const mainContainer = document.querySelector('.main-container');
 
@@ -38,4 +26,87 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+
+    fetch('/tasks')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao buscar o arquivo JSON');
+        }
+        return response.json();
+    })
+    .then(data => {
+        const datatarefa = data.tasks[0].term;
+        if (CurrentDate === datatarefa) { // tarefa atual
+            tarefaproxima();
+        }
+        if (CurrentDate > datatarefa) { // tarefa expirada
+            tarefaatrasada();
+        }
+    })
+    .catch(error => {
+        console.error('Erro ao processar o arquivo JSON:', error);
+    });
+    /*
+    -------------------NOTIFICAÇÃO PRÓXIMA-------------------*/
+    function tarefaproxima() {
+        const notificacao = document.querySelector('#notificacoes-separadas');
+        if (!notificacao) {
+            console.error('Elemento #notificacoes-separadas não encontrado no DOM.');
+        } else {
+            fetch('/tasks')
+                .then(async res => {
+                    if (!res.ok) {
+                        throw new Error(res.status);
+                    }
+
+                    let data = await res.json();
+                    let project = document.createElement('div');
+                    project.innerHTML = `
+                        <div class="notification">
+                            <a class="texto-da-notificacao">Sua tarefa pendente está próxima do prazo</a>
+                            <div class="botoes">
+                                <a class="redirecionamento-tarefas">Editar</a>
+                            </div>
+                        </div>
+                        `;
+                    perfil.appendChild(project);
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar dados do json:', error);
+                });
+        }
+    }/*
+    ---------------------------------------------------------*/
+    /*
+    ------------------NOTIFICAÇÃO ATRASADA-------------------*/
+    function tarefaatrasada() {
+        const notificacao = document.querySelector('#notificacoes-separadas');
+        if (!notificacao) {
+            console.error('Elemento #notificacoes-separadas não encontrado no DOM.');
+        } else {
+            fetch('/tasks')
+                .then(async res => {
+                    if (!res.ok) {
+                        throw new Error(res.status);
+                    }
+
+                    let data = await res.json();
+                    let project = document.createElement('div');
+                    project.innerHTML = `
+                        <div class="notification">
+                            <a class="texto-da-notificacao">Sua tarefa expirou no dia 19/05/24</a>
+                            <div class="botoes">
+                                <a class="marcar-ignorar">Ignorar</a>
+                                <a class="redirecionamento-tarefas">Editar</a>
+                            </div>
+                        </div>
+                        `;
+                    perfil.appendChild(project);
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar dados do json:', error);
+                });
+        }
+    }/*
+    ---------------------------------------------------------*/
 });
