@@ -83,7 +83,7 @@ $(() =>
 
                 updateUser(userId, { picturePath: picturePath }, () =>
                 {
-                    $('#img-perfil').prop('src', `http://localhost:3001/uploads/${user.picturePath}`);
+                    $('#img-perfil').prop('src', `http://localhost:3001/uploads/${picturePath}`);
                 });
             });
         });

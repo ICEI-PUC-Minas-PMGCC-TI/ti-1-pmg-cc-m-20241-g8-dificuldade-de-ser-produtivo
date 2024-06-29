@@ -1,4 +1,4 @@
-import { getUserName } from '../../auth/api/users.js';
+import { getUser, getUserByIdSecure, getUserName } from '../../auth/api/users.js';
 import { infiniteScroll } from '../../util.js';
 import { addBookmark, getAllUserBookmarks, getBookmark, removeBookmark } from '../api/bookmarks.js';
 import { deleteDiscussion, getDiscussions, getSpecificDiscussion, getUserDiscussions, searchDiscussions } from '../api/discussions.js';
@@ -172,9 +172,15 @@ $(() =>
 
 		discussions.forEach(discussionData =>
 		{
-			getUserName(discussionData.authorId, name =>
+			getUserByIdSecure(discussionData.authorId, data =>
 			{
-				discussionData.authorName = name;
+				if (data.length > 0)
+				{
+					const user = data[0];
+
+					discussionData.authorName = user.name;
+					discussionData.picturePath = user.picturePath;
+				}
 
 				if (curState !== PageStates.MY_DISCUSSIONS)
 				{
@@ -214,7 +220,7 @@ $(() =>
 		const discussionContainer = $('<div>', { class: 'discussion-container' });
 
 		const userName = curState === PageStates.MY_DISCUSSIONS ? 'Você' : discussionData.authorName;
-		const userContainer = createUserContainer(userName);
+		const userContainer = createUserContainer(userName, discussionData.picturePath);
 		discussionContainer.append(userContainer);
 
 		const contentContainer = createContentContainer(discussionData.title, discussionData.text);
@@ -226,10 +232,16 @@ $(() =>
 		return discussionContainer;
 	}
 
-	function createUserContainer(userName)
+	function createUserContainer(userName, picturePath)
 	{
 		const userContainer = $('<div>', { class: 'user' });
-		userContainer.append($('<i>', { class: 'fa-solid fa-user' }));
+		if (picturePath)
+		{
+			userContainer.append($('<img>', { class: 'discussion-user-image', src: `http://localhost:3001/uploads/${picturePath}` }));
+		}
+		else
+			userContainer.append($('<i>', { class: 'fa-solid fa-user' }));
+
 		userContainer.append($('<span>', { text: userName }));
 		return userContainer;
 	}

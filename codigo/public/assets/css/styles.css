@@ -744,6 +744,11 @@ body:has(#perfil) {
     gap: 10px;
 }
 
+#forum .discussion-container .user .discussion-user-image {
+    width: 25px;
+    border-radius: 50%;
+}
+
 #forum .discussion-container .content h2,
 #forum .options {
     color: white;
@@ -861,7 +866,7 @@ body:has(#perfil) {
 #discussion header {
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    align-items: center;
     gap: 40px;
 }
 
@@ -888,6 +893,18 @@ body:has(#perfil) {
     flex-direction: row;
     align-items: center;
     gap: 10px;
+}
+
+#discussion .comment-user img {
+    width: 25px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+#discussion #user img {
+    width: 25px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
 }
 
 #discussion .option:hover {

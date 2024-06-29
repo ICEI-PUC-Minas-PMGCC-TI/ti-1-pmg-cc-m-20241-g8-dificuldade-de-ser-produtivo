@@ -1,4 +1,4 @@
-import { getUserName } from "../../auth/api/users.js";
+import { getUserByIdSecure, getUserName } from "../../auth/api/users.js";
 import { getDate, infiniteScroll, throttle } from "../../util.js";
 import { addBookmark, getBookmark, removeBookmark } from "../api/bookmarks.js";
 import { Targets, createComment, deleteComment, editComment, getComments, getUserComments, likeComment } from "../api/comments.js";
@@ -45,9 +45,14 @@ $(() =>
 
         const discussion = discussionEntry[0];
 
-        getUserName(discussion.authorId, name =>
+        getUserByIdSecure(discussion.authorId, data =>
         {
-            discussion.authorName = name;
+            if (data.length > 0)
+            {
+                const user = data[0];
+                discussion.authorName = user.name;
+                discussion.picturePath = user.picturePath;
+            }
 
             populateDiscussionWithData(discussion);
             activateOptions(discussion);
@@ -73,9 +78,14 @@ $(() =>
 
         comments.forEach(commentData =>
         {
-            getUserName(commentData.authorId, name =>
+            getUserByIdSecure(commentData.authorId, data =>
             {
-                commentData.authorName = name;
+                if (data.length > 0)
+                {
+                    const user = data[0];
+                    commentData.authorName = user.name;
+                    commentData.picturePath = user.picturePath;
+                }
 
                 getLikeRelationship(commentData.id, userId, likeRelationship =>
                 {
@@ -89,10 +99,17 @@ $(() =>
 
     function populateDiscussionWithData(discussion)
     {
+        const userIcon = $('#user i');
         const userElement = $('#user span');
         const dateElement = $('header div:nth-child(3)');
         const titleElement = $('#content h2');
         const textElement = $('#content p');
+
+        if (discussion.picturePath)
+        {
+            userIcon.remove();
+            $('#user').prepend($('<img>', { src: `http://localhost:3001/uploads/${discussion.picturePath}` }));
+        }
 
         userElement.text(discussion.authorId === userId ? 'Você' : discussion.authorName);
         dateElement.text(discussion.date);
@@ -176,7 +193,7 @@ $(() =>
                 return 'Você';
 
             return `${commentData.authorName}`;
-        }, commentData.date, commentData.edited);
+        }, commentData.picturePath, commentData.date, commentData.edited);
         comment.append(commentHeader);
 
         const commentText = $('<p>', { text: commentData.text });
@@ -191,10 +208,14 @@ $(() =>
         return comment;
     }
 
-    function createCommentHeader(userName, date, edited)
+    function createCommentHeader(userName, userPicture, date, edited)
     {
         const commentHeader = $('<div>', { class: 'comment-user' });
-        commentHeader.append($('<i>', { class: 'fa-solid fa-user' }));
+        if (userPicture)
+            commentHeader.append($('<img>', { src: `http://localhost:3001/uploads/${userPicture}` }));
+        else
+            commentHeader.append($('<i>', { class: 'fa-solid fa-user' }));
+
         commentHeader.append($('<span>', { text: userName }));
         commentHeader.append($('<span>', { text: `${date}` }));
 
