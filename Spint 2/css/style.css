@@ -1,31 +1,15 @@
-html{
-
-
-    --body-color:#FFFCFF ;
-  
-    --header-color:#d36c6c;
-  
-    --header-button:#92a1d1;
-  
+html {
+    --body-color: #FFFCFF;
+    --header-color: #d36c6c;
+    --header-button: #92a1d1;
     --color-weekdays: #247BA0;
-    
     --box-shadow: #CBD4C2;
-  
     --hover: #e8faed;
-  
-    --current-day:#e8f4fa;
-  
+    --current-day: #e8f4fa;
     --event-color: #58bae4;
-  
     --modal-event: #e8f4fa;
-  
-  
-   --color-day:white;
-    
-  
+    --color-day: white;
   }
-  
-  
   
   body {
     display: flex;
@@ -33,48 +17,61 @@ html{
     justify-content: center;
     background-color: var(--body-color);
   }
+  
   button {
-    width: 75px;
     cursor: pointer;
     box-shadow: 0px 0px 2px gray;
     border: none;
     outline: none;
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 5px;
     color: white;
   }
   
   #header {
     padding: 10px;
-    color: var(--header-color) ;
+    color: var(--header-color);
     font-size: 26px;
     font-family: sans-serif;
     display: flex;
     justify-content: space-between;
   }
+  
   #header button {
-    background-color:var(--header-button);
+    background-color: var(--header-button);
   }
+  
   #container {
-    width: 770px;
+    width: 100%;
+    max-width: 770px;
+    padding: 10px;
+    box-sizing: border-box;
   }
+  
   #weekdays {
     width: 100%;
     display: flex;
-    color: var(--color-weekdays) ;
+    color: var(--color-weekdays);
+    justify-content: space-between;
   }
+  
   #weekdays div {
-    width: 100px;
-    padding: 10px;
+    flex: 1;
+    text-align: center;
+    padding: 10px 5px;
+    box-sizing: border-box;
   }
+  
   #calendar {
     width: 100%;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
   }
+  
   .day {
-    width: 100px;
+    flex: 1 0 14%; /* Ajusta a largura para 14% para caber 7 dias em uma linha */
     padding: 10px;
     height: 100px;
     cursor: pointer;
@@ -87,13 +84,15 @@ html{
     justify-content: space-between;
     border-radius: 15%;
   }
+  
   .day:hover {
     background-color: var(--hover);
   }
   
   .day + #currentDay {
-    background-color:var(--current-day);
+    background-color: var(--current-day);
   }
+  
   .event {
     font-size: 10px;
     padding: 3px;
@@ -103,11 +102,13 @@ html{
     max-height: 55px;
     overflow: hidden;
   }
+  
   .padding {
     cursor: default !important;
     background-color: var(--body-color) !important;
     box-shadow: none !important;
   }
+  
   #newEventModal, #deleteEventModal {
     display: none;
     z-index: 20;
@@ -115,12 +116,15 @@ html{
     background-color: var(--modal-event);
     box-shadow: 0px 0px 3px black;
     border-radius: 5px;
-    width: 350px;
+    width: 90%;
+    max-width: 350px;
     top: 100px;
-    left: calc(50% - 175px);
+    left: 50%;
+    transform: translateX(-50%);
     position: absolute;
     font-family: sans-serif;
   }
+  
   #eventTitleInput {
     padding: 10px;
     width: 100%;
@@ -131,18 +135,23 @@ html{
     border: none;
     box-shadow: 0px 0px 3px gray;
   }
+  
   #eventTitleInput.error {
     border: 2px solid red;
   }
+  
   #cancelButton, #deleteButton {
     background-color: var(--header-color);
   }
+  
   #saveButton, #closeButton {
     background-color: var(--header-button);
   }
+  
   #eventText {
     font-size: 14px;
   }
+  
   #modalBackDrop {
     display: none;
     top: 0px;
@@ -153,36 +162,114 @@ html{
     position: absolute;
     background-color: rgba(0,0,0,0.8);
   }
-  .event-item {
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 0;
-  }
   
+  /* Estilos para os botões de excluir e concluir tarefas */
   .event-item button {
     margin-left: 5px;
-  }
-  .event-item {
-  display: flex;
-  justify-content: space-between;
-  margin: 5px 0;
-}
-
-.event-item button {
-  margin-left: 5px;
-}
-.event-item {
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 0;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
   }
   
-  .event-item button {
-    margin-left: 5px;
+  /* Estilo específico para o botão de excluir */
+  .event-item button:nth-child(2) {
+    background-color: #ff4c4c; /* Cor de fundo vermelha */
+    color: white; /* Cor do texto branca */
+  }
+  
+  .event-item button:nth-child(2):hover {
+    background-color: #ff0000; /* Cor de fundo vermelha mais escura ao passar o mouse */
+  }
+  
+  /* Estilo específico para o botão de concluir */
+  .event-item button:nth-child(3) {
+    background-color: #4caf50; /* Cor de fundo verde */
+    color: white; /* Cor do texto branca */
+  }
+  
+  .event-item button:nth-child(3):hover {
+    background-color: #45a049; /* Cor de fundo verde mais escura ao passar o mouse */
+  }
+  
+  /* Estilo para o botão de adicionar nova tarefa */
+  #addnewtask {
+    background-color: #2196F3; /* Cor de fundo azul */
+    color: white; /* Cor do texto branca */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #addnewtask:hover {
+    background-color: #1e88e5; /* Cor de fundo azul mais escura ao passar o mouse */
+  }
+  
+  /* Estilo para o botão de salvar */
+  #saveButton {
+    background-color: #4CAF50; /* Cor de fundo verde */
+    color: white; /* Cor do texto branca */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #saveButton:hover {
+    background-color: #45a049; /* Cor de fundo verde mais escura ao passar o mouse */
+  }
+  
+  /* Estilo para o botão de cancelar */
+  #cancelButton, #closeButton, #deleteButton {
+    background-color: #f44336; /* Cor de fundo vermelha */
+    color: white; /* Cor do texto branca */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #cancelButton:hover, #closeButton:hover, #deleteButton:hover {
+    background-color: #d32f2f; /* Cor de fundo vermelha mais escura ao passar o mouse */
   }
   
   .completed {
     text-decoration: line-through;
   }
   
+  /* Media Queries para responsividade */
+  
+  /* Dispositivos menores */
+  @media (max-width: 768px) {
+    #weekdays {
+      flex-direction: column;
+    }
+    
+    #weekdays div {
+      text-align: left;
+    }
+  
+    .day {
+      flex: 1 0 48%; /* Ajusta para duas colunas em dispositivos menores */
+      margin: 5px 1%;
+    }
+  }
+  
+  /* Dispositivos muito pequenos */
+  @media (max-width: 480px) {
+    #header {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    #header button {
+      margin-top: 10px;
+    }
+  
+    .day {
+      flex: 1 0 100%; /* Ajusta para uma coluna em dispositivos muito pequenos */
+      margin: 5px 0;
+    }
+  }
   
