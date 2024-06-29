@@ -1222,23 +1222,75 @@ body:has(#perfil) {
 }
 
 
+/* 
+ 
+    TAREFAS ----------------------------------------------------------------------
+    
+*/
 
-/* Estilos novos */
+#tasks-main {
+    background-color: rgba(251, 119, 53, 0.2);
+}
+
 .add-task-header {
     background-color: var(--tasks-color);
     color: #fff;
     padding: 10px;
     text-align: left;
+    cursor: pointer;
+    transition: all .2s ease;
 }
 
-.add-task-header h2 {
-    cursor: pointer;
+.add-task-header #addTaskButton {
+    transform-origin: left center;
+    transition: all .2s ease;
+}
+
+.add-task-header:hover {
+    background-color: #fb5d35;
+}
+
+.add-task-header:hover #addTaskButton {
+    transform: scale(110%);
 }
 
 .tasks-container {
     display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.priority.hidden {
+    display: none !important;
+}
+
+.tasks-container .priority-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.tasks-container .wrapper {
+    overflow: hidden;
+    transition: height 0.4s;
+}
+
+.tasks-container .priority-tasks-container {
+    display: flex;
     flex-wrap: wrap;
     padding: 20px;
+}
+
+#high-priority .task {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+#medium-priority .task {
+    background-color: rgba(255, 100, 0, 0.3);
+}
+
+#low-priority .task {
+    background-color: rgba(215, 215, 0, 0.3);
 }
 
 .task {
@@ -1254,7 +1306,7 @@ body:has(#perfil) {
 }
 
 .task.completed {
-    background-color: #e6ffe6;
+    background-color: #e6ffe6 !important;
 }
 
 .task h3 {
@@ -1279,26 +1331,9 @@ body:has(#perfil) {
     color: #000;
 }
 
-
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; 
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; 
+.task .task-buttons {
+    display: flex;
+    gap: 20px;
 }
 
 .close {
@@ -1308,32 +1343,49 @@ body:has(#perfil) {
     font-weight: bold;
 }
 
-.edit-btn {
-    width: 31px;
-    height: 31px;
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(214, 203, 203);
-    border: none;
-    cursor: pointer;
-}
 
-.delete-btn {
-    width: 100px;
+.task button {
     height: 30px;
+    border: 3px solid black;
     border-radius: 20px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(214, 203, 203);
-    border: none;
+    align-items: center;
+    gap: 10px;
+    background-color: transparent;
     cursor: pointer;
     margin-top: 20px;
     font-weight: 700;
 }
 
+.task .select-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.task select {
+    height: 30px;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all .2s;
+}
+
+.task button:hover,
+.task select:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
 .close:hover,
 .close:focus {
     color: black;
@@ -1341,25 +1393,61 @@ body:has(#perfil) {
     cursor: pointer;
 }
 
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
+#tasks-page .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-content {
+#tasks-page .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; 
+    margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%; 
+    border-radius: 20px;
+    width: 80%;
+}
+
+#tasks-page .modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+#tasks-page .modal form .flex {
+    display: flex;
+    flex-direction: column;
+}
+
+#tasks-page .modal form .group {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#tasks-page .modal input,
+#tasks-page .modal textarea,
+#tasks-page .modal select,
+#tasks-page .modal button {
+    font: inherit;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 5px 20px;
+    background-color: transparent;
+}
+
+#tasks-page .modal textarea {
+    resize: none;
+}
+
+#tasks-page .modal button {
+    cursor: pointer;
 }
 
 .close {
@@ -1374,22 +1462,6 @@ body:has(#perfil) {
     color: black;
     text-decoration: none;
     cursor: pointer;
-}
-
-/* Estilos para a barra de progresso */
-.progress-bar {
-    background-color:#B1B1B1;
-    border-radius: 5px;
-    width: 100%;
-    height: 13px;
-    margin-top: 10px;
-}
-
-.progress {
-    background-color: #44DF0E;
-    height: 100%;
-    border-radius: 5px;
-    width: 0%;
 }
 
 @media (max-width: 680px) {
@@ -1400,9 +1472,10 @@ body:has(#perfil) {
     }
 }
 
-.task.completed {
-  background-color: #d4edda;
-  text-decoration: line-through;
+.task.completed p,
+.task.completed h3 {
+    background-color: #d4edda;
+    text-decoration: line-through;
 }
 
 .medalha {
@@ -1420,12 +1493,15 @@ body:has(#perfil) {
     transition: width 0.3s;
 }
 
-.graficos, #grafico1, #grafico2, .graficos-esp {
+.graficos,
+#grafico1,
+#grafico2,
+.graficos-esp {
     justify-content: left;
-    align-items:left
+    align-items: left
 }
 
-.graficos{
+.graficos {
     display: flex;
     margin-inline: 10%;
     gap: 100px;
@@ -1450,7 +1526,7 @@ body:has(#perfil) {
 
 .pends h1 {
     color: white;
- 
+
 }
 
 #pendentes {
@@ -1472,24 +1548,22 @@ body:has(#perfil) {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .container h1 {
+}
+
+.container h1 {
     margin-top: 0;
-  }
-  
-  .container ul {
+}
+
+.container ul {
     list-style-type: none;
     padding: 0;
-  }
-  
-  .container li {
+}
+
+.container li {
     margin-bottom: 10px;
     padding: 10px;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  
+}

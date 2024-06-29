@@ -1,5 +1,4 @@
-
-  let TotaldeTarefas;
+let TotaldeTarefas;
 let TarefasTotaisFeitas;
 let TotaisDiarias;
 let FeitasDiarias;

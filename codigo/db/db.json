@@ -304,37 +304,17 @@
       "title": "Estudar prova de calculo 1",
       "description": "Limites ",
       "complete": false,
-      "term": "2004-02-07",
-      "date": "2004-02-05",
-      "subTasks": [
-        {
-          "title": "limites",
-          "complete": true
-        },
-        {
-          "title": "derivada",
-          "complete": true
-        }
-      ],
-      "priority": "media"
+      "term": "2024-02-07",
+      "date": "2024-02-05",
+      "priority": "alta"
     },
     {
       "id": "2",
       "title": "Estudar prova de calculo 2",
       "description": "Limites e derivadas",
       "complete": false,
-      "term": "2004-02-09",
-      "date": "2004-02-07",
-      "subTasks": [
-        {
-          "title": "limites",
-          "complete": true
-        },
-        {
-          "title": "derivada",
-          "complete": true
-        }
-      ],
+      "term": "2024-02-09",
+      "date": "2024-02-07",
       "priority": "media"
     },
     {
@@ -342,274 +322,32 @@
       "title": "Estudar prova de calculo 3",
       "description": "Limites e derivadas",
       "complete": true,
-      "term": "2004-02-09",
-      "date": "2004-02-07",
-      "subTasks": [
-        {
-          "title": "limites",
-          "complete": true
-        },
-        {
-          "title": "derivada",
-          "complete": true
-        }
-      ],
+      "term": "2024-02-09",
+      "date": "2024-02-07",
       "priority": "baixa"
     },
     {
-      "id": "a304",
-      "title": "bfb",
-      "description": "dbfdb",
-      "term": "0006-02-02",
-      "date": "0003-04-03",
-      "complete": true
+      "id": "5613",
+      "title": "Finalizar TI1",
+      "description": "SOCORRO",
+      "term": "2024-07-01",
+      "date": "2024-06-29",
+      "priority": "alta"
     },
     {
-      "id": "2abc",
-      "title": "423",
-      "description": "32442",
-      "term": "0003-10-12",
-      "date": "0043-04-12",
-      "complete": true
+      "id": "cdd2",
+      "title": "a",
+      "description": "b",
+      "term": "2024-06-29",
+      "date": "2024-06-29",
+      "priority": "baixa"
     },
     {
-      "id": "7b14",
-      "title": "423",
-      "description": "32442",
-      "term": "0003-10-12",
-      "date": "0043-04-12",
-      "complete": true
-    },
-    {
-      "id": "4418",
-      "title": "423",
-      "description": "32442",
-      "term": "0003-10-12",
-      "date": "0043-04-12",
-      "complete": true
-    },
-    {
-      "id": "cfbe",
-      "title": "423",
-      "description": "32442",
-      "term": "0003-10-12",
-      "date": "0043-04-12",
-      "complete": true
-    },
-    {
-      "id": "350c",
-      "title": "423",
-      "description": "32442",
-      "term": "0003-10-12",
-      "date": "0043-04-12",
-      "complete": true
-    },
-    {
-      "id": "3a60",
-      "title": "423",
-      "description": "32442",
-      "term": "0003-10-12",
-      "date": "0043-04-12",
-      "complete": true
-    },
-    {
-      "id": "1f12",
-      "title": "423",
-      "description": "32442",
-      "term": "0003-10-12",
-      "date": "0043-04-12",
-      "complete": true
-    },
-    {
-      "id": "80ea",
-      "title": "423",
-      "description": "32442",
-      "term": "0003-10-12",
-      "date": "0043-04-12",
-      "complete": true
-    },
-    {
-      "id": "e583",
-      "title": "423",
-      "description": "32442",
-      "term": "0003-10-12",
-      "date": "0043-04-12",
-      "complete": true
-    },
-    {
-      "id": "d265",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": true
-    },
-    {
-      "id": "c4d9",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": true
-    },
-    {
-      "id": "62dd",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": true
-    },
-    {
-      "id": "576e",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": true
-    },
-    {
-      "id": "f1e4",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": true
-    },
-    {
-      "id": "252c",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": true
-    },
-    {
-      "id": "185f",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": true
-    },
-    {
-      "id": "55ac",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": true
-    },
-    {
-      "id": "dfe9",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": true
-    },
-    {
-      "id": "0eb7",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": true
-    },
-    {
-      "id": "b987",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": true
-    },
-    {
-      "id": "6815",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": true
-    },
-    {
-      "id": "f30d",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": true
-    },
-    {
-      "id": "b39e",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": false
-    },
-    {
-      "id": "a411",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": false
-    },
-    {
-      "id": "b00e",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": false
-    },
-    {
-      "id": "c486",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": false
-    },
-    {
-      "id": "d475",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": false
-    },
-    {
-      "id": "0832",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": false
-    },
-    {
-      "id": "f8a2",
-      "title": "sqs",
-      "description": "wq",
-      "term": "2000-10-12",
-      "date": "2000-12-10",
-      "complete": false
-    },
-    {
-      "id": "19d0",
-      "title": "fwe",
-      "description": "werw",
-      "term": "2024-06-28",
-      "date": "2024-06-28",
-      "complete": true
-    },
-    {
-      "id": "0f43",
-      "title": "teste 2 not",
-      "description": "fwefw",
-      "term": "2024-06-28",
-      "date": "2024-06-28"
+      "id": "93f5",
+      "title": "Sobreviver por 1 ano",
+      "description": "Vc consegue!",
+      "term": "2025-06-28",
+      "priority": "alta"
     }
   ]
 }

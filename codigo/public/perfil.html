@@ -15,7 +15,7 @@
 <body>
     <nav>
         <div class="nav-group">
-            <a href="" class="nav-item" id="nav-home">
+            <a href="inicio.html" class="nav-item" id="nav-home">
                 <i class=" fa-solid fa-house"></i>
                 <span>Início</span>
             </a>
@@ -23,7 +23,7 @@
                 <i class="fa-solid fa-calendar-days"></i>
                 <span>Agenda</span>
             </a>
-            <a class="nav-item" id="nav-tasks">
+            <a href="tarefas.html" class="nav-item" id="nav-tasks">
                 <i class="fa-solid fa-list-check"></i>
                 <span>Tarefas</span>
             </a>
@@ -56,7 +56,7 @@
         </header>
         <div class="corpo-perfil">
             <div class="nivel-perfil">
-                <h3 >Nível <span id="nivel-perfil"></span></h3>
+                <h3>Nível <span id="nivel-perfil"></span></h3>
 
                 <div class="barra-xp-container">
                     <div class="barra-xp">
@@ -83,107 +83,120 @@
     </main>
 
     <script>
-  async function fetchTasks() {
-    try {
-        const response = await fetch('http://localhost:3000/tasks');
-        const data = await response.json();
-    
-        return data;
-    } catch (error) {
-        console.error('Erro ao buscar tarefas:', error);
-        return [];
-    }
-}
+        async function fetchTasks()
+        {
+            try
+            {
+                const response = await fetch('http://localhost:3000/tasks');
+                const data = await response.json();
 
-function contarTarefasCompletas(tasks) {
-    return tasks.reduce((count, task) => count + (task.complete ? 1 : 0), 0);
-}
-
-
-async function updateExperience(userId, xpToAdd,level) {
-    try {
-        const response = await fetch(`http://localhost:3000/users/${userId}`, {
-            method: 'PATCH', // Ou POST, dependendo da sua API
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                level:level,
-                experience: xpToAdd
-            })
-        });
-        if (!response.ok) {
-            throw new Error('Erro ao atualizar a experiência do usuário');
+                return data;
+            } catch (error)
+            {
+                console.error('Erro ao buscar tarefas:', error);
+                return [];
+            }
         }
-        const data = await response.json();
-        console.log('Experiência atualizada:', data);
-    } catch (error) {
-        console.error('Erro ao atualizar a experiência do usuário:', error);
-    }
-}
-function exibirMedalhas(completeTasksCount) {
-    const medalhasContainer = document.getElementById('medalhas-container');
-    medalhasContainer.innerHTML = ''; // Limpar o conteúdo anterior
-    const medalhasCount = Math.floor(completeTasksCount / 2);
-    
-    const xpGained = medalhasCount * 200;
-    
-    // Atualiza o XP atual e verifica se houve upgrade de nível
-    const xpAtualElement = document.getElementById('xp-atual');
-    let xpAtual =xpAtualElement.textContent;
-    xpAtual += xpGained;
-    console.log(xpAtual);
-    xpAtualElement.textContent = xpAtual;
-    
-    // Verifica se atingiu ou ultrapassou 1000 XP
-    if (xpAtual >= 1000) {
-        // Calcula o novo nível
-        const nivelElement = document.getElementById('nivel-perfil');
-        let nivel = nivelElement.textContent;
-     
 
-        nivel = Number(xpAtual) /1000;
-        nivelElement.textContent = Number(Math.trunc(nivel));
-        
-        // Zera o XP
-        xpAtual = xpAtual % 1000;
-        xpAtualElement.textContent = xpAtual;
-        
-        // Atualiza a barra de XP visualmente
-        const barraXP = document.querySelector('.barra-xp2');
-        barraXP.style.width = '0%'; // Zera a largura da barra
-        
-        console.log('nivel',nivel)
-        updateExperience('ce16a42f-7fca-4162-bfab-da9a7759c9d9', xpAtual, Number(Math.trunc(nivel)));
-    } else {
-        // Atualiza a barra de XP visualmente (exemplo: aumentando a largura)
-        const novaLargura = (xpAtual % 1000) / 10 + '%'; // Ajuste para a largura da barra
-        const barraXP = document.querySelector('.barra-xp2');
-        barraXP.style.width = novaLargura;
-        
-        console.log('nivel',nivel)
-        updateExperience('ce16a42f-7fca-4162-bfab-da9a7759c9d9', xpAtual, Number(Math.trunc(nivel)));
-    }
-    
-    // Exibe as medalhas
-    for (let i = 0; i < medalhasCount; i++) {
-        const medalhaElement = document.createElement('div');
-        medalhaElement.className = 'medalha';
-        medalhaElement.innerHTML = `
+        function contarTarefasCompletas(tasks)
+        {
+            return tasks.reduce((count, task) => count + (task.complete ? 1 : 0), 0);
+        }
+
+
+        async function updateExperience(userId, xpToAdd, level)
+        {
+            try
+            {
+                const response = await fetch(`http://localhost:3000/users/${userId}`, {
+                    method: 'PATCH', // Ou POST, dependendo da sua API
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        level: level,
+                        experience: xpToAdd
+                    })
+                });
+                if (!response.ok)
+                {
+                    throw new Error('Erro ao atualizar a experiência do usuário');
+                }
+                const data = await response.json();
+                console.log('Experiência atualizada:', data);
+            } catch (error)
+            {
+                console.error('Erro ao atualizar a experiência do usuário:', error);
+            }
+        }
+        function exibirMedalhas(completeTasksCount)
+        {
+            const medalhasContainer = document.getElementById('medalhas-container');
+            medalhasContainer.innerHTML = ''; // Limpar o conteúdo anterior
+            const medalhasCount = Math.floor(completeTasksCount / 2);
+
+            const xpGained = medalhasCount * 200;
+
+            // Atualiza o XP atual e verifica se houve upgrade de nível
+            const xpAtualElement = document.getElementById('xp-atual');
+            let xpAtual = xpAtualElement.textContent;
+            xpAtual += xpGained;
+            console.log(xpAtual);
+            xpAtualElement.textContent = xpAtual;
+
+            // Verifica se atingiu ou ultrapassou 1000 XP
+            if (xpAtual >= 1000)
+            {
+                // Calcula o novo nível
+                const nivelElement = document.getElementById('nivel-perfil');
+                let nivel = nivelElement.textContent;
+
+
+                nivel = Number(xpAtual) / 1000;
+                nivelElement.textContent = Number(Math.trunc(nivel));
+
+                // Zera o XP
+                xpAtual = xpAtual % 1000;
+                xpAtualElement.textContent = xpAtual;
+
+                // Atualiza a barra de XP visualmente
+                const barraXP = document.querySelector('.barra-xp2');
+                barraXP.style.width = '0%'; // Zera a largura da barra
+
+                console.log('nivel', nivel)
+                updateExperience('ce16a42f-7fca-4162-bfab-da9a7759c9d9', xpAtual, Number(Math.trunc(nivel)));
+            } else
+            {
+                // Atualiza a barra de XP visualmente (exemplo: aumentando a largura)
+                const novaLargura = (xpAtual % 1000) / 10 + '%'; // Ajuste para a largura da barra
+                const barraXP = document.querySelector('.barra-xp2');
+                barraXP.style.width = novaLargura;
+
+                console.log('nivel', nivel)
+                updateExperience('ce16a42f-7fca-4162-bfab-da9a7759c9d9', xpAtual, Number(Math.trunc(nivel)));
+            }
+
+            // Exibe as medalhas
+            for (let i = 0; i < medalhasCount; i++)
+            {
+                const medalhaElement = document.createElement('div');
+                medalhaElement.className = 'medalha';
+                medalhaElement.innerHTML = `
             <i class="fa-solid fa-medal"></i>
             <h3>Medalha</h3>
         `;
-        medalhasContainer.appendChild(medalhaElement);
-    }
-}
+                medalhasContainer.appendChild(medalhaElement);
+            }
+        }
 
-async function init() {
-    const tasks = await fetchTasks();
-    const completeTasksCount = contarTarefasCompletas(tasks);
-    exibirMedalhas(completeTasksCount);
-}
+        async function init()
+        {
+            const tasks = await fetchTasks();
+            const completeTasksCount = contarTarefasCompletas(tasks);
+            exibirMedalhas(completeTasksCount);
+        }
 
-document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', init);
 
     </script>
     <script src="assets/js/jquery-3.7.1.min.js"></script>

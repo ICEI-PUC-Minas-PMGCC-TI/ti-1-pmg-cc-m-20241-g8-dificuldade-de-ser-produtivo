@@ -9,13 +9,13 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/styles.css">
-
+    <script src="assets/js/validateUser.js"></script>
 </head>
 
-<body>
+<body id="tasks-page">
     <nav>
         <div class="nav-group">
-            <a href="" class="nav-item" id="nav-home">
+            <a href="inicio.html" class="nav-item" id="nav-home">
                 <i class=" fa-solid fa-house"></i>
                 <span>Início</span>
             </a>
@@ -23,7 +23,7 @@
                 <i class="fa-solid fa-calendar-days"></i>
                 <span>Agenda</span>
             </a>
-            <a  href="tarefas.html"  class="nav-item" id="nav-tasks">
+            <a href="tarefas.html" class="nav-item" id="nav-tasks">
                 <i class="fa-solid fa-list-check"></i>
                 <span>Tarefas</span>
             </a>
@@ -46,50 +46,102 @@
             </div>
         </div>
     </nav>
-    <main>
+    <main id="tasks-main">
         <div class="add-task-header">
-            <h2 id="addTaskButton">Adicionar tarefa</h2>
-
-        </div>
-        <div id="addTaskModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Adicionar Tarefa</h2>
-                <form id="addTaskForm">
-                    <label for="title">Título:</label>
-                    <input type="text" id="title" name="title" required><br>
-                    <label for="description">Descrição:</label>
-                    <input type="text" id="description" name="description"><br>
-                    <label for="term">Prazo:</label>
-                    <input type="date" id="term" name="term" required><br>
-                    <label for="date">Data:</label>
-                    <input type="date" id="date" name="date" required><br>
-                    <button type="submit">Adicionar</button>
-                </form>
-            </div>
+            <h2 id="addTaskButton">+ Adicionar tarefa</h2>
         </div>
         <div id="tasks" class="tasks-container">
+            <section class="priority" id="high-priority">
+                <div class="priority-header">
+                    <h3>Prioridade alta</h3> <i class="fa-solid fa-chevron-up"></i>
+                </div>
+                <div class="wrapper">
+                    <div class="priority-tasks-container"></div>
+                </div>
+            </section>
+            <section class="priority" id="medium-priority">
+                <div class="priority-header">
+                    <h3>Prioridade média</h3> <i class="fa-solid fa-chevron-up"></i>
+                </div>
+                <div class="wrapper">
+                    <div class="priority-tasks-container"></div>
+                </div>
+            </section>
+            <section class="priority" id="low-priority">
+                <div class="priority-header">
+                    <h3>Prioridade baixa</h3> <i class="fa-solid fa-chevron-up"></i>
+                </div>
+                <div class="wrapper">
+                    <div class="priority-tasks-container"></div>
+                </div>
+            </section>
+            <section class="priority" id="completed">
+                <div class="priority-header">
+                    <h3>Concluídas</h3> <i class="fa-solid fa-chevron-up"></i>
+                </div>
+                <div class="wrapper">
+                    <div class="priority-tasks-container"></div>
+                </div>
+            </section>
         </div>
     </main>
+    <div id="addTaskModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Adicionar Tarefa</h2>
+            <form id="addTaskForm">
+                <div class="flex">
+                    <label for="title">Título:</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="flex">
+                    <label for="description">Descrição:</label>
+                    <textarea id="description" name="description"></textarea>
+                </div>
+                <div class="group">
+                    <div>
+                        <label for="term">Prazo:</label>
+                        <input type="date" id="term" name="term" required>
+                    </div>
+                    <div>
+                        <label for="priority">Prioridade:</label>
+                        <select name="priority" id="priority">
+                            <option value="alta">Alta</option>
+                            <option value="media">Média</option>
+                            <option value="baixa" selected>Baixa</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit">Adicionar</button>
+            </form>
+        </div>
+    </div>
     <div id="editTaskModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Editar Tarefa</h2>
             <form id="editTaskForm">
-                <label for="editTaskTitle">Título</label>
-                <input type="text" id="editTaskTitle" name="title" required>
-                <label for="editTaskDescription">Descrição</label>
-                <input type="text" id="editTaskDescription" name="description" required>
-                <label for="editTaskTerm">Prazo</label>
-                <input type="date" id="editTaskTerm" name="term" required>
-                <label for="editTaskDate">Data</label>
-                <input type="date" id="editTaskDate" name="date" required>
+                <div class="flex">
+                    <label for="editTaskTitle">Título</label>
+                    <input type="text" id="editTaskTitle" name="title" required>
+                </div>
+                <div class="flex">
+                    <label for="editTaskDescription">Descrição</label>
+                    <input type="text" id="editTaskDescription" name="description" required>
+                </div>
+                <div class="group">
+                    <div>
+                        <label for="editTaskTerm">Prazo</label>
+                        <input type="date" id="editTaskTerm" name="term" required>
+                    </div>
+                </div>
                 <button type="submit">Salvar</button>
             </form>
         </div>
     </div>
 
-    <script src="assets/js/tarefas/tarefa.js">
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script type="module" src="assets/js/tarefas/tarefa.js">
 
     </script>
 </body>
