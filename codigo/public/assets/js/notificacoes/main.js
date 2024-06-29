@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const notification = this.closest('.notification');
             notification.classList.add('hidden');
         });
-    });
-
-
+    });/*
+    ---------------------------------------------------------*/
+    
     fetch('/tasks')
     .then(response => {
         if (!response.ok) {
