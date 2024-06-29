@@ -2,162 +2,161 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trackle</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" type="text/css" href="assets/js/home/vanilla-toast.css">
-  <script src="assets/js/validateUser.js"></script>
-  <script src="assets/js/home/home.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Trackle</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+		integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="assets/css/styles.css">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/js/home/vanilla-toast.css">
+	<script src="assets/js/validateUser.js"></script>
+	<script src="assets/js/home/home.js"></script>
 </head>
 
-<body>
-  <nav>
-    <div class="nav-group">
-      <a href="inicio.html" class="nav-item" id="nav-home">
-        <i class=" fa-solid fa-house"></i>
-        <span>Início</span>
-      </a>
-      <a class="nav-item" id="nav-calendar">
-        <i class="fa-solid fa-calendar-days"></i>
-        <span>Agenda</span>
-      </a>
-      <a href="tarefas.html" class="nav-item" id="nav-tasks">
-        <i class="fa-solid fa-list-check"></i>
-        <span>Tarefas</span>
-      </a>
-      <a href="forum.html" class="nav-item" id="nav-forum">
-        <i class="fa-solid fa-comments"></i>
-        <span>Fórum</span>
-      </a>
-    </div>
-    <div class="nav-group">
-      <a href="" id="nav-profile">
-        <div>
-          <i class="fa-solid fa-user"></i>
-        </div>
-      </a>
-      <div class="nav-item" id="nav-logout">
-        <i class="fa-solid fa-right-from-bracket"></i>
-        <span>Sair</span>
-      </div>
-    </div>
-  </nav>
-  <div class="background">
-    <div class="graficos">
-      <div style="width: 280px; margin-top: 15px;">
-        <h1 class="titulo-do-grafico">Tarefas Diárias</h1>
-        <canvas id="grafico1" style="width: 280px; height: 280px;"></canvas>
-      </div>
-      <div style="width: 280px; margin-top: 15px;">
+<body id="inicio">
+	<nav>
+		<div class="nav-group">
+			<a href="inicio.html" class="nav-item" id="nav-home">
+				<i class=" fa-solid fa-house"></i>
+				<span>Início</span>
+			</a>
+			<a class="nav-item" id="nav-calendar">
+				<i class="fa-solid fa-calendar-days"></i>
+				<span>Agenda</span>
+			</a>
+			<a href="tarefas.html" class="nav-item" id="nav-tasks">
+				<i class="fa-solid fa-list-check"></i>
+				<span>Tarefas</span>
+			</a>
+			<a href="forum.html" class="nav-item" id="nav-forum">
+				<i class="fa-solid fa-comments"></i>
+				<span>Fórum</span>
+			</a>
+		</div>
+		<div class="nav-group">
+			<a href="" id="nav-profile">
+				<div>
+					<i class="fa-solid fa-user"></i>
+				</div>
+			</a>
+			<div class="nav-item" id="nav-logout">
+				<i class="fa-solid fa-right-from-bracket"></i>
+				<span>Sair</span>
+			</div>
+		</div>
+	</nav>
+	<main>
+		<div id="container-tarefas">
+			<div class="graficos">
+				<div style="margin-top: 15px;">
+					<h1 class="titulo-do-grafico">Tarefas Diárias</h1>
+					<canvas id="grafico1"></canvas>
+				</div>
+				<div style="margin-top: 15px;">
 
-        <h1 class="titulo-do-grafico">Tarefas Totais</h1>
-        <canvas id="grafico2" style="width: 280px; height: 280px; border: 10px;"></canvas>
-      </div>
-      <div class="pends">
-        <h1>Tarefas Pendentes</h1>
-        <div id="pendentes"></div>
-      </div>
-      <div>
+					<h1 class="titulo-do-grafico">Tarefas Totais</h1>
+					<canvas id="grafico2" style="border: 10px;"></canvas>
+				</div>
+			</div>
+			<div class="pends">
+				<h1>Tarefas Pendentes</h1>
+				<div id="pendentes"></div>
+			</div>
+		</div>
 
-      </div>
+		<div>
+		</div>
 
-    </div>
+		<div id="notificationContainer"></div>
+	</main>
 
-    <div id="notificationContainer"></div>
-  </div>
+	<script src="assets/js/home/vanilla-toast.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function ()
+		{
+			fetch('http://localhost:3000/tasks')
+				.then(response => response.json())
+				.then(tasks =>
+				{
+					const tasksPendentes = tasks.filter(task => !task.complete);
+					const pendentesContainer = document.getElementById('pendentes');
 
-  <script src="assets/js/home/vanilla-toast.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function ()
-    {
-      fetch('http://localhost:3000/tasks')
-        .then(response => response.json())
-        .then(tasks =>
-        {
-          const tasksPendentes = tasks.filter(task => !task.complete);
-          const pendentesContainer = document.getElementById('pendentes');
-
-          tasksPendentes.forEach(task =>
-          {
-            const taskName = document.createElement('p');
-            taskName.textContent = task.title;
-            taskName.classList.add('pend');
-            pendentesContainer.appendChild(taskName);
-          });
-        })
-        .catch(error =>
-        {
-          console.error('Erro ao carregar tarefas:', error);
-        });
-    });
-
-
-    function createNotification(title, message)
-    {
-      vanillaToast.show(`${title}: ${message}`, {
-
-        close: '×',
-
-      });
-    }
-
-    function checkExpiredTasks()
-    {
-      setInterval(() =>
-      {
+					tasksPendentes.forEach(task =>
+					{
+						const taskName = document.createElement('p');
+						taskName.textContent = task.title;
+						taskName.classList.add('pend');
+						pendentesContainer.appendChild(taskName);
+					});
+				})
+				.catch(error =>
+				{
+					console.error('Erro ao carregar tarefas:', error);
+				});
+		});
 
 
-        fetch('http://localhost:3000/tasks')
-          .then(response => response.json())
-          .then(tasks =>
-          {
-            tasks.forEach(task =>
-            {
-              const currentDate = new Date();
-              const termDate = new Date(task.term);
-              if (!task.complete && termDate < currentDate)
-              {
-                createNotification('Tarefa expirada', `A tarefa "${task.title}" expirou.`);
-              }
-            });
-          })
-          .catch(error => console.error('Erro ao buscar tarefas:', error));
-      }, 900000);
-    }
-    function checkExpiringTasks()
-    {
-      setInterval(() =>
-      {
+		function createNotification(title, message)
+		{
+			vanillaToast.show(`${title}: ${message}`, {
+				close: '×',
+			});
+		}
 
-        fetch('http://localhost:3000/tasks')
-          .then(response => response.json())
-          .then(tasks =>
-          {
-            tasks.forEach(task =>
-            {
-              const currentDate = new Date();
-              const termDate = new Date(task.term);
-              const threeDaysInMilliseconds = 3 * 24 * 60 * 60 * 1000;
-              if (!task.complete && termDate.getTime() - currentDate.getTime() < threeDaysInMilliseconds)
-              {
-                createNotification('Tarefa se expirando', `A tarefa "${task.title}" está se aproximando da data de expiração.`);
-              }
-            });
-          })
-          .catch(error => console.error('Erro ao buscar tarefas:', error));
+		function checkExpiredTasks()
+		{
+			setInterval(() =>
+			{
 
-      }, 86400000);
-    }
 
-    checkExpiredTasks();
-    checkExpiringTasks();
+				fetch('http://localhost:3000/tasks')
+					.then(response => response.json())
+					.then(tasks =>
+					{
+						tasks.forEach(task =>
+						{
+							const currentDate = new Date();
+							const termDate = new Date(task.term);
+							if (!task.complete && termDate < currentDate)
+							{
+								createNotification('Tarefa expirada', `A tarefa "${task.title}" expirou.`);
+							}
+						});
+					})
+					.catch(error => console.error('Erro ao buscar tarefas:', error));
+			}, 900000);
+		}
+		function checkExpiringTasks()
+		{
+			setInterval(() =>
+			{
 
-  </script>
+				fetch('http://localhost:3000/tasks')
+					.then(response => response.json())
+					.then(tasks =>
+					{
+						tasks.forEach(task =>
+						{
+							const currentDate = new Date();
+							const termDate = new Date(task.term);
+							const threeDaysInMilliseconds = 3 * 24 * 60 * 60 * 1000;
+							if (!task.complete && termDate.getTime() - currentDate.getTime() < threeDaysInMilliseconds)
+							{
+								createNotification('Tarefa se expirando', `A tarefa "${task.title}" está se aproximando da data de expiração.`);
+							}
+						});
+					})
+					.catch(error => console.error('Erro ao buscar tarefas:', error));
+
+			}, 86400000);
+		}
+
+		checkExpiredTasks();
+		checkExpiringTasks();
+
+	</script>
 </body>
 
 

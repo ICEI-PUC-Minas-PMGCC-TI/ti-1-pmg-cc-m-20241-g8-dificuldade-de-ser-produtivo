@@ -1404,11 +1404,17 @@ body:has(#perfil) {
     overflow: auto;
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#tasks-page .modal.hidden {
+    display: none !important;
 }
 
 #tasks-page .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
     padding: 20px;
     border-radius: 20px;
     width: 80%;
@@ -1478,19 +1484,16 @@ body:has(#perfil) {
     text-decoration: line-through;
 }
 
-.medalha {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    font-size: 24px;
-}
+/* 
+ 
+    INÍCIO ----------------------------------------------------------------------
+    
+*/
 
-.barra-xp2 {
-    background-color: #4caf50;
-    height: 100%;
-    width: 0;
-    transition: width 0.3s;
+#inicio canvas {
+    width: 240px !important;
+    height: 240px !important;
+    aspect-ratio: 1/1;
 }
 
 .graficos,
@@ -1503,9 +1506,9 @@ body:has(#perfil) {
 
 .graficos {
     display: flex;
-    margin-inline: 10%;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 100px;
-    width: 100%;
 }
 
 .titulo-do-grafico {
@@ -1517,32 +1520,39 @@ body:has(#perfil) {
     color: #fff;
 }
 
-.background {
+#inicio main {
     background-color: #54799D;
+
+    padding: 5%;
+}
+
+#inicio #container-tarefas {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 100px;
 }
 
 
-
-
-.pends h1 {
+#inicio .pends h1 {
     color: white;
 
 }
 
-#pendentes {
+#inicio #pendentes {
     height: 300px;
     overflow: auto;
+    padding-right: 20px;
 }
 
-
-
-.pend {
+#inicio .pend {
     background-color: #48e2da;
-    padding: 5px 10px;
+    padding: 10px 20px;
     border-radius: 20px;
 }
 
-.container {
+#inicio .container {
     text-align: center;
     background-color: #f0f0f0;
     padding: 20px;
@@ -1550,16 +1560,16 @@ body:has(#perfil) {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.container h1 {
+#inicio .container h1 {
     margin-top: 0;
 }
 
-.container ul {
+#inicio .container ul {
     list-style-type: none;
     padding: 0;
 }
 
-.container li {
+#inicio .container li {
     margin-bottom: 10px;
     padding: 10px;
     background-color: #fff;

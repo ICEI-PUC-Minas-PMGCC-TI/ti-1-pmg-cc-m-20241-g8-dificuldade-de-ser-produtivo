@@ -41,12 +41,16 @@ function renderTasks(tasks)
         container.closest('.priority').classList.add('hidden');
     })
 
-    const priorityOrder = { 'alta': 0, 'media': 1, 'baixa': 2 };
+    const priorityOrder = { 'alta': 1, 'media': 2, 'baixa': 3 };
 
     tasks.sort((a, b) =>
     {
         return priorityOrder[a.priority] - priorityOrder[b.priority];
     });
+
+    const today = new Date();
+
+    today.setHours(0, 0, 0, 0);
 
     tasks.forEach((task, taskId) =>
     {
@@ -62,7 +66,8 @@ function renderTasks(tasks)
             <div class="task-containers">
                 <h3>${task.title}</h3>
                 <p>${task.description}</p>
-                <p>${generateRemainingDates(task)}</p>
+                ${!task.complete ?
+                `<p>${generateRemainingDates(task)}</p>
                 <div class="select-container">
                     <label>Prioridade:</label>
                     <select class="priority-select" name="priority-select" data-task-id="${taskId}">
@@ -70,7 +75,8 @@ function renderTasks(tasks)
                         <option value="media" ${task.priority === 'media' ? 'selected' : ''}>Média</option>
                         <option value="baixa" ${task.priority === 'baixa' ? 'selected' : ''}>Baixa</option>
                     </select>
-                </div>
+                </div>` : ''}
+                
                 <button class="edit-btn">
                     Editar <i class="fa-solid fa-pen-to-square"></i>
                 </button>
@@ -94,8 +100,13 @@ function renderTasks(tasks)
 
         if (task.complete)
         {
-            containers[3].appendChild(taskElement);
-            containers[3].closest('.priority').classList.remove('hidden');
+            containers[4].appendChild(taskElement);
+            containers[4].closest('.priority').classList.remove('hidden');
+        }
+        else if (new Date(task.term) < today)
+        {
+            containers[0].appendChild(taskElement);
+            containers[0].closest('.priority').classList.remove('hidden');
         }
         else
         {
@@ -254,13 +265,13 @@ function openEditModal(taskId)
         saveTask(taskId);
     };
 
-    modal.style.display = "block";
+    modal.classList.remove('hidden');
 }
 
 function closeModal()
 {
     const modal = document.getElementById("editTaskModal");
-    modal.style.display = "none";
+    modal.classList.add('hidden');
 }
 
 document.querySelector(".close").onclick = closeModal;
@@ -380,23 +391,15 @@ document.addEventListener('DOMContentLoaded', function ()
 
     addTaskButton.addEventListener('click', function ()
     {
-        modals[0].style.display = 'block';
+        modals[0].classList.remove('hidden');
     });
 
     const closeButtons = document.querySelectorAll('.close');
     console.log(closeButtons)
     closeButtons.forEach((button, index) => button.addEventListener('click', function ()
     {
-        modals[index].style.display = 'none';
+        modals[index].classList.add('hidden');
     }));
-
-    window.addEventListener('click', function (event)
-    {
-        if (event.target == modals[1])
-        {
-            modals[1].style.display = 'none';
-        }
-    });
 
     const addTaskForm = document.getElementById('addTaskForm');
     addTaskForm.addEventListener('submit', function (event)

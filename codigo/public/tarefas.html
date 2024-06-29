@@ -51,6 +51,14 @@
             <h2 id="addTaskButton">+ Adicionar tarefa</h2>
         </div>
         <div id="tasks" class="tasks-container">
+            <section class="priority" id="expired">
+                <div class="priority-header">
+                    <h3>Vencido</h3> <i class="fa-solid fa-chevron-up"></i>
+                </div>
+                <div class="wrapper">
+                    <div class="priority-tasks-container"></div>
+                </div>
+            </section>
             <section class="priority" id="high-priority">
                 <div class="priority-header">
                     <h3>Prioridade alta</h3> <i class="fa-solid fa-chevron-up"></i>
@@ -85,7 +93,7 @@
             </section>
         </div>
     </main>
-    <div id="addTaskModal" class="modal">
+    <div id="addTaskModal" class="modal hidden">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Adicionar Tarefa</h2>
@@ -116,7 +124,7 @@
             </form>
         </div>
     </div>
-    <div id="editTaskModal" class="modal">
+    <div id="editTaskModal" class="modal hidden">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Editar Tarefa</h2>
