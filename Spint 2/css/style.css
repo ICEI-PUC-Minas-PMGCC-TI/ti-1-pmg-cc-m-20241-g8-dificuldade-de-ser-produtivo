@@ -153,5 +153,36 @@ html{
     position: absolute;
     background-color: rgba(0,0,0,0.8);
   }
+  .event-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+  }
+  
+  .event-item button {
+    margin-left: 5px;
+  }
+  .event-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.event-item button {
+  margin-left: 5px;
+}
+.event-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+  }
+  
+  .event-item button {
+    margin-left: 5px;
+  }
+  
+  .completed {
+    text-decoration: line-through;
+  }
   
   
