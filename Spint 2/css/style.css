@@ -243,16 +243,24 @@ html {
   /* Dispositivos menores */
   @media (max-width: 768px) {
     #weekdays {
-      flex-direction: column;
+      flex-direction: row;
+      justify-content: space-between;
+      font-size: 12px; /* Reduz o tamanho da fonte dos dias da semana */
     }
-    
+  
     #weekdays div {
-      text-align: left;
+      padding: 5px; /* Reduz o padding dos dias da semana */
     }
   
     .day {
-      flex: 1 0 48%; /* Ajusta para duas colunas em dispositivos menores */
+      flex: 1 0 21%; /* Ajusta para quatro colunas em dispositivos menores */
+      padding: 5px;
+      height: 80px; /* Reduz a altura dos dias */
       margin: 5px 1%;
+    }
+  
+    .event {
+      font-size: 8px; /* Reduz o tamanho da fonte dos eventos */
     }
   }
   
@@ -261,15 +269,27 @@ html {
     #header {
       flex-direction: column;
       align-items: center;
+      font-size: 20px; /* Reduz o tamanho da fonte do cabeçalho */
     }
   
     #header button {
       margin-top: 10px;
+      padding: 5px 10px;
     }
   
     .day {
-      flex: 1 0 100%; /* Ajusta para uma coluna em dispositivos muito pequenos */
-      margin: 5px 0;
+      flex: 1 0 30%; /* Ajusta para três colunas em dispositivos muito pequenos */
+      padding: 5px;
+      height: 70px; /* Reduz ainda mais a altura dos dias */
+      margin: 5px 1%;
+    }
+  
+    #weekdays div {
+      font-size: 10px; /* Reduz ainda mais o tamanho da fonte dos dias da semana */
+    }
+  
+    .event {
+      font-size: 7px; /* Reduz ainda mais o tamanho da fonte dos eventos */
     }
   }
   
