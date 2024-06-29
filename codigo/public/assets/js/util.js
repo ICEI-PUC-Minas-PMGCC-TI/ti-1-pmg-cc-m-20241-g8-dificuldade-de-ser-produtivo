@@ -71,6 +71,24 @@ function getDate()
     return `${day}/${month}/${year}`;
 }
 
+function getRemainingDays(dateString)
+{
+    const today = new Date();
+
+    const parts = dateString.split('-');
+
+    const term = new Date(dateString);
+
+    term.setHours(term.getHours() + 3);
+
+    today.setHours(0, 0, 0, 0);
+    term.setHours(0, 0, 0, 0);
+
+    const timeDifference = term - today;
+    const days = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+    return days;
+}
+
 function analyzePasswordStrength(password)
 {
     let strength = 0;
@@ -106,5 +124,5 @@ function analyzePasswordStrength(password)
     return { strength, suggestions };
 }
 
-export { analyzePasswordStrength, generateUniqueId, getDate, infiniteScroll, throttle };
+export { analyzePasswordStrength, generateUniqueId, getDate, getRemainingDays, infiniteScroll, throttle };
 

@@ -1268,6 +1268,7 @@ body:has(#perfil) {
     display: flex;
     align-items: center;
     gap: 20px;
+    cursor: pointer;
 }
 
 .tasks-container .wrapper {
@@ -1541,15 +1542,23 @@ body:has(#perfil) {
 }
 
 #inicio #pendentes {
-    height: 300px;
+    height: 240px;
     overflow: auto;
     padding-right: 20px;
 }
 
 #inicio .pend {
-    background-color: #48e2da;
-    padding: 10px 20px;
+    background-color: transparent;
+    padding: 10px;
+    border: 3px solid white;
     border-radius: 20px;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
 }
 
 #inicio .container {
@@ -1576,4 +1585,22 @@ body:has(#perfil) {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#inicio .alta i {
+    color: crimson;
+}
+
+#inicio .media i {
+    color: orange;
+}
+
+#inicio .baixa i {
+    color: yellow;
+}
+
+@media screen and (max-width: 1351px) {
+    #inicio #container-tarefas {
+        justify-content: center;
+    }
 }

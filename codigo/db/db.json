@@ -10,7 +10,7 @@
       "picturePath": "32c4880f-d626-4bca-b5d9-baf7a7735b9c.jpg",
       "aboutMe": "asdasd",
       "bannerColor": "#2b00ff",
-      "creationDate": "21/06/2024"  
+      "creationDate": "21/06/2024"
     },
     {
       "id": "84e9195e-90f2-4242-806e-8d1cd2004805",
@@ -303,7 +303,7 @@
       "id": "1",
       "title": "Estudar prova de calculo 1",
       "description": "Limites ",
-      "complete": false,
+      "complete": true,
       "term": "2024-02-07",
       "date": "2024-02-05",
       "priority": "alta"
@@ -312,7 +312,7 @@
       "id": "2",
       "title": "Estudar prova de calculo 2",
       "description": "Limites e derivadas",
-      "complete": false,
+      "complete": true,
       "term": "2024-02-09",
       "date": "2024-02-07",
       "priority": "media"
@@ -340,7 +340,8 @@
       "description": "b",
       "term": "2024-06-29",
       "date": "2024-06-29",
-      "priority": "baixa"
+      "priority": "baixa",
+      "complete": true
     },
     {
       "id": "93f5",
@@ -362,6 +363,27 @@
       "description": "test2",
       "term": "2024-07-02",
       "priority": "baixa"
+    },
+    {
+      "id": "97d7",
+      "title": "hoje",
+      "description": "é hoje",
+      "term": "2024-06-29",
+      "priority": "baixa"
+    },
+    {
+      "id": "68fd",
+      "title": "media",
+      "description": "media",
+      "term": "2024-07-02",
+      "priority": "media"
+    },
+    {
+      "id": "033c",
+      "title": "ontem",
+      "description": "ontem",
+      "term": "2024-06-28",
+      "priority": "media"
     }
   ]
 }

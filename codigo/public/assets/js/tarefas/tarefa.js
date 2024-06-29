@@ -1,4 +1,4 @@
-import { getDate } from "../util.js";
+import { getRemainingDays } from "../util.js";
 
 const apiUrl = '/tasks';
 
@@ -98,12 +98,14 @@ function renderTasks(tasks)
         });
         taskElement.querySelector('.task-buttons').appendChild(deleteButton);
 
+        const remainingDays = getRemainingDays(task.term);
+
         if (task.complete)
         {
             containers[4].appendChild(taskElement);
             containers[4].closest('.priority').classList.remove('hidden');
         }
-        else if (new Date(task.term) < today)
+        else if (remainingDays < 0) 
         {
             containers[0].appendChild(taskElement);
             containers[0].closest('.priority').classList.remove('hidden');
@@ -133,27 +135,14 @@ function renderTasks(tasks)
 
 function generateRemainingDates(task)
 {
-    const today = new Date();
+    const remainingDays = getRemainingDays(task.term);
 
-    const parts = task.term.split('-');
-
-    const day = parseInt(parts[2], 10);
-    const month = parseInt(parts[1], 10) - 1;
-    const year = parseInt(parts[0], 10);
-
-    const term = new Date(task.term);
-
-    today.setHours(0, 0, 0, 0);
-    term.setHours(0, 0, 0, 0);
-
-    if (today < term)
+    if (remainingDays > 0)
     {
-        const timeDifference = term - today;
-        const days = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-        return `Vence em ${days} ${days === 1 ? 'dia' : 'dias'}`;
+        return `Vence em ${remainingDays} ${remainingDays === 1 ? 'dia' : 'dias'}`;
     }
 
-    if (today === term)
+    if (remainingDays === 0)
     {
         return 'Vence hoje';
     }

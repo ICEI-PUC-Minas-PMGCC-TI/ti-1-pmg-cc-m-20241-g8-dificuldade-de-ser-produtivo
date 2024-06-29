@@ -12,7 +12,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<link rel="stylesheet" type="text/css" href="assets/js/home/vanilla-toast.css">
 	<script src="assets/js/validateUser.js"></script>
-	<script src="assets/js/home/home.js"></script>
 </head>
 
 <body id="inicio">
@@ -62,42 +61,24 @@
 			</div>
 			<div class="pends">
 				<h1>Tarefas Pendentes</h1>
-				<div id="pendentes"></div>
+				<div id="pendentes">
+					<div class="delim" id="delim-alta"></div>
+					<div class="delim" id="delim-media"></div>
+					<div class="delim" id="delim-baixa"></div>
+				</div>
 			</div>
 		</div>
-
-		<div>
+		
+		<div id="container-sugestoes">
+			
 		</div>
 
 		<div id="notificationContainer"></div>
 	</main>
 
 	<script src="assets/js/home/vanilla-toast.js"></script>
+	<script type="module" src="assets/js/home/home.js"></script>
 	<script>
-		document.addEventListener('DOMContentLoaded', function ()
-		{
-			fetch('http://localhost:3000/tasks')
-				.then(response => response.json())
-				.then(tasks =>
-				{
-					const tasksPendentes = tasks.filter(task => !task.complete);
-					const pendentesContainer = document.getElementById('pendentes');
-
-					tasksPendentes.forEach(task =>
-					{
-						const taskName = document.createElement('p');
-						taskName.textContent = task.title;
-						taskName.classList.add('pend');
-						pendentesContainer.appendChild(taskName);
-					});
-				})
-				.catch(error =>
-				{
-					console.error('Erro ao carregar tarefas:', error);
-				});
-		});
-
-
 		function createNotification(title, message)
 		{
 			vanillaToast.show(`${title}: ${message}`, {
@@ -109,8 +90,6 @@
 		{
 			setInterval(() =>
 			{
-
-
 				fetch('http://localhost:3000/tasks')
 					.then(response => response.json())
 					.then(tasks =>

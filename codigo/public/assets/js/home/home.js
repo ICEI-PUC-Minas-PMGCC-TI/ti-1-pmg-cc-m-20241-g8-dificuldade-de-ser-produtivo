@@ -1,3 +1,5 @@
+import { getRemainingDays } from "../util.js";
+
 let TotaldeTarefas;
 let TarefasTotaisFeitas;
 let TotaisDiarias;
@@ -6,37 +8,72 @@ let CurrentDate;
 
 // recebe a data atual e formata para o formato adequado
 const data = new Date()
-const dia = String(data.getDate()).padStart(2,'0')
-const mes = String(data.getMonth()+1).padStart(2,'0')
+const dia = String(data.getDate()).padStart(2, '0')
+const mes = String(data.getMonth() + 1).padStart(2, '0')
 const ano = data.getFullYear()
 CurrentDate = `${ano}-${mes}-${dia}`
 
-// número de tarefas para hoje
-// número de tarefas feitas para hoje
-fetch('http://localhost:3000/tasks')
-    .then(response => response.json())
-    .then(data => {
-        const TD = data.filter(task => task.date === CurrentDate).length;
-        const FD = data.filter(task => task.date === CurrentDate && task.complete).length;
-        TotaisDiarias = TD
-        FeitasDiarias = FD
-    })
-
-fetch('http://localhost:3000/tasks') // Número de tarefas ao todo
-    .then(response => response.json())
-    .then(data => {
-        TotaldeTarefas = data.length;
-    })
-function countCompletedTasks(tasks) { // Número de tarefas principais completas
-    return tasks.reduce((count, task) => {
+function countCompletedTasks(tasks)
+{ // Número de tarefas principais completas
+    return tasks.reduce((count, task) =>
+    {
         return task.complete ? count + 1 : count;
     }, 0);
 }
 
-fetch('http://localhost:3000/tasks')
+fetch('/tasks')
     .then(response => response.json())
-    .then(data => {
+    .then(data =>
+    {
+        TotaldeTarefas = data.length;
+
+        const TD = data.filter(task => task.date === CurrentDate).length;
+        const FD = data.filter(task => task.date === CurrentDate && task.complete).length;
+        TotaisDiarias = TD
+        FeitasDiarias = FD
+
         const tasks = data;
+
+        const tasksPendentes = tasks.filter(task => !task.complete);
+        const pendentesContainer = document.getElementById('pendentes');
+
+        tasksPendentes.forEach(task =>
+        {
+            const taskName = document.createElement('div');
+
+            let icon;
+
+            switch (task.priority)
+            {
+                case 'alta':
+                    icon = 'fa-chevron-up';
+                    break;
+                case 'media':
+                    icon = 'fa-minus';
+                    break;
+                case 'baixa':
+                    icon = 'fa-chevron-down';
+                    break;
+                default:
+                    icon = '';
+                    break;
+            }
+
+            const remainingDays = getRemainingDays(task.term);
+
+            taskName.innerHTML = `<i class="fa-solid ${icon}"></i> <span>${task.title}</span> <span>-</span> <span>${remainingDays >= 0 ? (remainingDays === 0 ? 'Vence hoje' : `Vence em ${remainingDays} dias`) : 'Venceu'}</span>`;
+            taskName.classList.add('pend');
+
+            if (task.complete)
+                taskName.classList.add('completo');
+            else
+                taskName.classList.add(task.priority);
+
+            pendentesContainer.insertBefore(taskName, document.querySelector(`#delim-${task.priority}`));
+        });
+
+        document.querySelectorAll('.delim').forEach(element => element.remove());
+
         TarefasTotaisFeitas = countCompletedTasks(tasks);
 
         // Gráfico 1
