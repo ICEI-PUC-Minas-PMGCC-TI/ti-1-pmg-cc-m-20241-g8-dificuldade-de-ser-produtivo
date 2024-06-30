@@ -74,5 +74,16 @@ function getTaskById(taskId, callbackFunction)
         .catch(error => console.error('Error getting task by id: ', error));
 }
 
+function getTasksByDate(date, userId, callbackFunction)
+{
+    getTasks(userId, data =>
+    {
+        const filteredData = data.filter(task => task.term === date);
+
+        if (callbackFunction)
+            callbackFunction(filteredData);
+    })
+}
+
 export { addTask, deleteTask, getTaskById, getTasks, updateTask };
 

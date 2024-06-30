@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function ()
         {
             // Seleciona a notificação pai e a oculta
             const notification = this.closest('.notification');
-            notification.classList.add('hidden');
+            notification.remove();
         });
     });/*
     ---------------------------------------------------------*/
