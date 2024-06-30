@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+    --authentication-color: #523FCB;
+    --home-color: #54799D;
+    --calendar-color: #5F4977;
+    --tasks-color: #FB7735;
+    --forum-color: #516F8C;
+    --profile-color: #E3E2E2;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+body {
+  
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+}
+
+
+main {
+    height: auto;
+    overflow: auto;
+}
+
+/* Estilos novos */
+.add-task-header {
+    background-color: var(--tasks-color);
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+
+.add-task-header h2 {
+    cursor: pointer;
+}
+
+.tasks-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.task {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: calc(33% - 40px);
+    box-sizing: border-box;
+    min-width: 300px;
+}
+
+.task.completed {
+    background-color: #e6ffe6;
+}
+
+.task h3 {
+    margin-top: 0;
+}
+
+.task ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.task ul li {
+    margin: 5px 0;
+}
+
+.task ul li.complete {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.task ul li.pending {
+    color: #000;
+}
+
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.edit-btn {
+    width: 31px;
+    height: 31px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(214, 203, 203);
+    border: none;
+    cursor: pointer;
+}
+
+.delete-btn {
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(214, 203, 203);
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: 700;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos para a barra de progresso */
+.progress-bar {
+    background-color:#B1B1B1;
+    border-radius: 5px;
+    width: 100%;
+    height: 13px;
+    margin-top: 10px;
+}
+
+.progress {
+    background-color: #44DF0E;
+    height: 100%;
+    border-radius: 5px;
+    width: 0%;
+}
+
+@media (max-width: 680px) {
+    #tasks {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.task.completed {
+  background-color: #d4edda;
+  text-decoration: line-through;
+}
+
+.medalha {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    font-size: 24px;
+}
+
+.barra-xp2 {
+    background-color: #4caf50;
+    height: 100%;
+    width: 0;
+    transition: width 0.3s;
+}

@@ -1,0 +1,274 @@
+{
+  "users": [
+    {
+      "id": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "name": "mateus",
+      "email": "mateushmdiniz@gmail.com",
+      "password": "$2b$10$PPDop/jgd3u/3jYV0DD04OWfV6xNeWxXGMwac.gF2TKsgQJGuEpoK",
+      "level": 0,
+      "experience": 0,
+      "picturePath": null,
+      "aboutMe": "",
+      "bannerColor": "#f00",
+      "creationDate": "21/06/2024"
+    },
+    {
+      "id": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "name": "a",
+      "email": "chenri48155@gmail.com",
+      "password": "$2b$10$Fo3DxQIPHSduQBb31P2KQ.PY.XNlHM1ahtJaY6fglk3qyvoZmZR9y",
+      "level": 0,
+      "experience": 0,
+      "picturePath": null,
+      "aboutMe": "",
+      "bannerColor": "#aaa",
+      "creationDate": "23/06/2024"
+    }
+  ],
+  "resetTokens": [],
+  "discussions": [
+    {
+      "id": "2",
+      "authorId": "1",
+      "title": "Integer nec odio",
+      "text": "Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
+      "date": "02/05/2024",
+      "commentCount": 3
+    },
+    {
+      "id": "3",
+      "authorId": "2",
+      "title": "Sed nisi",
+      "text": "Sed nisi. Nulla quis sem at nibh elementum imperdiet.",
+      "date": "03/05/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "4",
+      "authorId": "3",
+      "title": "Duis sagittis ipsum",
+      "text": "Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.",
+      "date": "04/05/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "5",
+      "authorId": "4",
+      "title": "Mauris massa",
+      "text": "Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+      "date": "05/05/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "6",
+      "authorId": "5",
+      "title": "Curabitur sodales ligula in libero",
+      "text": "Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.",
+      "date": "06/05/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "7",
+      "authorId": "6",
+      "title": "Sed cursus ante dapibus",
+      "text": "Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.",
+      "date": "07/05/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "8",
+      "authorId": "7",
+      "title": "Etiam ultricies nisi vel augue",
+      "text": "Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.",
+      "date": "08/05/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "9",
+      "authorId": "8",
+      "title": "Nulla consequat massa quis enim",
+      "text": "Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.",
+      "date": "09/05/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "10",
+      "authorId": "9",
+      "title": "In enim justo",
+      "text": "In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.",
+      "date": "10/05/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "11",
+      "authorId": "10",
+      "title": "Integer tincidunt",
+      "text": "Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.",
+      "date": "11/05/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "12",
+      "authorId": "11",
+      "title": "Aenean vulputate eleifend tellus",
+      "text": "Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.",
+      "date": "12/05/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "13",
+      "authorId": "12",
+      "title": "Aliquam lorem ante",
+      "text": "Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
+      "date": "13/05/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "14",
+      "authorId": "13",
+      "title": "Quisque rutrum",
+      "text": "Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.",
+      "date": "14/05/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "15",
+      "authorId": "14",
+      "title": "Suspendisse enim turpis",
+      "text": "Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.",
+      "date": "15/05/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "16",
+      "authorId": "15",
+      "title": "Maecenas nec odio",
+      "text": "Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.",
+      "date": "16/05/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "17",
+      "authorId": "16",
+      "title": "Nullam quis ante",
+      "text": "Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo.",
+      "date": "17/05/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "18",
+      "authorId": "17",
+      "title": "Sed fringilla mauris sit amet",
+      "text": "Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.",
+      "date": "18/05/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "19",
+      "authorId": "18",
+      "title": "Curabitur blandit tempus",
+      "text": "Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
+      "date": "19/05/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "857e",
+      "authorId": "0",
+      "title": "sdaddasd",
+      "text": "asdasd",
+      "date": "23/5/2024",
+      "commentCount": 0
+    },
+    {
+      "id": "554b",
+      "authorId": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "title": "Minha discussão",
+      "text": "Essa é a minha discussão",
+      "date": "23/06/2024",
+      "commentCount": 1
+    },
+    {
+      "id": "a182",
+      "authorId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "title": "Discussão",
+      "text": "Essa é sem sombra de dúvidas uma discussão",
+      "date": "23/06/2024",
+      "commentCount": 1
+    }
+  ],
+  "comments": [
+    {
+      "id": "0",
+      "authorId": "5",
+      "target": 0,
+      "targetId": "2",
+      "text": "Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
+      "likes": 0,
+      "date": "06/06/2024",
+      "edited": false
+    },
+    {
+      "id": "1",
+      "authorId": "6",
+      "target": 0,
+      "targetId": "2",
+      "text": "Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
+      "likes": 0,
+      "date": "06/06/2024",
+      "edited": false
+    },
+    {
+      "id": "01aa",
+      "authorId": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "target": 0,
+      "targetId": "2",
+      "text": "comentando aqui!! <3",
+      "likes": 0,
+      "date": "23/06/2024",
+      "edited": true
+    },
+    {
+      "id": "7b24",
+      "authorId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "target": 0,
+      "targetId": "554b",
+      "text": "INCRÍVEL!!!",
+      "likes": 0,
+      "date": "23/06/2024",
+      "edited": false
+    },
+    {
+      "id": "46fe",
+      "authorId": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "target": 0,
+      "targetId": "a182",
+      "text": "LÚCIDO!!!",
+      "likes": 0,
+      "date": "23/06/2024",
+      "edited": false
+    }
+  ],
+  "likes": [],
+  "bookmarks": [
+    {
+      "id": "733f",
+      "discussionId": "2",
+      "userId": "0"
+    },
+    {
+      "id": "dc62",
+      "discussionId": "3",
+      "userId": "84e9195e-90f2-4242-806e-8d1cd2004805"
+    },
+    {
+      "id": "e7ea",
+      "discussionId": "2",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c"
+    },
+    {
+      "id": "4d2c",
+      "discussionId": "2",
+      "userId": "84e9195e-90f2-4242-806e-8d1cd2004805"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Trackle</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+		integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="assets/css/styles.css">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/js/home/vanilla-toast.css">
+	<script src="assets/js/validateUser.js"></script>
+</head>
+
+<body id="inicio">
+	<nav>
+		<a href="inicio.html" class="nav-item" id="nav-home">
+			<i class=" fa-solid fa-house"></i>
+			<span>Início</span>
+		</a>
+		<a href="agenda.html" class="nav-item" id="nav-calendar">
+			<i class="fa-solid fa-calendar-days"></i>
+			<span>Agenda</span>
+		</a>
+		<a href="tarefas.html" class="nav-item" id="nav-tasks">
+			<i class="fa-solid fa-list-check"></i>
+			<span>Tarefas</span>
+		</a>
+		<a href="forum.html" class="nav-item" id="nav-forum">
+			<i class="fa-solid fa-comments"></i>
+			<span>Fórum</span>
+		</a>
+		<div id="nav-notifications">
+			<div id="notification-button">
+				<i class="fa-solid fa-bell"></i>
+			</div>
+			<div class="main-container hidden">
+				<div class="painel-expandido-notificacoes">
+					<div class="sem-notificacoes">
+					</div>
+					<div class="notificacoes-separadas" id="notificacoes-separadas">
+						<!--notificações aqui-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<a href="perfil.html" id="nav-profile">
+			<div>
+				<i class="fa-solid fa-user"></i>
+			</div>
+		</a>
+		<div class="nav-item" id="nav-logout">
+			<i class="fa-solid fa-right-from-bracket"></i>
+			<span>Sair</span>
+		</div>
+	</nav>
+	<main>
+		<header>
+			<h1>Olá, <span id="user-name"></span></h1>
+		</header>
+		<div id="content">
+			<div id="container-tarefas">
+				<div class="graficos">
+					<div id="grafico1-container">
+						<h1 class="titulo-do-grafico">Tarefas Para Hoje</h1>
+						<canvas id="grafico1"></canvas>
+					</div>
+					<div id="grafico2-container">
+
+						<h1 class="titulo-do-grafico">Tarefas Totais</h1>
+						<canvas id="grafico2" style="border: 10px;"></canvas>
+					</div>
+				</div>
+				<div class="pends">
+					<h1>Tarefas Pendentes</h1>
+					<div id="pendentes">
+						<div class="delim" id="delim-alta"></div>
+						<div class="delim" id="delim-media"></div>
+						<div class="delim" id="delim-baixa"></div>
+					</div>
+				</div>
+			</div>
+
+			<div id="container-sugestoes">
+				<h2></h2>
+				<div id="sugestoes">
+
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<script src="assets/js/home/vanilla-toast.js"></script>
+	<script src="assets/js/jquery-3.7.1.min.js"></script>
+	<script type="module" src="assets/js/home/home.js"></script>
+	<script type="module" src="assets/js/notifications/pages/notifications.js"></script>
+	<script>
+		$(() =>
+		{
+			$('#nav-logout').on('click', () =>
+			{
+				sessionStorage.clear();
+				window.location.href = '/';
+			})
+		})
+	</script>
+</body>
+
+</html>

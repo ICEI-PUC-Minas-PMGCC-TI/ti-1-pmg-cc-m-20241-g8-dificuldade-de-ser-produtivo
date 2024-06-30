@@ -4,11 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Trackle</title>
 </head>
 
 <body>
-    <h1>Hello, World!</h1>
+    <form class="loginContainer">
+        <div class="container">
+            <div class="content loginContent active">
+                <h1>Entrar</h1>
+                <input type="email" class="input login-email" placeholder="Email:" required>
+                <div class="password">
+                    <div class="none">
+                        <input type="password" class="input login-senha" placeholder="Senha:" required>
+                        <a href="request-redefinir-senha.html">Esqueci minha senha</a>
+                    </div>
+                </div>
+                <p id="msg"></p>
+                <button class="button loginButton">Entrar</button>
+            </div>
+            <div class="content registerContent">
+                <div class="logo">
+                    <h4>Bem vindo ao</h4>
+                    <img src="assets/imgs/logo.png" alt="logo">
+                </div>
+                <p>Faça seu registro e comece a ser produtivo com a sua agenda totalmente organizada</p>
+                <button class="button registerButton">Cadastrar</button>
+            </div>
+        </div>
+    </form>
+
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script type="module" src="assets/js/auth/api/users.js"></script>
+    <script type="module" src="assets/js/auth/pages/auth.js"></script>
 </body>
 
 </html>
+
+<!--
+Modelo das notificações:
+
+<div class="notification">
+    <a class="texto-da-notificacao">Sua tarefa expirou no dia 19/05/24</a>
+    <div class="botoes">
+        <a class="marcar-ignorar">Ignorar</a>
+        <a class="redirecionamento-tarefas">Editar</a>
+    </div>
+</div>
+<div class="notification">
+    <a class="texto-da-notificacao">Sua tarefa pendente está próxima do prazo</a>
+    <div class="botoes">
+        <a class="redirecionamento-tarefas">Editar</a>
+    </div>
+</div>
+<div class="notification">
+    <a class="texto-da-notificacao">Usuário 2 respondeu sua publicação no fórum</a>
+    <div class="botoes">
+        <a class="redirecionamento-forum">Acessar</a>
+    </div>
+</div>
+-->
