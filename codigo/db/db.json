@@ -159,6 +159,22 @@
       "aboutMe": "",
       "bannerColor": "#aaa",
       "creationDate": "30/06/2024"
+    },
+    {
+      "id": "72fedb28-cae9-4719-890b-d7001ab8bbb7",
+      "name": "Silas Hoffmann Reis Viana",
+      "email": "silasrviana@gmail.com",
+      "password": "$2b$10$vPRgqpzBHiojHPIwvHHWT.zdeYDZthb05B6kO8wrt1Hfc9jyr0oa6",
+      "level": 0,
+      "experience": 800,
+      "tasksCreated": 4,
+      "tasksCompleted": 1,
+      "discussionsStarted": 1,
+      "commentsMade": 2,
+      "picturePath": null,
+      "aboutMe": "",
+      "bannerColor": "#aaa",
+      "creationDate": "30/06/2024"
     }
   ],
   "resetTokens": [],
@@ -217,7 +233,7 @@
       "title": "Minha discussão",
       "text": "Essa é a minha discussão",
       "date": "23/06/2024",
-      "commentCount": 2
+      "commentCount": 3
     },
     {
       "id": "a182",
@@ -251,9 +267,11 @@
       "target": 0,
       "targetId": "2",
       "text": "Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
-      "likes": 0,
+      "likes": 1,
       "date": "06/06/2024",
-      "edited": false
+      "edited": false,
+      "authorName": "carolina",
+      "picturePath": "5.jpg"
     },
     {
       "id": "1",
@@ -303,7 +321,7 @@
       "target": 0,
       "targetId": "2",
       "text": "asd",
-      "likes": 0,
+      "likes": 1,
       "date": "28/06/2024",
       "edited": false
     },
@@ -338,6 +356,18 @@
       "edited": false,
       "authorName": "teste",
       "picturePath": "8d88865b-f763-4d19-a551-91e7f7f0c5ab.jpg"
+    },
+    {
+      "id": "c4c9",
+      "authorId": "72fedb28-cae9-4719-890b-d7001ab8bbb7",
+      "target": 0,
+      "targetId": "554b",
+      "text": "legal",
+      "likes": 0,
+      "date": "30/06/2024",
+      "edited": false,
+      "authorName": "Silas Hoffmann Reis Viana",
+      "picturePath": null
     }
   ],
   "likes": [
@@ -345,6 +375,16 @@
       "id": "518c",
       "commentId": "7b24",
       "userId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab"
+    },
+    {
+      "id": "de18",
+      "commentId": "e022",
+      "userId": "72fedb28-cae9-4719-890b-d7001ab8bbb7"
+    },
+    {
+      "id": "dc30",
+      "commentId": "0",
+      "userId": "72fedb28-cae9-4719-890b-d7001ab8bbb7"
     }
   ],
   "bookmarks": [
@@ -651,6 +691,42 @@
       "priority": "alta",
       "userId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
       "complete": true
+    },
+    {
+      "id": "0883",
+      "title": "Prova de AEDs",
+      "description": "estudar para a prova de AEDs",
+      "term": "2024-07-01",
+      "priority": "alta",
+      "userId": "72fedb28-cae9-4719-890b-d7001ab8bbb7",
+      "complete": false
+    },
+    {
+      "id": "a4dd",
+      "title": "Trabalho de Laboratório",
+      "description": "fazer trabalho de LIP",
+      "term": "2024-07-03",
+      "priority": "media",
+      "userId": "72fedb28-cae9-4719-890b-d7001ab8bbb7",
+      "complete": false
+    },
+    {
+      "id": "4dcd",
+      "title": "teste",
+      "description": "teste",
+      "term": "2024-07-03",
+      "priority": "media",
+      "userId": "72fedb28-cae9-4719-890b-d7001ab8bbb7",
+      "complete": false
+    },
+    {
+      "id": "a044",
+      "title": "teste",
+      "description": "teste",
+      "term": "2024-07-03",
+      "priority": "media",
+      "userId": "72fedb28-cae9-4719-890b-d7001ab8bbb7",
+      "complete": false
     }
   ],
   "suggestions": [
