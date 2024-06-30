@@ -71,6 +71,33 @@ function getDate()
     return `${day}/${month}/${year}`;
 }
 
+function dateToStringFormatted(date)
+{
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+    if (day < 10)
+        day = `0${day}`;
+
+    if (month < 10)
+        month = `0${month}`;
+
+    return `${day}/${month}/${year}`;
+}
+
+function dateToString(date)
+{
+    let month = '' + (date.getMonth() + 1);
+    let day = '' + date.getDate();
+    let year = date.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
 function getRemainingDays(dateString)
 {
     const today = new Date();
@@ -124,5 +151,5 @@ function analyzePasswordStrength(password)
     return { strength, suggestions };
 }
 
-export { analyzePasswordStrength, generateUniqueId, getDate, getRemainingDays, infiniteScroll, throttle };
+export { analyzePasswordStrength, dateToString, dateToStringFormatted, generateUniqueId, getDate, getRemainingDays, infiniteScroll, throttle };
 

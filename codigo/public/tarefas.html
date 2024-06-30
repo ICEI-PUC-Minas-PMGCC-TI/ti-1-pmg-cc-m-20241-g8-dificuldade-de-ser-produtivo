@@ -34,7 +34,7 @@
         </div>
 
         <div class="nav-group">
-            <a href="" id="nav-profile">
+            <a href="perfil.html" id="nav-profile">
                 <div>
                     <i class="fa-solid fa-user"></i>
                 </div>
@@ -149,8 +149,16 @@
     </div>
 
     <script src="assets/js/jquery-3.7.1.min.js"></script>
-    <script type="module" src="assets/js/tarefas/tarefa.js">
-
+    <script type="module" src="assets/js/tarefas/pages/tarefa.js"></script>
+    <script>
+        $(() =>
+        {
+            $('#nav-logout').on('click', () =>
+            {
+                sessionStorage.clear();
+                window.location.href = '/';
+            })
+        })
     </script>
 </body>
 

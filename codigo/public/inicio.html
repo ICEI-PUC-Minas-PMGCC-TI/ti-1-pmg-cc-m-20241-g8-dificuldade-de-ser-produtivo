@@ -35,7 +35,7 @@
 			</a>
 		</div>
 		<div class="nav-group">
-			<a href="" id="nav-profile">
+			<a href="perfil.html" id="nav-profile">
 				<div>
 					<i class="fa-solid fa-user"></i>
 				</div>
@@ -47,97 +47,54 @@
 		</div>
 	</nav>
 	<main>
-		<div id="container-tarefas">
-			<div class="graficos">
-				<div style="margin-top: 15px;">
-					<h1 class="titulo-do-grafico">Tarefas Diárias</h1>
-					<canvas id="grafico1"></canvas>
-				</div>
-				<div style="margin-top: 15px;">
+		<header>
+			<h1>Olá, <span id="user-name"></span></h1>
+		</header>
+		<div id="content">
+			<div id="container-tarefas">
+				<div class="graficos">
+					<div id="grafico1-container">
+						<h1 class="titulo-do-grafico">Tarefas Para Hoje</h1>
+						<canvas id="grafico1"></canvas>
+					</div>
+					<div id="grafico2-container">
 
-					<h1 class="titulo-do-grafico">Tarefas Totais</h1>
-					<canvas id="grafico2" style="border: 10px;"></canvas>
+						<h1 class="titulo-do-grafico">Tarefas Totais</h1>
+						<canvas id="grafico2" style="border: 10px;"></canvas>
+					</div>
+				</div>
+				<div class="pends">
+					<h1>Tarefas Pendentes</h1>
+					<div id="pendentes">
+						<div class="delim" id="delim-alta"></div>
+						<div class="delim" id="delim-media"></div>
+						<div class="delim" id="delim-baixa"></div>
+					</div>
 				</div>
 			</div>
-			<div class="pends">
-				<h1>Tarefas Pendentes</h1>
-				<div id="pendentes">
-					<div class="delim" id="delim-alta"></div>
-					<div class="delim" id="delim-media"></div>
-					<div class="delim" id="delim-baixa"></div>
+
+			<div id="container-sugestoes">
+				<h2></h2>
+				<div id="sugestoes">
+
 				</div>
 			</div>
 		</div>
-		
-		<div id="container-sugestoes">
-			
-		</div>
-
-		<div id="notificationContainer"></div>
 	</main>
 
 	<script src="assets/js/home/vanilla-toast.js"></script>
+	<script src="assets/js/jquery-3.7.1.min.js"></script>
 	<script type="module" src="assets/js/home/home.js"></script>
 	<script>
-		function createNotification(title, message)
+		$(() =>
 		{
-			vanillaToast.show(`${title}: ${message}`, {
-				close: '×',
-			});
-		}
-
-		function checkExpiredTasks()
-		{
-			setInterval(() =>
+			$('#nav-logout').on('click', () =>
 			{
-				fetch('http://localhost:3000/tasks')
-					.then(response => response.json())
-					.then(tasks =>
-					{
-						tasks.forEach(task =>
-						{
-							const currentDate = new Date();
-							const termDate = new Date(task.term);
-							if (!task.complete && termDate < currentDate)
-							{
-								createNotification('Tarefa expirada', `A tarefa "${task.title}" expirou.`);
-							}
-						});
-					})
-					.catch(error => console.error('Erro ao buscar tarefas:', error));
-			}, 900000);
-		}
-		function checkExpiringTasks()
-		{
-			setInterval(() =>
-			{
-
-				fetch('http://localhost:3000/tasks')
-					.then(response => response.json())
-					.then(tasks =>
-					{
-						tasks.forEach(task =>
-						{
-							const currentDate = new Date();
-							const termDate = new Date(task.term);
-							const threeDaysInMilliseconds = 3 * 24 * 60 * 60 * 1000;
-							if (!task.complete && termDate.getTime() - currentDate.getTime() < threeDaysInMilliseconds)
-							{
-								createNotification('Tarefa se expirando', `A tarefa "${task.title}" está se aproximando da data de expiração.`);
-							}
-						});
-					})
-					.catch(error => console.error('Erro ao buscar tarefas:', error));
-
-			}, 86400000);
-		}
-
-		checkExpiredTasks();
-		checkExpiringTasks();
-
+				sessionStorage.clear();
+				window.location.href = '/';
+			})
+		})
 	</script>
 </body>
-
-
 
 </html>

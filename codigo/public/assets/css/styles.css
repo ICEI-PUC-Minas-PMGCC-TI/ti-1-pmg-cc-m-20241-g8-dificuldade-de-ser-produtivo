@@ -1491,6 +1491,24 @@ body:has(#perfil) {
     
 */
 
+#inicio header {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px 40px;
+}
+
+#inicio header * {
+    margin: 0;
+}
+
+#inicio #content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    padding: 5%;
+}
+
 #inicio canvas {
     width: 240px !important;
     height: 240px !important;
@@ -1509,7 +1527,14 @@ body:has(#perfil) {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 100px;
+    gap: 70px;
+}
+
+.graficos div {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .titulo-do-grafico {
@@ -1523,8 +1548,6 @@ body:has(#perfil) {
 
 #inicio main {
     background-color: #54799D;
-
-    padding: 5%;
 }
 
 #inicio #container-tarefas {
@@ -1538,7 +1561,8 @@ body:has(#perfil) {
 
 #inicio .pends h1 {
     color: white;
-
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 #inicio #pendentes {
@@ -1559,6 +1583,16 @@ body:has(#perfil) {
     align-items: center;
     gap: 5px;
     flex-wrap: wrap;
+}
+
+#inicio .graficos .empty,
+#inicio #container-tarefas .pends.empty {
+    color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #inicio .container {
@@ -1597,6 +1631,48 @@ body:has(#perfil) {
 
 #inicio .baixa i {
     color: yellow;
+}
+
+#container-sugestoes {
+    background-color: #E6E6E6;
+    border-radius: 20px;
+    width: 90%;
+    padding: 20px;
+}
+
+#container-sugestoes p {
+    text-align: center;
+}
+
+#sugestoes {
+    position: relative;
+}
+
+.suggestion.hidden {
+    display: none !important;
+}
+
+.suggestion .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.suggestion .buttons button {
+    border-radius: 100px;
+    font-family: inherit;
+    color: white;
+    border: none;
+    padding: 7px 30px;
+}
+
+.suggestion .buttons button.yes {
+    background-color: #523FCB;
+}
+
+.suggestion .buttons button.no {
+    background-color: red;
 }
 
 @media screen and (max-width: 1351px) {

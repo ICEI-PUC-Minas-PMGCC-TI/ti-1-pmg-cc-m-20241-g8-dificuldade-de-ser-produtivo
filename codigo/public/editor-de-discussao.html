@@ -34,7 +34,7 @@
         </div>
 
         <div class="nav-group">
-            <a href="" id="nav-profile">
+            <a href="perfil.html" id="nav-profile">
                 <div>
                     <i class="fa-solid fa-user"></i>
                 </div>
@@ -62,6 +62,16 @@
 
     <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script src="assets/js/forum/pages/discussion-editor.js" type="module"></script>
+    <script>
+        $(() =>
+        {
+            $('#nav-logout').on('click', () =>
+            {
+                sessionStorage.clear();
+                window.location.href = '/';
+            })
+        })
+    </script>
 </body>
 
 </html>

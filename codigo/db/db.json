@@ -2,7 +2,7 @@
   "users": [
     {
       "id": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "name": "Mateus Henrique Medeiros Diniz",
+      "name": "Mateus",
       "email": "mateushmdiniz@gmail.com",
       "password": "$2b$10$FPcBZEfI.SOX1imc7.Yf3.22wAHCs2hmhBTpJ6nu/inSgNvCF7rSW",
       "level": 0,
@@ -301,50 +301,51 @@
   "tasks": [
     {
       "id": "1",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
       "title": "Estudar prova de calculo 1",
       "description": "Limites ",
       "complete": true,
       "term": "2024-02-07",
-      "date": "2024-02-05",
       "priority": "alta"
     },
     {
       "id": "2",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
       "title": "Estudar prova de calculo 2",
       "description": "Limites e derivadas",
       "complete": true,
       "term": "2024-02-09",
-      "date": "2024-02-07",
       "priority": "media"
     },
     {
       "id": "3",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
       "title": "Estudar prova de calculo 3",
       "description": "Limites e derivadas",
       "complete": true,
       "term": "2024-02-09",
-      "date": "2024-02-07",
       "priority": "baixa"
     },
     {
       "id": "5613",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
       "title": "Finalizar TI1",
       "description": "SOCORRO",
       "term": "2024-07-01",
-      "date": "2024-06-29",
       "priority": "alta"
     },
     {
       "id": "cdd2",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
       "title": "a",
       "description": "b",
       "term": "2024-06-29",
-      "date": "2024-06-29",
       "priority": "baixa",
       "complete": true
     },
     {
       "id": "93f5",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
       "title": "Sobreviver por 1 ano",
       "description": "Vc consegue!",
       "term": "2025-06-28",
@@ -352,13 +353,15 @@
     },
     {
       "id": "c36b",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
       "title": "test1",
       "description": "test1",
       "term": "2024-07-01",
-      "priority": "baixa"
+      "priority": "alta"
     },
     {
       "id": "2aba",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
       "title": "test2",
       "description": "test2",
       "term": "2024-07-02",
@@ -366,13 +369,16 @@
     },
     {
       "id": "97d7",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
       "title": "hoje",
       "description": "é hoje",
       "term": "2024-06-29",
-      "priority": "baixa"
+      "priority": "baixa",
+      "complete": true
     },
     {
       "id": "68fd",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
       "title": "media",
       "description": "media",
       "term": "2024-07-02",
@@ -380,10 +386,47 @@
     },
     {
       "id": "033c",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
       "title": "ontem",
       "description": "ontem",
       "term": "2024-06-28",
-      "priority": "media"
+      "priority": "alta",
+      "complete": true
+    },
+    {
+      "id": "e5a5",
+      "title": "jooj",
+      "description": "te pego pela cabeçç e te jogo pela cabeçç e te joooj",
+      "term": "2024-06-29",
+      "priority": "alta",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "complete": true
+    },
+    {
+      "id": "c35e",
+      "title": "everybody",
+      "description": "wants to rule the world",
+      "term": "2024-06-30",
+      "priority": "alta",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "complete": true
+    }
+  ],
+  "suggestions": [
+    {
+      "id": "ae16",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "date": 1719709516797,
+      "done": false,
+      "suggestions": [
+        {
+          "text": "As tarefas \"Finalizar TI1\" e \"test1\" possuem prioridade alta e vencem no mesmo dia. Deseja alterar a data da tarefa \"test1\" para 02/07/2024 para evitar um conflito entre tarefa de alta prioridade?",
+          "taskId": "c36b",
+          "action": 0,
+          "newValue": 1719889200000,
+          "answered": false
+        }
+      ]
     }
   ]
 }
