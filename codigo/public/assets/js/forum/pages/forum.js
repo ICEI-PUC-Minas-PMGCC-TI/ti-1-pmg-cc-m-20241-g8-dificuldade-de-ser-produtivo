@@ -220,7 +220,7 @@ $(() =>
 		const discussionContainer = $('<div>', { class: 'discussion-container' });
 
 		const userName = curState === PageStates.MY_DISCUSSIONS ? 'Você' : discussionData.authorName;
-		const userContainer = createUserContainer(userName, discussionData.picturePath);
+		const userContainer = createUserContainer(userName, discussionData.authorId, discussionData.picturePath);
 		discussionContainer.append(userContainer);
 
 		const contentContainer = createContentContainer(discussionData.title, discussionData.text);
@@ -232,7 +232,7 @@ $(() =>
 		return discussionContainer;
 	}
 
-	function createUserContainer(userName, picturePath)
+	function createUserContainer(userName, userId, picturePath)
 	{
 		const userContainer = $('<div>', { class: 'user' });
 		if (picturePath)
@@ -242,7 +242,7 @@ $(() =>
 		else
 			userContainer.append($('<i>', { class: 'fa-solid fa-user' }));
 
-		userContainer.append($('<span>', { text: userName }));
+		userContainer.append($('<a>', { text: userName, href: `perfil.html?user=${userId}` }));
 		return userContainer;
 	}
 

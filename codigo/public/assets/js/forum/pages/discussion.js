@@ -100,7 +100,7 @@ $(() =>
     function populateDiscussionWithData(discussion)
     {
         const userIcon = $('#user i');
-        const userElement = $('#user span');
+        const userElement = $('#user a');
         const dateElement = $('header div:nth-child(3)');
         const titleElement = $('#content h2');
         const textElement = $('#content p');
@@ -112,6 +112,7 @@ $(() =>
         }
 
         userElement.text(discussion.authorId === userId ? 'Você' : discussion.authorName);
+        userElement.prop('href', `perfil.html?user=${discussion.authorId}`);
         dateElement.text(discussion.date);
         titleElement.text(discussion.title);
         textElement.text(discussion.text);
@@ -193,7 +194,7 @@ $(() =>
                 return 'Você';
 
             return `${commentData.authorName}`;
-        }, commentData.picturePath, commentData.date, commentData.edited);
+        }, commentData.authorId, commentData.picturePath, commentData.date, commentData.edited);
         comment.append(commentHeader);
 
         const commentText = $('<p>', { text: commentData.text });
@@ -208,7 +209,7 @@ $(() =>
         return comment;
     }
 
-    function createCommentHeader(userName, userPicture, date, edited)
+    function createCommentHeader(userName, id, userPicture, date, edited)
     {
         const commentHeader = $('<div>', { class: 'comment-user' });
         if (userPicture)
@@ -216,7 +217,7 @@ $(() =>
         else
             commentHeader.append($('<i>', { class: 'fa-solid fa-user' }));
 
-        commentHeader.append($('<span>', { text: userName }));
+        commentHeader.append($('<a>', { text: userName, href: `perfil.html?user=${id}` }));
         commentHeader.append($('<span>', { text: `${date}` }));
 
         if (edited)

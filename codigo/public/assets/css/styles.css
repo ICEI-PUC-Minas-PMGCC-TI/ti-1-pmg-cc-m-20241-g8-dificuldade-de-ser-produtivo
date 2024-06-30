@@ -439,7 +439,7 @@ body:has(#perfil) {
     width: 150px;
     aspect-ratio: 1/1;
     border: 7px solid rgb(227, 227, 227);
-    object-fit: contain;
+    object-fit: cover;
     background-color: #d3d3d3;
 }
 
@@ -869,6 +869,11 @@ body:has(#perfil) {
     flex-direction: row;
     align-items: center;
     gap: 10px;
+}
+
+#forum .discussion-container .user a {
+    text-decoration: none;
+    color: white;
 }
 
 #forum .discussion-container .user .discussion-user-image {
