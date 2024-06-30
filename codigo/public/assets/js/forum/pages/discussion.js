@@ -1,4 +1,4 @@
-import { getUserByIdSecure, getUserName } from "../../auth/api/users.js";
+import { addXp, getUserByIdSecure, getUserName, updateStats } from "../../auth/api/users.js";
 import { getDate, infiniteScroll, throttle } from "../../util.js";
 import { addBookmark, getBookmark, removeBookmark } from "../api/bookmarks.js";
 import { Targets, createComment, deleteComment, editComment, getComments, getUserComments, likeComment } from "../api/comments.js";
@@ -434,6 +434,11 @@ $(() =>
                 $('#comments-container').prepend(commentEl);
 
                 $('#message').empty();
+
+                addXp(userId, 100, () =>
+                {
+                    updateStats(userId, 'commentsMade');
+                });
             });
         });
     }

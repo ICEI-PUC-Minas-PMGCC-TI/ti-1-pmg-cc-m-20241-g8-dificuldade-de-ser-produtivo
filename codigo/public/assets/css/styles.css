@@ -419,10 +419,29 @@ body:has(#perfil) {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+}
+
+.medalha h3 {
+    font-weight: 400;
+    font-size: 1em;
+    padding: 0 10px;
 }
 
 .medalha i {
     font-size: 50px;
+}
+
+.medalha i.bronze {
+    color: #e07f1f;
+}
+
+.medalha i.silver {
+    color: silver;
+}
+
+.medalha i.gold {
+    color: gold;
 }
 
 .medalhas-area {
@@ -433,6 +452,13 @@ body:has(#perfil) {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
+}
+
+.medalhas-container.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
 }
 
 .Botao_Atualizar {

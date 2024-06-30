@@ -1,3 +1,4 @@
+import { addXp, updateStats } from "../../auth/api/users.js";
 import { getDate } from "../../util.js";
 import { createDiscussion, getSpecificDiscussion, updateDiscussion } from "../api/discussions.js";
 
@@ -71,7 +72,13 @@ $(() =>
 
             createDiscussion(discussion, () =>
             {
-                window.location.href = `forum.html?state=2`;
+                addXp(userId, 200, () =>
+                {
+                    updateStats(userId, 'discussionsStarted', () =>
+                    {
+                        window.location.href = `forum.html?state=2`;
+                    });
+                });
             });
 
             return;

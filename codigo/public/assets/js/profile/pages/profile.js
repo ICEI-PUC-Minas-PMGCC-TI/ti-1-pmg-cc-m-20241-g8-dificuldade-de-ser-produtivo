@@ -51,7 +51,55 @@ $(() =>
         $('#xp-atual').text(user.experience);
         $('.barra-xp2').css('width', `${user.experience / 10}%`);
         $('#sobre-mim-texto').text(user.aboutMe.length > 0 ? user.aboutMe : 'Nada informado.');
+
+        const medalsContainer = $('#medalhas-container');
+
+        const tasksCreated = user.tasksCreated;
+        if (tasksCreated >= 10)
+            medalsContainer.append(generateMedal('10 tarefas criadas', 'bronze'));
+        if (tasksCreated >= 50)
+            medalsContainer.append(generateMedal('50 tarefas criadas', 'silver'));
+        if (tasksCreated >= 150)
+            medalsContainer.append(generateMedal('150 tarefas criadas', 'gold'));
+
+        const tasksCompleted = user.tasksCompleted;
+        if (tasksCompleted >= 20)
+            medalsContainer.append(generateMedal('20 tarefas concluídas', 'bronze'));
+        if (tasksCompleted >= 150)
+            medalsContainer.append(generateMedal('150 tarefas concluídas', 'silver'));
+        if (tasksCompleted >= 300)
+            medalsContainer.append(generateMedal('300 tarefas concluídas', 'gold'));
+
+        const discussionsStarted = user.discussionsStarted;
+        if (discussionsStarted >= 1)
+            medalsContainer.append(generateMedal('1 discussão iniciadas', 'bronze'));
+        if (discussionsStarted >= 5)
+            medalsContainer.append(generateMedal('5 discussões iniciadas', 'silver'));
+        if (discussionsStarted >= 15)
+            medalsContainer.append(generateMedal('15 discussões iniciadas', 'gold'));
+
+        const commentsMade = user.commentsMade;
+        if (commentsMade >= 1)
+            medalsContainer.append(generateMedal('1 comentário em discussões', 'bronze'));
+        if (commentsMade >= 15)
+            medalsContainer.append(generateMedal('15 comentários em discussões', 'silver'));
+        if (commentsMade >= 30)
+            medalsContainer.append(generateMedal('30 comentários em discussões', 'gold'));
+
+        if ($('.medalha').length === 0)
+        {
+            medalsContainer.addClass('empty')
+            medalsContainer.append($('<p>', { text: 'Nenhuma medalha ainda.' }))
+        }
     });
+
+    function generateMedal(text, grade)
+    {
+        return $('<div>', { class: 'medalha' }).append(
+            $('<i>', { class: `fa-solid fa-medal ${grade}` }),
+            $('<h3>', { text: text })
+        );
+    }
 
     function generateEditorFeatures()
     {

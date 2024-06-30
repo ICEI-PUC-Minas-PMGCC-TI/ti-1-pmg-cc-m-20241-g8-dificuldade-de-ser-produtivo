@@ -203,6 +203,55 @@ function updateUser(userId, updatedFields, callbackFunction)
     });
 }
 
+function updateStats(userId, statsName, callbackFunction)
+{
+    getUserById(userId, user =>
+    {
+        user[statsName] += 1;
+
+        fetch(`${apiUrl}/${userId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(response =>
+            {
+                if (response.ok && callbackFunction)
+                    callbackFunction();
+            })
+            .catch(error => console.error('Error updating user', error));
+    })
+}
+
+function addXp(userId, ammount, callbackFunction)
+{
+    getUserById(userId, user =>
+    {
+        user.experience += ammount;
+        if (user.experience >= 1000)
+        {
+            user.level++;
+            user.experience -= 1000;
+        }
+
+        fetch(`${apiUrl}/${userId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(response =>
+            {
+                if (response.ok && callbackFunction)
+                    callbackFunction();
+            })
+            .catch(error => console.error('Error updating user', error));
+    });
+}
+
 function getUserName(userId, callbackFunction)
 {
     fetch(`${apiUrl}?id=${userId}`)
@@ -223,5 +272,5 @@ function getUserName(userId, callbackFunction)
         .catch(error => console.error('Error getting user id: ', error));
 }
 
-export { changePassword, getUser, getUserByIdSecure, getUserName, login, register, updateUser };
+export { addXp, changePassword, getUser, getUserByIdSecure, getUserName, login, register, updateStats, updateUser };
 

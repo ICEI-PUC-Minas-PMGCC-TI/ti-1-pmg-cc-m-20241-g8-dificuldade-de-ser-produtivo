@@ -1,3 +1,4 @@
+import { addXp, updateStats } from "../../auth/api/users.js";
 import { getRemainingDays } from "../../util.js";
 import { addTask, deleteTask, getTasks, updateTask } from "../api/tasks.js";
 
@@ -140,6 +141,14 @@ function handleTaskCompleteButtonClick(event)
     {
         tasks[taskIndex] = updatedTask;
         renderTasks(tasks);
+
+        if (tasks[taskIndex].complete)
+        {
+            addXp(userId, 200, () =>
+            {
+                updateStats(userId, 'tasksCompleted');
+            });
+        }
     });
 }
 
@@ -293,6 +302,11 @@ document.addEventListener('DOMContentLoaded', function ()
         {
             addTaskForm.closest('.modal').style.display = 'none';
             readTasks(processData);
+
+            addXp(userId, 50, () =>
+            {
+                updateStats(userId, 'tasksCreated');
+            });
         });
     });
 

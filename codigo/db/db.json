@@ -5,8 +5,12 @@
       "name": "Mateus",
       "email": "mateushmdiniz@gmail.com",
       "password": "$2b$10$FPcBZEfI.SOX1imc7.Yf3.22wAHCs2hmhBTpJ6nu/inSgNvCF7rSW",
-      "level": 0,
-      "experience": 500,
+      "level": 1,
+      "experience": 200,
+      "tasksCreated": 150,
+      "tasksCompleted": 300,
+      "discussionsStarted": 15,
+      "commentsMade": 30,
       "picturePath": "32c4880f-d626-4bca-b5d9-baf7a7735b9c.jpg",
       "aboutMe": "asdasd",
       "bannerColor": "#2b00ff",
@@ -19,6 +23,10 @@
       "password": "$2b$10$Fo3DxQIPHSduQBb31P2KQ.PY.XNlHM1ahtJaY6fglk3qyvoZmZR9y",
       "level": 0,
       "experience": 0,
+      "tasksCreated": 0,
+      "tasksCompleted": 0,
+      "discussionsStarted": 0,
+      "commentsMade": 0,
       "picturePath": null,
       "aboutMe": "",
       "bannerColor": "#aaa",
@@ -29,8 +37,12 @@
       "name": "henrique",
       "email": "henriiqueacs@gmail.com",
       "password": "$2b$10$Q0uceTi/2gG2mKCOjdipVudVKCatnvNTrrap0VWuSffqEVa27F5lG",
-      "level": 2,
-      "experience": 800,
+      "level": 1,
+      "experience": 200,
+      "tasksCreated": 0,
+      "tasksCompleted": 0,
+      "discussionsStarted": 0,
+      "commentsMade": 0,
       "picturePath": null,
       "aboutMe": "teste",
       "bannerColor": "#ae3737",
@@ -45,7 +57,7 @@
       "title": "Integer nec odio",
       "text": "Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
       "date": "02/05/2024",
-      "commentCount": 4
+      "commentCount": 5
     },
     {
       "id": "3",
@@ -206,6 +218,14 @@
       "text": "Essa é sem sombra de dúvidas uma discussão",
       "date": "23/06/2024",
       "commentCount": 1
+    },
+    {
+      "id": "5ab3",
+      "authorId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "title": "QUERO XP",
+      "text": "me da xp",
+      "date": "29/06/2024",
+      "commentCount": 0
     }
   ],
   "comments": [
@@ -267,6 +287,16 @@
       "text": "asd",
       "likes": 0,
       "date": "28/06/2024",
+      "edited": false
+    },
+    {
+      "id": "284e",
+      "authorId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "target": 0,
+      "targetId": "2",
+      "text": "comentando pra ganhar xp",
+      "likes": 0,
+      "date": "29/06/2024",
       "edited": false
     }
   ],
@@ -357,7 +387,8 @@
       "title": "test1",
       "description": "test1",
       "term": "2024-07-01",
-      "priority": "alta"
+      "priority": "alta",
+      "complete": true
     },
     {
       "id": "2aba",
@@ -365,7 +396,8 @@
       "title": "test2",
       "description": "test2",
       "term": "2024-07-02",
-      "priority": "baixa"
+      "priority": "baixa",
+      "complete": true
     },
     {
       "id": "97d7",
@@ -382,7 +414,8 @@
       "title": "media",
       "description": "media",
       "term": "2024-07-02",
-      "priority": "media"
+      "priority": "media",
+      "complete": true
     },
     {
       "id": "033c",
@@ -407,6 +440,15 @@
       "title": "everybody",
       "description": "wants to rule the world",
       "term": "2024-06-30",
+      "priority": "alta",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "complete": true
+    },
+    {
+      "id": "2ee0",
+      "title": "teste",
+      "description": "tetetete",
+      "term": "2024-07-04",
       "priority": "alta",
       "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
       "complete": true
