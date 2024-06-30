@@ -415,32 +415,43 @@ $(() =>
 
     function sendComment(text, target, targetId)
     {
-        const comment = {
-            authorId: userId,
-            target: target,
-            targetId: targetId,
-            text: text,
-            likes: 0,
-            date: getDate(),
-            edited: false
-        };
-
-        createComment(comment, data =>
+        getUserByIdSecure(userId, data =>
         {
-            updateComments(discussionId, 1, () =>
+            const comment = {
+                authorId: userId,
+                target: target,
+                targetId: targetId,
+                text: text,
+                likes: 0,
+                date: getDate(),
+                edited: false
+            };
+
+            if (data.length > 0)
             {
-                const commentEl = createCommentElement(data, null);
+                const user = data[0];
+                comment.authorName = user.name;
+                comment.picturePath = user.picturePath;
+            }
 
-                $('#comments-container').prepend(commentEl);
-
-                $('#message').empty();
-
-                addXp(userId, 100, () =>
+            createComment(comment, data =>
+            {
+                updateComments(discussionId, 1, () =>
                 {
-                    updateStats(userId, 'commentsMade');
+                    const commentEl = createCommentElement(data, null);
+
+                    $('#comments-container').prepend(commentEl);
+
+                    $('#message').empty();
+
+                    addXp(userId, 100, () =>
+                    {
+                        updateStats(userId, 'commentsMade');
+                    });
                 });
             });
         });
+
     }
 
     function showMessage(message) 

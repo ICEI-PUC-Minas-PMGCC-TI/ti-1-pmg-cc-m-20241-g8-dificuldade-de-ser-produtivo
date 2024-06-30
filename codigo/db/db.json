@@ -27,7 +27,7 @@
       "tasksCompleted": 0,
       "discussionsStarted": 0,
       "commentsMade": 0,
-      "picturePath": null,
+      "picturePath": "84e9195e-90f2-4242-806e-8d1cd2004805.jpg",
       "aboutMe": "",
       "bannerColor": "#aaa",
       "creationDate": "23/06/2024"
@@ -47,6 +47,118 @@
       "aboutMe": "teste",
       "bannerColor": "#ae3737",
       "creationDate": "28/06/2024"
+    },
+    {
+      "id": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
+      "name": "teste",
+      "email": "test@gmail.com",
+      "password": "$2b$10$f5gFJjuoy3T0tKtf68i79usDUo4BklDFaHXRBKiSqyqpj2pomIvke",
+      "level": 1,
+      "experience": 700,
+      "tasksCreated": 12,
+      "tasksCompleted": 3,
+      "discussionsStarted": 1,
+      "commentsMade": 3,
+      "picturePath": "8d88865b-f763-4d19-a551-91e7f7f0c5ab.jpg",
+      "aboutMe": "",
+      "bannerColor": "#aaa",
+      "creationDate": "30/06/2024"
+    },
+    {
+      "id": "1",
+      "name": "malenia123",
+      "email": "user1@example.com",
+      "password": "$2b$10$f5gFJjuoy3T0tKtf68i79usDUo4BklDFaHXRBKiSqyqpj2pomIvke",
+      "level": 0,
+      "experience": 0,
+      "tasksCreated": 0,
+      "tasksCompleted": 0,
+      "discussionsStarted": 0,
+      "commentsMade": 0,
+      "picturePath": "1.jpg",
+      "aboutMe": "",
+      "bannerColor": "#aaa",
+      "creationDate": "30/06/2024"
+    },
+    {
+      "id": "2",
+      "name": "dr. nada estranho",
+      "email": "user2@example.com",
+      "password": "$2b$10$f5gFJjuoy3T0tKtf68i79usDUo4BklDFaHXRBKiSqyqpj2pomIvke",
+      "level": 0,
+      "experience": 0,
+      "tasksCreated": 0,
+      "tasksCompleted": 0,
+      "discussionsStarted": 0,
+      "commentsMade": 0,
+      "picturePath": "2.jpg",
+      "aboutMe": "",
+      "bannerColor": "#aaa",
+      "creationDate": "30/06/2024"
+    },
+    {
+      "id": "3",
+      "name": "homem libelula",
+      "email": "user3@example.com",
+      "password": "$2b$10$f5gFJjuoy3T0tKtf68i79usDUo4BklDFaHXRBKiSqyqpj2pomIvke",
+      "level": 0,
+      "experience": 0,
+      "tasksCreated": 0,
+      "tasksCompleted": 0,
+      "discussionsStarted": 0,
+      "commentsMade": 0,
+      "picturePath": "3.jpg",
+      "aboutMe": "",
+      "bannerColor": "#aaa",
+      "creationDate": "30/06/2024"
+    },
+    {
+      "id": "4",
+      "name": "esponja, bob",
+      "email": "user4@example.com",
+      "password": "$2b$10$f5gFJjuoy3T0tKtf68i79usDUo4BklDFaHXRBKiSqyqpj2pomIvke",
+      "level": 0,
+      "experience": 0,
+      "tasksCreated": 0,
+      "tasksCompleted": 0,
+      "discussionsStarted": 0,
+      "commentsMade": 0,
+      "picturePath": "4.jpg",
+      "aboutMe": "",
+      "bannerColor": "#aaa",
+      "creationDate": "30/06/2024"
+    },
+    {
+      "id": "5",
+      "name": "carolina",
+      "email": "user5@example.com",
+      "password": "$2b$10$f5gFJjuoy3T0tKtf68i79usDUo4BklDFaHXRBKiSqyqpj2pomIvke",
+      "level": 0,
+      "experience": 0,
+      "tasksCreated": 0,
+      "tasksCompleted": 0,
+      "discussionsStarted": 0,
+      "commentsMade": 0,
+      "picturePath": "5.jpg",
+      "aboutMe": "",
+      "bannerColor": "#aaa",
+      "creationDate": "30/06/2024"
+    },
+    {
+      "id": "6",
+      "name": "barbie002",
+      "email": "user6@example.com",
+      "password": "$2b$10$f5gFJjuoy3T0tKtf68i79usDUo4BklDFaHXRBKiSqyqpj2pomIvke",
+      "level": 0,
+      "experience": 0,
+      "tasksCreated": 0,
+      "tasksCompleted": 0,
+      "discussionsStarted": 0,
+      "commentsMade": 0,
+      "picturePath": "6.jpg",
+      "aboutMe": "",
+      "bannerColor": "#aaa",
+      "creationDate": "30/06/2024"
     }
   ],
   "resetTokens": [],
@@ -100,116 +212,12 @@
       "commentCount": 0
     },
     {
-      "id": "8",
-      "authorId": "7",
-      "title": "Etiam ultricies nisi vel augue",
-      "text": "Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.",
-      "date": "08/05/2024",
-      "commentCount": 0
-    },
-    {
-      "id": "9",
-      "authorId": "8",
-      "title": "Nulla consequat massa quis enim",
-      "text": "Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.",
-      "date": "09/05/2024",
-      "commentCount": 0
-    },
-    {
-      "id": "10",
-      "authorId": "9",
-      "title": "In enim justo",
-      "text": "In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.",
-      "date": "10/05/2024",
-      "commentCount": 0
-    },
-    {
-      "id": "11",
-      "authorId": "10",
-      "title": "Integer tincidunt",
-      "text": "Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.",
-      "date": "11/05/2024",
-      "commentCount": 0
-    },
-    {
-      "id": "12",
-      "authorId": "11",
-      "title": "Aenean vulputate eleifend tellus",
-      "text": "Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.",
-      "date": "12/05/2024",
-      "commentCount": 0
-    },
-    {
-      "id": "13",
-      "authorId": "12",
-      "title": "Aliquam lorem ante",
-      "text": "Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
-      "date": "13/05/2024",
-      "commentCount": 0
-    },
-    {
-      "id": "14",
-      "authorId": "13",
-      "title": "Quisque rutrum",
-      "text": "Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.",
-      "date": "14/05/2024",
-      "commentCount": 0
-    },
-    {
-      "id": "15",
-      "authorId": "14",
-      "title": "Suspendisse enim turpis",
-      "text": "Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.",
-      "date": "15/05/2024",
-      "commentCount": 0
-    },
-    {
-      "id": "16",
-      "authorId": "15",
-      "title": "Maecenas nec odio",
-      "text": "Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.",
-      "date": "16/05/2024",
-      "commentCount": 0
-    },
-    {
-      "id": "17",
-      "authorId": "16",
-      "title": "Nullam quis ante",
-      "text": "Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo.",
-      "date": "17/05/2024",
-      "commentCount": 0
-    },
-    {
-      "id": "18",
-      "authorId": "17",
-      "title": "Sed fringilla mauris sit amet",
-      "text": "Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.",
-      "date": "18/05/2024",
-      "commentCount": 0
-    },
-    {
-      "id": "19",
-      "authorId": "18",
-      "title": "Curabitur blandit tempus",
-      "text": "Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
-      "date": "19/05/2024",
-      "commentCount": 0
-    },
-    {
-      "id": "857e",
-      "authorId": "0",
-      "title": "sdaddasd",
-      "text": "asdasd",
-      "date": "23/5/2024",
-      "commentCount": 0
-    },
-    {
       "id": "554b",
       "authorId": "84e9195e-90f2-4242-806e-8d1cd2004805",
       "title": "Minha discussão",
       "text": "Essa é a minha discussão",
       "date": "23/06/2024",
-      "commentCount": 1
+      "commentCount": 2
     },
     {
       "id": "a182",
@@ -225,6 +233,14 @@
       "title": "QUERO XP",
       "text": "me da xp",
       "date": "29/06/2024",
+      "commentCount": 1
+    },
+    {
+      "id": "6aa4",
+      "authorId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
+      "title": "ME AJUDA!!!!",
+      "text": "estou com dificuldades para terminar um trabalho, me ajudem",
+      "date": "30/06/2024",
       "commentCount": 0
     }
   ],
@@ -265,9 +281,11 @@
       "target": 0,
       "targetId": "554b",
       "text": "INCRÍVEL!!!",
-      "likes": 0,
+      "likes": 1,
       "date": "23/06/2024",
-      "edited": false
+      "edited": false,
+      "authorName": "Mateus",
+      "picturePath": "32c4880f-d626-4bca-b5d9-baf7a7735b9c.jpg"
     },
     {
       "id": "46fe",
@@ -298,9 +316,37 @@
       "likes": 0,
       "date": "29/06/2024",
       "edited": false
+    },
+    {
+      "id": "f5a9",
+      "authorId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
+      "target": 0,
+      "targetId": "5ab3",
+      "text": "toma seu xp aí",
+      "likes": 0,
+      "date": "30/06/2024",
+      "edited": false
+    },
+    {
+      "id": "fc30",
+      "authorId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
+      "target": 0,
+      "targetId": "554b",
+      "text": "UM FILÓSOFO CONTEMPORÂNEO",
+      "likes": 0,
+      "date": "30/06/2024",
+      "edited": false,
+      "authorName": "teste",
+      "picturePath": "8d88865b-f763-4d19-a551-91e7f7f0c5ab.jpg"
     }
   ],
-  "likes": [],
+  "likes": [
+    {
+      "id": "518c",
+      "commentId": "7b24",
+      "userId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab"
+    }
+  ],
   "bookmarks": [
     {
       "id": "733f",
@@ -497,6 +543,114 @@
       "priority": "baixa",
       "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
       "complete": true
+    },
+    {
+      "id": "bc59",
+      "title": "hoje1",
+      "description": "hoje1",
+      "term": "2024-06-30",
+      "priority": "baixa",
+      "userId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
+      "complete": false
+    },
+    {
+      "id": "dfbe",
+      "title": "hoje2",
+      "description": "hoje2",
+      "term": "2024-06-30",
+      "priority": "media",
+      "userId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
+      "complete": false
+    },
+    {
+      "id": "a583",
+      "title": "hoje3",
+      "description": "hoje3",
+      "term": "2024-06-30",
+      "priority": "alta",
+      "userId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
+      "complete": false
+    },
+    {
+      "id": "c958",
+      "title": "hoje4",
+      "description": "hoje4",
+      "term": "2024-06-30",
+      "priority": "alta",
+      "userId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
+      "complete": true
+    },
+    {
+      "id": "4a1f",
+      "title": "amanha1",
+      "description": "amanha1",
+      "term": "2024-07-01",
+      "priority": "baixa",
+      "userId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
+      "complete": false
+    },
+    {
+      "id": "0159",
+      "title": "amanha2",
+      "description": "amanha2",
+      "term": "2024-07-01",
+      "priority": "media",
+      "userId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
+      "complete": false
+    },
+    {
+      "id": "092e",
+      "title": "amanha3",
+      "description": "amanha3",
+      "term": "2024-07-01",
+      "priority": "alta",
+      "userId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
+      "complete": false
+    },
+    {
+      "id": "6dd4",
+      "title": "amanha4",
+      "description": "amanha4",
+      "term": "2024-07-01",
+      "priority": "alta",
+      "userId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
+      "complete": true
+    },
+    {
+      "id": "6b8f",
+      "title": "ontem1",
+      "description": "ontem1",
+      "term": "2024-06-29",
+      "priority": "baixa",
+      "userId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
+      "complete": false
+    },
+    {
+      "id": "39f9",
+      "title": "ontem2",
+      "description": "ontem2",
+      "term": "2024-06-29",
+      "priority": "media",
+      "userId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
+      "complete": false
+    },
+    {
+      "id": "07a0",
+      "title": "ontem3",
+      "description": "ontem3",
+      "term": "2024-06-29",
+      "priority": "alta",
+      "userId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
+      "complete": false
+    },
+    {
+      "id": "0d9f",
+      "title": "ontem4",
+      "description": "ontem4",
+      "term": "2024-06-29",
+      "priority": "alta",
+      "userId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
+      "complete": true
     }
   ],
   "suggestions": [
@@ -511,6 +665,35 @@
           "taskId": "c36b",
           "action": 0,
           "newValue": 1719889200000,
+          "answered": false
+        }
+      ]
+    },
+    {
+      "id": "0bb1",
+      "userId": "8d88865b-f763-4d19-a551-91e7f7f0c5ab",
+      "date": 1719766244268,
+      "done": false,
+      "suggestions": [
+        {
+          "text": "A tarefa \"hoje2\" está prestes a vencer. Deseja alterar a prioridade para alta?",
+          "taskId": "dfbe",
+          "action": 1,
+          "newValue": "alta",
+          "answered": false
+        },
+        {
+          "text": "A tarefa \"amanha2\" está prestes a vencer. Deseja alterar a prioridade para alta?",
+          "taskId": "0159",
+          "action": 1,
+          "newValue": "alta",
+          "answered": false
+        },
+        {
+          "text": "A tarefa \"ontem2\" está prestes a vencer. Deseja alterar a prioridade para alta?",
+          "taskId": "39f9",
+          "action": 1,
+          "newValue": "alta",
           "answered": false
         }
       ]

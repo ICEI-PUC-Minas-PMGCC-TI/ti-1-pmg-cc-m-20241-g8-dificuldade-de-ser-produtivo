@@ -732,7 +732,9 @@ body:has(#perfil) {
 }
 
 @media screen and (max-width: 890px) {
-    .foto-perfil {
+
+    .foto-perfil,
+    #label-foto-perfil {
         width: 130px;
     }
 
@@ -871,6 +873,8 @@ body:has(#perfil) {
 
 #forum .discussion-container .user .discussion-user-image {
     width: 25px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
     border-radius: 50%;
 }
 
@@ -1023,6 +1027,7 @@ body:has(#perfil) {
 #discussion .comment-user img {
     width: 25px;
     aspect-ratio: 1/1;
+    object-fit: cover;
     border-radius: 50%;
 }
 
@@ -1815,4 +1820,16 @@ body:has(#perfil) {
     #inicio #container-tarefas {
         justify-content: center;
     }
+}
+
+/* 
+ 
+    AGENDA ----------------------------------------------------------------------
+    
+*/
+
+#agenda main {
+    background-color: var(--calendar-color);
+    color: white;
+    padding: 50px;
 }
