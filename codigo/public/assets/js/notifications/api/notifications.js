@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 const apiUrl = '/notifications';
 
 function addNotification(notification, callbackFunction)
@@ -45,3 +43,4 @@ function deleteNotification(notificationId, callbackFunction)
 }
 
 export { addNotification, deleteNotification, getNotifications };
+

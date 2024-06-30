@@ -255,7 +255,7 @@ main {
     z-index: 10;
     /* Higher z-index to ensure it stays on top */
     position: absolute;
-    right: 230px;
+    left: 230px;
     /* Ensure it stays fixed in the viewport */
 }
 
@@ -266,6 +266,7 @@ main {
     box-shadow: 3px 0px 10px rgb(0 0 0 / 25%);
     padding: 10px;
     box-sizing: border-box;
+    overflow-y: scroll;
 }
 
 
@@ -280,13 +281,13 @@ main {
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
-.texto-da-notificacao {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-top: 15px;
+.fechar-notificacao {
+    align-self: flex-end;
 }
 
 .botoes {
@@ -345,6 +346,13 @@ main {
     font-style: italic;
     display: flex;
     justify-content: center;
+}
+
+@media screen and (max-width: 890px) {
+    .main-container {
+        left: -320px;
+        top: -320px;
+    }
 }
 
 /*

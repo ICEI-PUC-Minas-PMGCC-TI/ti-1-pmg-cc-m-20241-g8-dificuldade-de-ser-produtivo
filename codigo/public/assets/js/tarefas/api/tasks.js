@@ -1,3 +1,5 @@
+import { getRemainingDays } from "../../util.js";
+
 const apiUrl = '/tasks';
 
 function addTask(newTask, callbackFunction)
@@ -78,12 +80,23 @@ function getTasksByDate(date, userId, callbackFunction)
 {
     getTasks(userId, data =>
     {
-        const filteredData = data.filter(task => task.term === date);
+        const filteredData = data.filter(task => task.term === date && !task.complete);
 
         if (callbackFunction)
             callbackFunction(filteredData);
     })
 }
 
-export { addTask, deleteTask, getTaskById, getTasks, updateTask };
+function getExpiredTasks(userId, callbackFunction)
+{
+    getTasks(userId, data =>
+    {
+        const filteredData = data.filter(task => getRemainingDays(task.term) < 0 && !task.complete);
+
+        if (callbackFunction)
+            callbackFunction(filteredData);
+    });
+}
+
+export { addTask, deleteTask, getExpiredTasks, getTaskById, getTasks, getTasksByDate, updateTask };
 

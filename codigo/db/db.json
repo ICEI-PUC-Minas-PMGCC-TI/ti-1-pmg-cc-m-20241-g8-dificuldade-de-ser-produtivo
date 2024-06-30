@@ -5,10 +5,10 @@
       "name": "Mateus",
       "email": "mateushmdiniz@gmail.com",
       "password": "$2b$10$FPcBZEfI.SOX1imc7.Yf3.22wAHCs2hmhBTpJ6nu/inSgNvCF7rSW",
-      "level": 1,
-      "experience": 200,
-      "tasksCreated": 150,
-      "tasksCompleted": 300,
+      "level": 2,
+      "experience": 50,
+      "tasksCreated": 151,
+      "tasksCompleted": 304,
       "discussionsStarted": 15,
       "commentsMade": 30,
       "picturePath": "32c4880f-d626-4bca-b5d9-baf7a7735b9c.jpg",
@@ -388,7 +388,7 @@
       "description": "test1",
       "term": "2024-07-01",
       "priority": "alta",
-      "complete": true
+      "complete": false
     },
     {
       "id": "2aba",
@@ -449,6 +449,15 @@
       "title": "teste",
       "description": "tetetete",
       "term": "2024-07-04",
+      "priority": "alta",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "complete": true
+    },
+    {
+      "id": "d413",
+      "title": "hoje",
+      "description": "hojoje",
+      "term": "2024-06-30",
       "priority": "alta",
       "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
       "complete": true

@@ -1,15 +1,34 @@
+import { getExpiredTasks, getTasksByDate } from "../../tarefas/api/tasks.js";
+import { getNotifications } from "../api/notifications.js";
+
+const userId = sessionStorage.getItem('user');
+
 const data = new Date()
 const dia = String(data.getDate()).padStart(2, '0')
 const mes = String(data.getMonth() + 1).padStart(2, '0')
 const ano = data.getFullYear()
-CurrentDate = `${ano}-${mes}-${dia}`
+const CurrentDate = `${ano}-${mes}-${dia}`;
+
+function gerarNotificacao(txt)
+{
+    const notificationEl = document.createElement('div');
+    notificationEl.classList.add('notification');
+    notificationEl.innerHTML = `<i class="fa-solid fa-x fechar-notificacao"></i><p class="texto-da-notificacao">${txt}</p>`
+
+    notificationEl.querySelector('i').addEventListener('click', () =>
+    {
+        notificationEl.remove();
+    });
+
+    document.querySelector('#notificacoes-separadas').append(notificationEl);
+}
 
 document.addEventListener("DOMContentLoaded", function ()
 {
 
     /*
         -------------------Ícone da barra-------------------*/
-    const notificationsIcon = document.getElementById('nav-notifications');
+    const notificationsIcon = document.getElementById('notification-button');
     const mainContainer = document.querySelector('.main-container');
 
     notificationsIcon.addEventListener('click', function (event)
@@ -18,91 +37,36 @@ document.addEventListener("DOMContentLoaded", function ()
         mainContainer.classList.toggle('hidden');
     });
 
-    const botaoNotificacoes = document.querySelectorAll('.botoes a');
-
-    botaoNotificacoes.forEach(botao =>
+    getNotifications(userId, data =>
     {
-        botao.addEventListener('click', function ()
+        console.log(data);
+        data.forEach(notification =>
         {
-            // Seleciona a notificação pai e a oculta
-            const notification = this.closest('.notification');
-            notification.remove();
+            gerarNotificacao(notification.text);
         });
-    });/*
-    ---------------------------------------------------------*/
-    /*
-    -------------------NOTIFICAÇÃO PRÓXIMA-------------------*/
-    function tarefaproxima()
-    {
-        const notificacao = document.querySelector('#notificacoes-separadas');
-        if (!notificacao)
-        {
-            console.error('Elemento #notificacoes-separadas não encontrado no DOM.');
-        } else
-        {
-            fetch('/tasks')
-                .then(async res =>
-                {
-                    if (!res.ok)
-                    {
-                        throw new Error(res.status);
-                    }
 
-                    let data = await res.json();
-                    let project = document.createElement('div');
-                    project.innerHTML = `
-                        <div class="notification">
-                            <a class="texto-da-notificacao">Sua tarefa pendente está próxima do prazo</a>
-                            <div class="botoes">
-                                <a class="redirecionamento-tarefas">Editar</a>
-                            </div>
-                        </div>
-                        `;
-                    perfil.appendChild(project);
-                })
-                .catch(error =>
-                {
-                    console.error('Erro ao buscar dados do json:', error);
-                });
-        }
-    }/*
-    ---------------------------------------------------------*/
-    /*
-    ------------------NOTIFICAÇÃO ATRASADA-------------------*/
-    function tarefaatrasada()
-    {
-        const notificacao = document.querySelector('#notificacoes-separadas');
-        if (!notificacao)
+        getTasksByDate(CurrentDate, userId, data =>
         {
-            console.error('Elemento #notificacoes-separadas não encontrado no DOM.');
-        } else
-        {
-            fetch('/tasks')
-                .then(async res =>
-                {
-                    if (!res.ok)
-                    {
-                        throw new Error(res.status);
-                    }
+            console.log(data);
+            data.forEach(task =>
+            {
+                gerarNotificacao(`A tarefa "${task.title}" vence hoje.`);
+            });
 
-                    let data = await res.json();
-                    let project = document.createElement('div');
-                    project.innerHTML = `
-                        <div class="notification">
-                            <a class="texto-da-notificacao">Sua tarefa expirou no dia 19/05/24</a>
-                            <div class="botoes">
-                                <a class="marcar-ignorar">Ignorar</a>
-                                <a class="redirecionamento-tarefas">Editar</a>
-                            </div>
-                        </div>
-                        `;
-                    perfil.appendChild(project);
-                })
-                .catch(error =>
+            getExpiredTasks(userId, data =>
+            {
+                console.log(data);
+                data.forEach(task =>
                 {
-                    console.error('Erro ao buscar dados do json:', error);
+                    gerarNotificacao(`A tarefa "${task.title}" venceu.`);
                 });
-        }
-    }/*
-    ---------------------------------------------------------*/
+
+                const notifications = document.querySelectorAll('.notification');
+
+                if (notifications.length === 0)
+                    document.querySelector('#notificacoes-separadas').innerHtml = '<p>Nenhuma notificação.</p>'
+            });
+        });
+    });
+
 });
