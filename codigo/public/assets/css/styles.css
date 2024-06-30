@@ -61,20 +61,6 @@ nav {
     justify-content: space-between;
 }
 
-.nav-group {
-    /*Espaçamento entre os itens*/
-    display: flex;
-    flex-direction: column;
-}
-
-.nav-group:nth-child(1) {
-    gap: 30px;
-}
-
-.nav-group:nth-child(2) {
-    gap: 80px
-}
-
 .nav-item,
 #nav-profile {
     /*Posicionando os elementos de cada item*/
@@ -86,7 +72,7 @@ nav {
 
 .nav-item {
     /*Forçando uma altura para cada item*/
-    height: 80px;
+    height: 60px;
 
     padding: 0 25%;
     gap: 30%;
@@ -181,25 +167,11 @@ main {
         order: 2;
         flex: 1 1 10%;
 
-        display: grid;
-        grid-template-columns: 70% 1fr;
-        grid-template-rows: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
 
         padding: 0 20px;
-    }
-
-    .nav-group {
-        flex-direction: row;
-
-        gap: 22% !important;
-    }
-
-    .nav-group:nth-child(1) {
-        justify-content: center;
-    }
-
-    .nav-group:nth-child(2) {
-        justify-content: end;
     }
 
     .nav-item {
@@ -285,7 +257,7 @@ nav,
 .main-container {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: 300px;
     /* Use 100vh para ocupar toda a altura da janela */
     display: flex;
     flex-direction: column;
@@ -293,7 +265,7 @@ nav,
     /* Alinha o conteúdo no final da página */
     z-index: 10;
     /* Higher z-index to ensure it stays on top */
-    position: fixed;
+    position: absolute;
     /* Ensure it stays fixed in the viewport */
 }
 

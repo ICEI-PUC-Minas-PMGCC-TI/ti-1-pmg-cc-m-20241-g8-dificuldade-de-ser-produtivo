@@ -16,34 +16,35 @@
 
 <body id="inicio">
 	<nav>
-		<div class="nav-group">
-			<a href="inicio.html" class="nav-item" id="nav-home">
-				<i class=" fa-solid fa-house"></i>
-				<span>Início</span>
-			</a>
-			<a class="nav-item" id="nav-calendar">
-				<i class="fa-solid fa-calendar-days"></i>
-				<span>Agenda</span>
-			</a>
-			<a href="tarefas.html" class="nav-item" id="nav-tasks">
-				<i class="fa-solid fa-list-check"></i>
-				<span>Tarefas</span>
-			</a>
-			<a href="forum.html" class="nav-item" id="nav-forum">
-				<i class="fa-solid fa-comments"></i>
-				<span>Fórum</span>
-			</a>
-		</div>
-		<div class="nav-group">
-			<a href="perfil.html" id="nav-profile">
-				<div>
-					<i class="fa-solid fa-user"></i>
-				</div>
-			</a>
-			<div class="nav-item" id="nav-logout">
-				<i class="fa-solid fa-right-from-bracket"></i>
-				<span>Sair</span>
+		<a href="inicio.html" class="nav-item" id="nav-home">
+			<i class=" fa-solid fa-house"></i>
+			<span>Início</span>
+		</a>
+		<a class="nav-item" id="nav-calendar">
+			<i class="fa-solid fa-calendar-days"></i>
+			<span>Agenda</span>
+		</a>
+		<a href="tarefas.html" class="nav-item" id="nav-tasks">
+			<i class="fa-solid fa-list-check"></i>
+			<span>Tarefas</span>
+		</a>
+		<a href="forum.html" class="nav-item" id="nav-forum">
+			<i class="fa-solid fa-comments"></i>
+			<span>Fórum</span>
+		</a>
+		<div id="nav-notifications">
+			<div>
+				<i class="fa-solid fa-bell"></i>
 			</div>
+		</div>
+		<a href="perfil.html" id="nav-profile">
+			<div>
+				<i class="fa-solid fa-user"></i>
+			</div>
+		</a>
+		<div class="nav-item" id="nav-logout">
+			<i class="fa-solid fa-right-from-bracket"></i>
+			<span>Sair</span>
 		</div>
 	</nav>
 	<main>
@@ -82,9 +83,20 @@
 		</div>
 	</main>
 
+	<div class="main-container hidden">
+		<div class="painel-expandido-notificacoes">
+			<div class="sem-notificacoes">
+			</div>
+			<div class="notificacoes-separadas" id="notificacoes-separadas">
+				<!--notificações aqui-->
+			</div>
+		</div>
+	</div>
+
 	<script src="assets/js/home/vanilla-toast.js"></script>
 	<script src="assets/js/jquery-3.7.1.min.js"></script>
 	<script type="module" src="assets/js/home/home.js"></script>
+	<script src="assets/js/notificacoes/main.js"></script>
 	<script>
 		$(() =>
 		{
