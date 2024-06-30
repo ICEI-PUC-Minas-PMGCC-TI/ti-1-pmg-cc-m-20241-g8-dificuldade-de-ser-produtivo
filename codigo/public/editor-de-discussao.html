@@ -31,8 +31,17 @@
             <span>Fórum</span>
         </a>
         <div id="nav-notifications">
-            <div>
+            <div id="notification-button">
                 <i class="fa-solid fa-bell"></i>
+            </div>
+            <div class="main-container hidden">
+                <div class="painel-expandido-notificacoes">
+                    <div class="sem-notificacoes">
+                    </div>
+                    <div class="notificacoes-separadas" id="notificacoes-separadas">
+                        <!--notificações aqui-->
+                    </div>
+                </div>
             </div>
         </div>
         <a href="perfil.html" id="nav-profile">
@@ -61,6 +70,7 @@
 
     <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script src="assets/js/forum/pages/discussion-editor.js" type="module"></script>
+    <script type="module" src="assets/js/notifications/pages/notifications.js"></script>
     <script>
         $(() =>
         {

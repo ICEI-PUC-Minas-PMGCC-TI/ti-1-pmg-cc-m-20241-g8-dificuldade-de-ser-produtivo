@@ -9,7 +9,7 @@ const mes = String(data.getMonth() + 1).padStart(2, '0')
 const ano = data.getFullYear()
 const CurrentDate = `${ano}-${mes}-${dia}`;
 
-function gerarNotificacao(txt)
+function gerarNotificacao(txt, index)
 {
     const notificationEl = document.createElement('div');
     notificationEl.classList.add('notification');
@@ -18,6 +18,9 @@ function gerarNotificacao(txt)
     notificationEl.querySelector('i').addEventListener('click', () =>
     {
         notificationEl.remove();
+        const notifications = JSON.parse(sessionStorage.getItem('notifications'));
+        notifications.splice(index, 1);
+        sessionStorage.setItem('notifications', JSON.stringify(notifications));
     });
 
     document.querySelector('#notificacoes-separadas').append(notificationEl);
@@ -37,36 +40,14 @@ document.addEventListener("DOMContentLoaded", function ()
         mainContainer.classList.toggle('hidden');
     });
 
-    getNotifications(userId, data =>
+    const notifications = JSON.parse(sessionStorage.getItem('notifications'));
+
+    if (notifications.length === 0)
     {
-        console.log(data);
-        data.forEach(notification =>
-        {
-            gerarNotificacao(notification.text);
-        });
+        document.querySelector('#notificacoes-separadas').classList.add('empty');
+        document.querySelector('#notificacoes-separadas').innerHTML = '<p>Nenhuma notificação nova.</p>';
+        return;
+    }
 
-        getTasksByDate(CurrentDate, userId, data =>
-        {
-            console.log(data);
-            data.forEach(task =>
-            {
-                gerarNotificacao(`A tarefa "${task.title}" vence hoje.`);
-            });
-
-            getExpiredTasks(userId, data =>
-            {
-                console.log(data);
-                data.forEach(task =>
-                {
-                    gerarNotificacao(`A tarefa "${task.title}" venceu.`);
-                });
-
-                const notifications = document.querySelectorAll('.notification');
-
-                if (notifications.length === 0)
-                    document.querySelector('#notificacoes-separadas').innerHtml = '<p>Nenhuma notificação.</p>'
-            });
-        });
-    });
-
+    notifications.forEach((notification, index) => { gerarNotificacao(notification, index) });
 });

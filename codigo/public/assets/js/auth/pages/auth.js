@@ -1,3 +1,5 @@
+import { getNotifications } from "../../notifications/api/notifications.js";
+import { getExpiredTasks, getTasksByDate } from "../../tarefas/api/tasks.js";
 import { analyzePasswordStrength, getDate } from "../../util.js";
 import { login, register } from "../api/users.js";
 
@@ -169,7 +171,45 @@ $(() =>
 
                 sessionStorage.setItem('user', id);
 
-                window.location.href = 'forum.html';
+                const data = new Date()
+                const dia = String(data.getDate()).padStart(2, '0')
+                const mes = String(data.getMonth() + 1).padStart(2, '0')
+                const ano = data.getFullYear()
+                const CurrentDate = `${ano}-${mes}-${dia}`;
+
+                const notifications = [];
+
+                getNotifications(id, data =>
+                {
+                    console.log(data);
+                    data.forEach(notification =>
+                    {
+                        notifications.push(notification.text);
+                    });
+
+                    getTasksByDate(CurrentDate, id, data =>
+                    {
+                        console.log(data);
+                        data.forEach(task =>
+                        {
+                            notifications.push(`A tarefa "${task.title}" vence hoje.`);
+                        });
+
+                        getExpiredTasks(id, data =>
+                        {
+                            console.log(data);
+                            data.forEach(task =>
+                            {
+                                notifications.push(`A tarefa "${task.title}" venceu.`);
+                            });
+
+                            sessionStorage.setItem('notifications', JSON.stringify(notifications));
+
+                            window.location.href = 'inicio.html';
+                        });
+                    });
+                });
+
             });
         });
     });

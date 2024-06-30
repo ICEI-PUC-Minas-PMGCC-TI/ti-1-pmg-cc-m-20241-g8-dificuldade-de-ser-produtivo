@@ -194,7 +194,9 @@ function openEditModal(taskId)
 
     document.getElementById("editTaskTitle").value = task.title;
     document.getElementById("editTaskDescription").value = task.description;
-    document.getElementById("editTaskTerm").value = formatDate(task.term);
+    const date = new Date(task.term);
+    date.setHours(date.getHours() + 3);
+    document.getElementById("editTaskTerm").value = formatDate(date);
 
     form.onsubmit = function (e)
     {
@@ -293,6 +295,8 @@ document.addEventListener('DOMContentLoaded', function ()
             newTaskData[key] = value;
         });
 
+        console.log(newTaskData);
+
         console.log(newTaskData)
 
         newTaskData.userId = userId;
@@ -300,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function ()
 
         addTask(newTaskData, newTask =>
         {
-            addTaskForm.closest('.modal').style.display = 'none';
+            addTaskForm.closest('.modal').classList.add('hidden');
             readTasks(processData);
 
             addXp(userId, 50, () =>

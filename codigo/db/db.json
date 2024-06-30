@@ -5,10 +5,10 @@
       "name": "Mateus",
       "email": "mateushmdiniz@gmail.com",
       "password": "$2b$10$FPcBZEfI.SOX1imc7.Yf3.22wAHCs2hmhBTpJ6nu/inSgNvCF7rSW",
-      "level": 2,
-      "experience": 50,
-      "tasksCreated": 151,
-      "tasksCompleted": 304,
+      "level": 3,
+      "experience": 0,
+      "tasksCreated": 154,
+      "tasksCompleted": 308,
       "discussionsStarted": 15,
       "commentsMade": 30,
       "picturePath": "32c4880f-d626-4bca-b5d9-baf7a7735b9c.jpg",
@@ -459,6 +459,42 @@
       "description": "hojoje",
       "term": "2024-06-30",
       "priority": "alta",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "complete": true
+    },
+    {
+      "id": "c8c8",
+      "title": "asdasd",
+      "description": "asdasd",
+      "term": "2024-06-30",
+      "priority": "alta",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "complete": true
+    },
+    {
+      "id": "e4c4",
+      "title": "aaa",
+      "description": "aaa",
+      "term": "2024-06-29",
+      "priority": "alta",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "complete": true
+    },
+    {
+      "id": "3850",
+      "title": "etetet",
+      "description": "etqet",
+      "term": "2024-06-29",
+      "priority": "baixa",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "complete": true
+    },
+    {
+      "id": "3d17",
+      "title": "a",
+      "description": "b",
+      "term": "2024-06-30",
+      "priority": "baixa",
       "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
       "complete": true
     }

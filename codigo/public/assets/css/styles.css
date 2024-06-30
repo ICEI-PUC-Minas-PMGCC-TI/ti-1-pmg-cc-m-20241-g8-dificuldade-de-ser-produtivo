@@ -276,6 +276,14 @@ main {
     flex-direction: column;
 }
 
+#notificacoes-separadas.empty {
+    color: white;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 .notification {
     background-color: #ffffff;
     margin-bottom: 10px;
