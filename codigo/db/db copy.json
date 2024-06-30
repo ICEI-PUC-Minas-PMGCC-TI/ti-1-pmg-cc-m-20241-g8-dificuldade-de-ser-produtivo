@@ -2,18 +2,14 @@
   "users": [
     {
       "id": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "name": "Mateus",
+      "name": "mateus",
       "email": "mateushmdiniz@gmail.com",
-      "password": "$2b$10$FPcBZEfI.SOX1imc7.Yf3.22wAHCs2hmhBTpJ6nu/inSgNvCF7rSW",
-      "level": 1,
-      "experience": 200,
-      "tasksCreated": 150,
-      "tasksCompleted": 300,
-      "discussionsStarted": 15,
-      "commentsMade": 30,
-      "picturePath": "32c4880f-d626-4bca-b5d9-baf7a7735b9c.jpg",
-      "aboutMe": "asdasd",
-      "bannerColor": "#2b00ff",
+      "password": "$2b$10$PPDop/jgd3u/3jYV0DD04OWfV6xNeWxXGMwac.gF2TKsgQJGuEpoK",
+      "level": 0,
+      "experience": 0,
+      "picturePath": null,
+      "aboutMe": "",
+      "bannerColor": "#f00",
       "creationDate": "21/06/2024"
     },
     {
@@ -23,30 +19,10 @@
       "password": "$2b$10$Fo3DxQIPHSduQBb31P2KQ.PY.XNlHM1ahtJaY6fglk3qyvoZmZR9y",
       "level": 0,
       "experience": 0,
-      "tasksCreated": 0,
-      "tasksCompleted": 0,
-      "discussionsStarted": 0,
-      "commentsMade": 0,
       "picturePath": null,
       "aboutMe": "",
       "bannerColor": "#aaa",
       "creationDate": "23/06/2024"
-    },
-    {
-      "id": "ce16a42f-7fca-4162-bfab-da9a7759c9d9",
-      "name": "henrique",
-      "email": "henriiqueacs@gmail.com",
-      "password": "$2b$10$Q0uceTi/2gG2mKCOjdipVudVKCatnvNTrrap0VWuSffqEVa27F5lG",
-      "level": 1,
-      "experience": 200,
-      "tasksCreated": 0,
-      "tasksCompleted": 0,
-      "discussionsStarted": 0,
-      "commentsMade": 0,
-      "picturePath": null,
-      "aboutMe": "teste",
-      "bannerColor": "#ae3737",
-      "creationDate": "28/06/2024"
     }
   ],
   "resetTokens": [],
@@ -57,7 +33,7 @@
       "title": "Integer nec odio",
       "text": "Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
       "date": "02/05/2024",
-      "commentCount": 5
+      "commentCount": 3
     },
     {
       "id": "3",
@@ -218,14 +194,6 @@
       "text": "Essa é sem sombra de dúvidas uma discussão",
       "date": "23/06/2024",
       "commentCount": 1
-    },
-    {
-      "id": "5ab3",
-      "authorId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "QUERO XP",
-      "text": "me da xp",
-      "date": "29/06/2024",
-      "commentCount": 0
     }
   ],
   "comments": [
@@ -278,26 +246,6 @@
       "likes": 0,
       "date": "23/06/2024",
       "edited": false
-    },
-    {
-      "id": "e022",
-      "authorId": null,
-      "target": 0,
-      "targetId": "2",
-      "text": "asd",
-      "likes": 0,
-      "date": "28/06/2024",
-      "edited": false
-    },
-    {
-      "id": "284e",
-      "authorId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "target": 0,
-      "targetId": "2",
-      "text": "comentando pra ganhar xp",
-      "likes": 0,
-      "date": "29/06/2024",
-      "edited": false
     }
   ],
   "likes": [],
@@ -321,154 +269,6 @@
       "id": "4d2c",
       "discussionId": "2",
       "userId": "84e9195e-90f2-4242-806e-8d1cd2004805"
-    },
-    {
-      "id": "7cd1",
-      "discussionId": "554b",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c"
-    }
-  ],
-  "tasks": [
-    {
-      "id": "1",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "Estudar prova de calculo 1",
-      "description": "Limites ",
-      "complete": true,
-      "term": "2024-02-07",
-      "priority": "alta"
-    },
-    {
-      "id": "2",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "Estudar prova de calculo 2",
-      "description": "Limites e derivadas",
-      "complete": true,
-      "term": "2024-02-09",
-      "priority": "media"
-    },
-    {
-      "id": "3",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "Estudar prova de calculo 3",
-      "description": "Limites e derivadas",
-      "complete": true,
-      "term": "2024-02-09",
-      "priority": "baixa"
-    },
-    {
-      "id": "5613",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "Finalizar TI1",
-      "description": "SOCORRO",
-      "term": "2024-07-01",
-      "priority": "alta"
-    },
-    {
-      "id": "cdd2",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "a",
-      "description": "b",
-      "term": "2024-06-29",
-      "priority": "baixa",
-      "complete": true
-    },
-    {
-      "id": "93f5",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "Sobreviver por 1 ano",
-      "description": "Vc consegue!",
-      "term": "2025-06-28",
-      "priority": "alta"
-    },
-    {
-      "id": "c36b",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "test1",
-      "description": "test1",
-      "term": "2024-07-01",
-      "priority": "alta",
-      "complete": true
-    },
-    {
-      "id": "2aba",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "test2",
-      "description": "test2",
-      "term": "2024-07-02",
-      "priority": "baixa",
-      "complete": true
-    },
-    {
-      "id": "97d7",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "hoje",
-      "description": "é hoje",
-      "term": "2024-06-29",
-      "priority": "baixa",
-      "complete": true
-    },
-    {
-      "id": "68fd",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "media",
-      "description": "media",
-      "term": "2024-07-02",
-      "priority": "media",
-      "complete": true
-    },
-    {
-      "id": "033c",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "ontem",
-      "description": "ontem",
-      "term": "2024-06-28",
-      "priority": "alta",
-      "complete": true
-    },
-    {
-      "id": "e5a5",
-      "title": "jooj",
-      "description": "te pego pela cabeçç e te jogo pela cabeçç e te joooj",
-      "term": "2024-06-29",
-      "priority": "alta",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "complete": true
-    },
-    {
-      "id": "c35e",
-      "title": "everybody",
-      "description": "wants to rule the world",
-      "term": "2024-06-30",
-      "priority": "alta",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "complete": true
-    },
-    {
-      "id": "2ee0",
-      "title": "teste",
-      "description": "tetetete",
-      "term": "2024-07-04",
-      "priority": "alta",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "complete": true
-    }
-  ],
-  "suggestions": [
-    {
-      "id": "ae16",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "date": 1719709516797,
-      "done": false,
-      "suggestions": [
-        {
-          "text": "As tarefas \"Finalizar TI1\" e \"test1\" possuem prioridade alta e vencem no mesmo dia. Deseja alterar a data da tarefa \"test1\" para 02/07/2024 para evitar um conflito entre tarefa de alta prioridade?",
-          "taskId": "c36b",
-          "action": 0,
-          "newValue": 1719889200000,
-          "answered": false
-        }
-      ]
     }
   ]
 }

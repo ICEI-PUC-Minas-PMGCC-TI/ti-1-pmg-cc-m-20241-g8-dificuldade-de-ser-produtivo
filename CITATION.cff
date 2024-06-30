@@ -1,28 +1,35 @@
-<<<<<<< HEAD
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
 title: 
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
+  - family-names: Alvares Campos de Santos
+    given-names: Henrique
+  - family-names: Lentz Rodriguez Boson
+    given-names: Henrique
+  - family-names: Rocha Ribeiro 
+    given-names: Ian
+  - family-names: Henrique Medeiros Diniz
+    given-names: Mateus
+  - family-names: Ribeiro Fernandes
+    given-names: Mateus
+  - family-names: Hoffmann Reis Viana
+    given-names: Silas
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Vieira Carneiro
+    given-names: Rommel
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Henrique Ramos Costa
+    given-names: Pedro
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Carlos Oliveira
+    given-names: João
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Mara Freitas Diniz
+    given-names: Luciana  
 keywords:
   - 
   - 
@@ -30,36 +37,3 @@ repository-code:
 license: CC-BY-4.0
 version: 1.0.0
 date-released: 2022-07-14
-=======
-cff-version: 1.0.1
-message: Please cite this software using these metadata.
-title: 
-authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
-  - name-suffix: Professor
-    affiliation: PUC Minas
-    family-names: 
-    given-names: 
-  - name-suffix: Professor
-    affiliation: PUC Minas
-    family-names: 
-    given-names: 
-keywords:
-  - 
-  - 
-repository-code: 
-license: CC-BY-4.0
-version: 1.0.0
-date-released: 2022-07-14
->>>>>>> 576e4073eb686b7caee5801aac8f95491eb4d605
