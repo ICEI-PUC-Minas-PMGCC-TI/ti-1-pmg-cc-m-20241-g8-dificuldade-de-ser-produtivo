@@ -13,9 +13,26 @@ O objetivo do Trackle é solucionar a dificuldade de ser produtivo. Para tal, el
 
 ## Professores responsáveis
 
-* Nome completo do professor 1
-* Nome completo do professor 2
+* Rommel Vieira Carneiro
+* Pedro Henrique Ramos Costa
+* João Carlos Oliveira
+* Luciana Mara Freitas Diniz
 
 ## Instruções de utilização
 
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+Ao clonar o repositório:
+
+* Navegar até a pasta "codigo"
+```
+path-to-repository/codigo/
+```
+* Rodar os seguintes comandos
+
+```
+path-to-repository/codigo/npm ci
+```
+```
+path-to-repository/codigo/npm start
+```
+* Vá para o link http://localhost:3000/ para acessar o site
+* Para finalizar os servidores, digite `Ctrl + c`, e depois `s`

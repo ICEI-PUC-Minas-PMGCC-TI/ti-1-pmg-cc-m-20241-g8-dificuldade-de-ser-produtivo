@@ -1,6 +1,6 @@
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
-title: 
+title: Trackle
 authors:
   - family-names: Alvares Campos de Santos
     given-names: Henrique
@@ -31,7 +31,10 @@ authors:
     family-names: Mara Freitas Diniz
     given-names: Luciana  
 keywords:
-  - 
+  - Rotina
+  - Tarefas
+  - Produtividade
+  - Organização
   - 
 repository-code: 
 license: CC-BY-4.0
