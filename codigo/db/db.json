@@ -6,9 +6,9 @@
       "email": "mateushmdiniz@gmail.com",
       "password": "$2b$10$FPcBZEfI.SOX1imc7.Yf3.22wAHCs2hmhBTpJ6nu/inSgNvCF7rSW",
       "level": 3,
-      "experience": 0,
-      "tasksCreated": 154,
-      "tasksCompleted": 308,
+      "experience": 350,
+      "tasksCreated": 157,
+      "tasksCompleted": 309,
       "discussionsStarted": 15,
       "commentsMade": 30,
       "picturePath": "32c4880f-d626-4bca-b5d9-baf7a7735b9c.jpg",
@@ -18,13 +18,13 @@
     },
     {
       "id": "84e9195e-90f2-4242-806e-8d1cd2004805",
-      "name": "a",
+      "name": "Garry",
       "email": "chenri48155@gmail.com",
-      "password": "$2b$10$Fo3DxQIPHSduQBb31P2KQ.PY.XNlHM1ahtJaY6fglk3qyvoZmZR9y",
+      "password": "$2b$10$cC5xcYsGqDWx9vE3HGjvCOkK4NoeBVenlogKmrMfRbPGfPFG9Q/Hq",
       "level": 0,
-      "experience": 0,
-      "tasksCreated": 0,
-      "tasksCompleted": 0,
+      "experience": 700,
+      "tasksCreated": 6,
+      "tasksCompleted": 2,
       "discussionsStarted": 0,
       "commentsMade": 0,
       "picturePath": "84e9195e-90f2-4242-806e-8d1cd2004805.jpg",
@@ -425,164 +425,12 @@
       "priority": "alta"
     },
     {
-      "id": "2",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "Estudar prova de calculo 2",
-      "description": "Limites e derivadas",
-      "complete": true,
-      "term": "2024-02-09",
-      "priority": "media"
-    },
-    {
-      "id": "3",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "Estudar prova de calculo 3",
-      "description": "Limites e derivadas",
-      "complete": true,
-      "term": "2024-02-09",
-      "priority": "baixa"
-    },
-    {
       "id": "5613",
       "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
       "title": "Finalizar TI1",
       "description": "SOCORRO",
       "term": "2024-07-01",
       "priority": "alta"
-    },
-    {
-      "id": "cdd2",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "a",
-      "description": "b",
-      "term": "2024-06-29",
-      "priority": "baixa",
-      "complete": true
-    },
-    {
-      "id": "93f5",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "Sobreviver por 1 ano",
-      "description": "Vc consegue!",
-      "term": "2025-06-28",
-      "priority": "alta"
-    },
-    {
-      "id": "c36b",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "test1",
-      "description": "test1",
-      "term": "2024-07-01",
-      "priority": "alta",
-      "complete": false
-    },
-    {
-      "id": "2aba",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "test2",
-      "description": "test2",
-      "term": "2024-07-02",
-      "priority": "baixa",
-      "complete": true
-    },
-    {
-      "id": "97d7",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "hoje",
-      "description": "é hoje",
-      "term": "2024-06-29",
-      "priority": "baixa",
-      "complete": true
-    },
-    {
-      "id": "68fd",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "media",
-      "description": "media",
-      "term": "2024-07-02",
-      "priority": "media",
-      "complete": true
-    },
-    {
-      "id": "033c",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "title": "ontem",
-      "description": "ontem",
-      "term": "2024-06-28",
-      "priority": "alta",
-      "complete": true
-    },
-    {
-      "id": "e5a5",
-      "title": "jooj",
-      "description": "te pego pela cabeçç e te jogo pela cabeçç e te joooj",
-      "term": "2024-06-29",
-      "priority": "alta",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "complete": true
-    },
-    {
-      "id": "c35e",
-      "title": "everybody",
-      "description": "wants to rule the world",
-      "term": "2024-06-30",
-      "priority": "alta",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "complete": true
-    },
-    {
-      "id": "2ee0",
-      "title": "teste",
-      "description": "tetetete",
-      "term": "2024-07-04",
-      "priority": "alta",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "complete": true
-    },
-    {
-      "id": "d413",
-      "title": "hoje",
-      "description": "hojoje",
-      "term": "2024-06-30",
-      "priority": "alta",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "complete": true
-    },
-    {
-      "id": "c8c8",
-      "title": "asdasd",
-      "description": "asdasd",
-      "term": "2024-06-30",
-      "priority": "alta",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "complete": true
-    },
-    {
-      "id": "e4c4",
-      "title": "aaa",
-      "description": "aaa",
-      "term": "2024-06-29",
-      "priority": "alta",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "complete": true
-    },
-    {
-      "id": "3850",
-      "title": "etetet",
-      "description": "etqet",
-      "term": "2024-06-29",
-      "priority": "baixa",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "complete": true
-    },
-    {
-      "id": "3d17",
-      "title": "a",
-      "description": "b",
-      "term": "2024-06-30",
-      "priority": "baixa",
-      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
-      "complete": true
     },
     {
       "id": "bc59",
@@ -727,6 +575,87 @@
       "priority": "media",
       "userId": "72fedb28-cae9-4719-890b-d7001ab8bbb7",
       "complete": false
+    },
+    {
+      "id": "dd9f",
+      "title": "Estudar para AEDS",
+      "description": "C e C++",
+      "term": "2024-07-01",
+      "priority": "media",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "complete": false
+    },
+    {
+      "id": "9992",
+      "title": "hoje",
+      "description": "hoje",
+      "term": "2024-06-30",
+      "priority": "baixa",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "complete": false
+    },
+    {
+      "id": "37bb",
+      "title": "hoje2",
+      "description": "hoje2",
+      "term": "2024-06-30",
+      "priority": "baixa",
+      "userId": "32c4880f-d626-4bca-b5d9-baf7a7735b9c",
+      "complete": true
+    },
+    {
+      "id": "5e41",
+      "title": "Tarefa 1",
+      "description": "T",
+      "term": "2024-07-14",
+      "priority": "alta",
+      "userId": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "complete": false
+    },
+    {
+      "id": "633d",
+      "title": "Tarefa 2",
+      "description": "T",
+      "term": "2024-07-23",
+      "priority": "media",
+      "userId": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "complete": false
+    },
+    {
+      "id": "6e83",
+      "title": "Tarefa 3",
+      "description": "T",
+      "term": "2024-07-25",
+      "priority": "baixa",
+      "userId": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "complete": false
+    },
+    {
+      "id": "8710",
+      "title": "Tarefa 4",
+      "description": "T",
+      "term": "2024-07-10",
+      "priority": "baixa",
+      "userId": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "complete": true
+    },
+    {
+      "id": "6c06",
+      "title": "hoje 1",
+      "description": "h1",
+      "term": "2024-06-30",
+      "priority": "baixa",
+      "userId": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "complete": false
+    },
+    {
+      "id": "3407",
+      "title": "hoje 2",
+      "description": "h1",
+      "term": "2024-06-30",
+      "priority": "baixa",
+      "userId": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "complete": true
     }
   ],
   "suggestions": [
@@ -768,6 +697,21 @@
         {
           "text": "A tarefa \"ontem2\" está prestes a vencer. Deseja alterar a prioridade para alta?",
           "taskId": "39f9",
+          "action": 1,
+          "newValue": "alta",
+          "answered": false
+        }
+      ]
+    },
+    {
+      "id": "7990",
+      "userId": "84e9195e-90f2-4242-806e-8d1cd2004805",
+      "date": 1719802919936,
+      "done": false,
+      "suggestions": [
+        {
+          "text": "A tarefa \"hoje 1\" está prestes a vencer. Deseja alterar a prioridade para alta?",
+          "taskId": "6c06",
           "action": 1,
           "newValue": "alta",
           "answered": false
